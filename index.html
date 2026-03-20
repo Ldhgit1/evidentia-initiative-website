@@ -109,6 +109,28 @@
       background: var(--orange); display: flex; align-items: center;
       justify-content: center; flex-shrink: 0; color: #fff; font-size: 20px; font-weight: 800;
     }
+
+    /* ── Team animated widget ───────────────────────── */
+    .team-img-card {
+      position: absolute; inset: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      transform-origin: bottom center;
+      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+      will-change: transform, opacity;
+    }
+    .team-img-card img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+
+    @keyframes team-word-in {
+      from { opacity:0; filter:blur(6px); transform:translateY(4px); }
+      to   { opacity:1; filter:blur(0);  transform:translateY(0); }
+    }
+    .team-word { display:inline-block; animation: team-word-in 0.25s ease both; }
+
+    @media (max-width: 640px) {
+      #team-widget { grid-template-columns: 1fr !important; }
+      #team-img-stack { height: 260px !important; }
+    }
   </style>
 </head>
 <body>
@@ -694,46 +716,29 @@
 
     </div>
 
-    <!-- Team -->
+    <!-- Team — Animated Testimonials style -->
     <p class="tag" style="text-align:center; margin-bottom:12px;">The People</p>
     <h2 style="font-size:var(--text-2xl); text-align:center; margin-bottom:12px;">Our team</h2>
     <p style="color:var(--gray-700); text-align:center; max-width:520px; margin:0 auto 48px;">Each person bringing their own skills, talents and ambitions to our shared mission.</p>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:24px;">
+    <div id="team-widget" style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
 
-      <div style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-        <img src="https://placehold.co/280x260/003366/ffffff?text=Photo" alt="Team Member" style="width:100%; height:220px; object-fit:cover;"/>
-        <div style="padding:16px 16px 0;">
-          <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-          <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Research Director</p>
-          <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Leading evidence generation, impact evaluation, and partnerships with global health institutions.</p>
-        </div>
+      <!-- Stacked image column -->
+      <div style="position:relative; height:340px;">
+        <div id="team-img-stack" style="position:relative; width:100%; height:100%;"></div>
       </div>
 
-      <div style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-        <img src="https://placehold.co/280x260/f06632/ffffff?text=Photo" alt="Team Member" style="width:100%; height:220px; object-fit:cover;"/>
-        <div style="padding:16px 16px 0;">
-          <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-          <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Digital Health Lead</p>
-          <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Designing and deploying technology-enabled solutions for maternal and community health.</p>
-        </div>
-      </div>
-
-      <div style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-        <img src="https://placehold.co/280x260/003f88/ffffff?text=Photo" alt="Team Member" style="width:100%; height:220px; object-fit:cover;"/>
-        <div style="padding:16px 16px 0;">
-          <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-          <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Policy &amp; Partnerships Lead</p>
-          <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Building government and institutional partnerships to translate evidence into policy and sustained investment.</p>
-        </div>
-      </div>
-
-      <div style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-        <img src="https://placehold.co/280x260/004e74/ffffff?text=Photo" alt="Team Member" style="width:100%; height:220px; object-fit:cover;"/>
-        <div style="padding:16px 16px 0;">
-          <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-          <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Data &amp; Modelling Specialist</p>
-          <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Mathematical modelling and cost-effectiveness analysis to quantify impact and inform scale decisions.</p>
+      <!-- Text column -->
+      <div style="display:flex; flex-direction:column; justify-content:space-between; min-height:320px; padding:16px 0;">
+        <div id="team-text"></div>
+        <!-- Arrows -->
+        <div style="display:flex; gap:12px; margin-top:32px;">
+          <button onclick="teamPrev()" style="width:36px;height:36px;border-radius:50%;border:none;background:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background var(--duration);" onmouseover="this.style.background='var(--gray-300)'" onmouseout="this.style.background='var(--gray)'">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          </button>
+          <button onclick="teamNext()" style="width:36px;height:36px;border-radius:50%;border:none;background:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background var(--duration);" onmouseover="this.style.background='var(--gray-300)'" onmouseout="this.style.background='var(--gray)'">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 19l7-7-7-7"/></svg>
+          </button>
         </div>
       </div>
 
@@ -1079,6 +1084,97 @@
 
 
   showPage('home');
+
+  // ── Team animated widget ──────────────────────────
+  const teamMembers = [
+    {
+      name: 'Placeholder Name',
+      role: 'Research Director',
+      bio: 'Leading evidence generation, impact evaluation, and partnerships with global health institutions to ensure interventions are grounded in rigorous local data.',
+      src: 'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=600&q=80'
+    },
+    {
+      name: 'Placeholder Name',
+      role: 'Digital Health Lead',
+      bio: 'Designing and deploying technology-enabled solutions for maternal and community health, with a focus on scalable, low-cost tools that work in low-resource settings.',
+      src: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80'
+    },
+    {
+      name: 'Placeholder Name',
+      role: 'Policy & Partnerships Lead',
+      bio: 'Building government and institutional partnerships to translate evidence into policy and sustained investment across health and livelihoods sectors.',
+      src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80'
+    },
+    {
+      name: 'Placeholder Name',
+      role: 'Data & Modelling Specialist',
+      bio: 'Mathematical modelling and cost-effectiveness analysis to quantify impact and inform decisions about which interventions are worth scaling.',
+      src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80'
+    }
+  ];
+
+  let teamActive = 0;
+  const teamStack = document.getElementById('team-img-stack');
+  const teamText  = document.getElementById('team-text');
+
+  function buildTeamStack() {
+    teamStack.innerHTML = '';
+    teamMembers.forEach(function(m, i) {
+      const card = document.createElement('div');
+      card.className = 'team-img-card';
+      card.innerHTML = '<img src="' + m.src + '" alt="' + m.name + '"/>';
+      teamStack.appendChild(card);
+    });
+    renderTeam();
+  }
+
+  function renderTeam() {
+    const cards = teamStack.querySelectorAll('.team-img-card');
+    const total = teamMembers.length;
+    cards.forEach(function(card, i) {
+      const offset = i - teamActive;
+      const isActive = i === teamActive;
+      const rotations = [-8, 6, -4, 10];
+      const rot = isActive ? 0 : (rotations[i % rotations.length]);
+      const scale = isActive ? 1 : 0.92;
+      const opacity = isActive ? 1 : 0.55;
+      const z = isActive ? total + 10 : total - Math.abs(offset);
+      card.style.transform = 'rotate(' + rot + 'deg) scale(' + scale + ')';
+      card.style.opacity   = opacity;
+      card.style.zIndex    = z;
+      card.style.filter    = isActive ? 'none' : 'brightness(0.7)';
+    });
+
+    // Animate text in
+    const m = teamMembers[teamActive];
+    teamText.innerHTML = '';
+    const nameEl = document.createElement('h3');
+    nameEl.style.cssText = 'font-size:var(--text-xl); font-weight:800; color:var(--midnight-green); margin-bottom:4px;';
+    nameEl.textContent = m.name;
+
+    const roleEl = document.createElement('p');
+    roleEl.style.cssText = 'font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:20px;';
+    roleEl.textContent = m.role;
+
+    const bioEl = document.createElement('p');
+    bioEl.style.cssText = 'font-size:var(--text-md); color:var(--gray-700); line-height:175%;';
+    m.bio.split(' ').forEach(function(word, wi) {
+      const span = document.createElement('span');
+      span.className = 'team-word';
+      span.textContent = word + '\u00a0';
+      span.style.animationDelay = (wi * 0.03) + 's';
+      bioEl.appendChild(span);
+    });
+
+    teamText.appendChild(nameEl);
+    teamText.appendChild(roleEl);
+    teamText.appendChild(bioEl);
+  }
+
+  function teamNext() { teamActive = (teamActive + 1) % teamMembers.length; renderTeam(); }
+  function teamPrev() { teamActive = (teamActive - 1 + teamMembers.length) % teamMembers.length; renderTeam(); }
+
+  buildTeamStack();
 
   // ── Hero carousel ────────────────────────────────
   let heroCurrent = 0;
