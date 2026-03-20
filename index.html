@@ -163,37 +163,74 @@
 ════════════════════════════════════════════════════ -->
 <section id="page-home" class="page">
 
-  <!-- Hero -->
-  <div style="background-color:var(--midnight-green); color:#fff; overflow:hidden;">
-    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:48px;">
-      <div style="flex:1 1 340px;">
-        <p class="tag" style="color:var(--orange); margin-bottom:16px;">Social Impact · Evidence-Based · Cost-Effective</p>
-        <h1 style="font-size:clamp(2rem,5vw,var(--text-4xl)); color:#fff; margin-bottom:24px; line-height:1.1;">
-          Everyone should live<br/>a good life.
-        </h1>
-        <p style="font-size:var(--text-md); color:rgba(255,255,255,.8); max-width:520px; margin-bottom:16px; line-height:175%;">
-          Too often, interventions intended to reduce inequities and improve quality of life fail to reach those who need them most because they are not guided by local evidence or designed to be cost-effective.
-        </p>
-        <p style="font-size:var(--text-md); color:rgba(255,255,255,.65); max-width:520px; margin-bottom:36px; line-height:175%;">
-          More lives can be impacted through interventions that work and are cost-effective.
-        </p>
-        <div style="display:flex; flex-wrap:wrap; gap:12px;">
-          <button onclick="showPage('approach')" class="btn btn-orange">Our Approach</button>
-          <button onclick="showPage('about')"    class="btn btn-outline">Who We Are</button>
+  <!-- Hero Carousel -->
+  <div id="hero-carousel" style="position:relative; width:100%; height:620px; overflow:hidden;">
+
+    <!-- Background image — shared across both slides -->
+    <img src="image baby .jpeg" alt="Hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"/>
+    <!-- Dark overlay -->
+    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,25,58,0.55) 0%, rgba(0,25,58,0.45) 60%, rgba(0,25,58,0.75) 100%); z-index:1;"></div>
+
+    <!-- Slides track (swipeable area — excludes white panel) -->
+    <div id="hero-track" style="position:absolute; top:0; left:0; right:0; bottom:110px; z-index:2; overflow:hidden;">
+      <div id="hero-slides" style="display:flex; width:200%; height:100%; transition:transform 0.75s cubic-bezier(0.77,0,0.18,1);">
+
+        <!-- Slide 1: headline + orange pill -->
+        <div style="width:50%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:0 24px; text-align:center;">
+          <h1 style="font-size:clamp(2rem,5.5vw,3.8rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:28px; text-shadow:0 2px 12px rgba(0,0,0,0.3);">
+            Where Evidence Meets Scale
+          </h1>
+          <span style="display:inline-block; background-color:var(--orange); color:#fff; font-size:clamp(1rem,2vw,1.25rem); font-weight:700; line-height:1.2; padding:16px 36px; border-radius:var(--rounded-full);">
+            Everyone should live a good life.
+          </span>
         </div>
-      </div>
-      <div style="flex:1 1 280px; display:flex; justify-content:center;">
-        <img src="https://placehold.co/520x400/003366/ffffff?text=Evidentia"
-             alt="Evidentia" style="width:100%; max-width:480px; border-radius:var(--rounded-xl); object-fit:cover;"/>
+
+        <!-- Slide 2: big white text -->
+        <div style="width:50%; height:100%; display:flex; align-items:center; justify-content:center; padding:0 clamp(24px,8vw,140px); text-align:center;">
+          <div>
+            <p style="font-size:clamp(1.1rem,2.4vw,1.55rem); color:#fff; font-weight:400; line-height:160%; margin-bottom:20px; text-shadow:0 1px 8px rgba(0,0,0,0.4);">
+              Too often, interventions intended to reduce inequities and improve quality of life fail to reach those who need them most because they are not guided by local evidence or designed to be cost-effective.
+            </p>
+            <p style="font-size:clamp(1rem,2vw,1.3rem); color:rgba(255,255,255,0.9); font-weight:700; line-height:150%; text-shadow:0 1px 8px rgba(0,0,0,0.4);">
+              More lives can be impacted through interventions that work and are cost-effective.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <!-- Slide dots -->
+    <div style="position:absolute; bottom:118px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:3;">
+      <button id="hero-dot-0" onclick="heroGo(0)" style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:#fff; opacity:1; transition:opacity 0.3s;"></button>
+      <button id="hero-dot-1" onclick="heroGo(1)" style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:#fff; opacity:0.4; transition:opacity 0.3s;"></button>
+    </div>
+
+    <!-- White bottom panel — always visible -->
+    <div style="position:absolute; bottom:0; left:0; right:0; z-index:3; background:rgba(255,255,255,0.93); border-radius:var(--rounded-xl) var(--rounded-xl) 0 0; padding:20px 40px; height:110px; display:flex; align-items:center;">
+      <div style="max-width:var(--container); margin:0 auto; width:100%; display:flex; flex-wrap:wrap; align-items:center; gap:24px;">
+        <div style="flex:1 1 400px;">
+          <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:4px;">
+            Too often, interventions fail to reach those who need them most because they are not guided by local evidence or designed to be cost-effective.
+          </p>
+          <p style="font-size:var(--text-sm); color:var(--midnight-green); font-weight:600; line-height:165%;">
+            More lives can be impacted through interventions that work and are cost-effective.
+          </p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; flex-shrink:0;">
+          <button onclick="showPage('approach')" class="btn btn-orange">Our Approach</button>
+          <button onclick="showPage('about')"    class="btn btn-dark">Who We Are</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Who We Are -->
   <div style="padding:80px 24px;">
     <div style="max-width:var(--container); margin:0 auto; display:flex; flex-wrap:wrap; gap:64px; align-items:center;">
       <div style="flex:1 1 280px;">
-        <img src="https://placehold.co/480x380/003f88/ffffff?text=Who+We+Are"
+        <img src="Africa-1.jpg"
              alt="Who We Are" style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;"/>
       </div>
       <div style="flex:1 1 340px;">
@@ -1054,6 +1091,35 @@
 
 
   showPage('home');
+
+  // ── Hero carousel ────────────────────────────────
+  let heroCurrent = 0;
+  const heroSlides = document.getElementById('hero-slides');
+
+  function heroGo(index) {
+    heroCurrent = index;
+    heroSlides.style.transform = 'translateX(-' + (index * 50) + '%)';
+    document.getElementById('hero-dot-0').style.opacity = index === 0 ? '1' : '0.4';
+    document.getElementById('hero-dot-1').style.opacity = index === 1 ? '1' : '0.4';
+  }
+
+  // Auto-advance every 6s
+  let heroTimer = setInterval(function() { heroGo(heroCurrent === 0 ? 1 : 0); }, 6000);
+
+  // Touch/swipe support
+  (function() {
+    const el = document.getElementById('hero-carousel');
+    let startX = 0;
+    el.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', function(e) {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        clearInterval(heroTimer);
+        heroGo(diff > 0 ? 1 : 0);
+        heroTimer = setInterval(function() { heroGo(heroCurrent === 0 ? 1 : 0); }, 6000);
+      }
+    }, { passive: true });
+  })();
 
   // ── Work carousel ────────────────────────────────
   let workCurrent = 0;
