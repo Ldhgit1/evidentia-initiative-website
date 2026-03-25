@@ -132,6 +132,65 @@
       #team-widget { grid-template-columns: 1fr !important; }
       #team-img-stack { height: 260px !important; }
     }
+
+    /* ─── Mobile Responsive ────────────────────────── */
+
+    /* Nav: shrink logo on small screens, hide wordmark on tiny */
+    @media (max-width: 480px) {
+      .nav-logo-svg { width: 40px !important; height: 40px !important; }
+      .nav-wordmark { font-size: 18px !important; }
+    }
+    @media (max-width: 340px) {
+      .nav-wordmark { display: none !important; }
+    }
+
+    /* Hero: reduce height on mobile, reposition CTA buttons */
+    @media (max-width: 640px) {
+      #hero-carousel { height: 520px !important; }
+      #hero-buttons  {
+        left: 16px !important;
+        right: 16px !important;
+        bottom: 56px !important;
+        justify-content: center !important;
+      }
+    }
+    @media (max-width: 400px) {
+      #hero-carousel { height: 480px !important; }
+      #hero-buttons  { flex-direction: column !important; align-items: center !important; }
+      #hero-buttons .btn { width: 100%; text-align: center; }
+    }
+
+    /* Services: mobile-first responsive grid */
+    .svc-row1,
+    .svc-row2 { display: grid; gap: 20px; }
+    .svc-row1  { margin-bottom: 20px; grid-template-columns: 1fr; }
+    .svc-row2  { grid-template-columns: 1fr; }
+    @media (min-width: 560px) {
+      .svc-row1 { grid-template-columns: repeat(2, 1fr); }
+      .svc-row2 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .svc-row1 { grid-template-columns: repeat(3, 1fr); }
+      .svc-row2 { grid-template-columns: repeat(2, 1fr); max-width: calc(66.66% + 10px); }
+    }
+
+    /* Work carousel: reduce height on small screens */
+    @media (max-width: 640px) {
+      #work-track  { min-height: 420px !important; }
+      .work-slide  { height: 420px !important; }
+      #work-prev,
+      #work-next   { width: 38px !important; height: 38px !important; }
+    }
+
+    /* Approach principles: let flex items wrap on very small screens */
+    .principle-item { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 48px; }
+    @media (max-width: 420px) {
+      .principle-item { flex-direction: column; gap: 12px; }
+    }
+
+    /* Stat cards on project pages: ensure they wrap */
+    .stat-strip { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
+    .stat-card  { background: rgba(255,255,255,.1); border-radius: var(--rounded-md); padding: 14px 20px; text-align: center; min-width: 110px; }
   </style>
 </head>
 <body>
@@ -143,15 +202,22 @@
       <!-- Logo mark + wordmark -->
       <span style="display:flex; align-items:center; gap:12px;">
 
-        <!-- Logo: dark blue square with Evidence for Good -->
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="64" height="64" rx="0" fill="#00193a"/>
-          <text x="32" y="26" font-family="Georgia, serif" font-weight="300" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="0.8">Evidence</text>
-          <text x="32" y="40" font-family="Georgia, serif" font-weight="300" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="0.8">for Good</text>
+        <!-- Logo: dark blue square with white bars -->
+        <svg class="nav-logo-svg" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- dark blue background -->
+          <rect x="0" y="0" width="52" height="52" fill="#00193a"/>
+          <!-- top-right small block -->
+          <rect x="28" y="8"  width="16" height="7"  rx="0" fill="#ffffff"/>
+          <!-- bar 1 (full width) -->
+          <rect x="8"  y="19" width="36" height="7"  rx="0" fill="#ffffff"/>
+          <!-- bar 2 (three-quarter) -->
+          <rect x="8"  y="30" width="24" height="7"  rx="0" fill="#ffffff"/>
+          <!-- bar 3 (half) -->
+          <rect x="8"  y="41" width="14" height="4"  rx="0" fill="#ffffff"/>
         </svg>
 
         <!-- wordmark -->
-        <span style="font-family:'Playfair Display', Georgia, serif; font-size:24px; font-weight:900; color:var(--midnight-green); letter-spacing:-.01em; line-height:1;">Evidence for Good</span>
+        <span class="nav-wordmark" style="font-family:'Playfair Display', Georgia, serif; font-size:24px; font-weight:900; color:var(--midnight-green); letter-spacing:-.01em; line-height:1;">Evidence for Good</span>
 
       </span>
     </button>
@@ -226,7 +292,7 @@
     </div>
 
     <!-- Buttons — bottom right, always visible -->
-    <div style="position:absolute; bottom:32px; right:32px; z-index:4; display:flex; gap:12px;">
+    <div id="hero-buttons" style="position:absolute; bottom:32px; right:32px; z-index:4; display:flex; gap:12px; flex-wrap:wrap;">
       <button onclick="showPage('approach')" class="btn btn-orange">Our Approach</button>
       <button onclick="showPage('about')"    class="btn btn-outline">Who We Are</button>
     </div>
@@ -314,7 +380,7 @@
       <h2 style="font-size:var(--text-2xl); text-align:center; margin-bottom:12px;">Our services</h2>
       <p style="color:var(--gray-700); text-align:center; max-width:560px; margin:0 auto 48px; line-height:175%;">We partner with governments, institutions, and communities to design, test, and scale what works.</p>
       <!-- Row 1: 3 cards -->
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:20px;">
+      <div class="svc-row1">
 
         <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
           <div style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
@@ -343,7 +409,7 @@
       </div>
 
       <!-- Row 2: 2 cards left-aligned -->
-      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:calc(66.66% + 10px); margin:0;">
+      <div class="svc-row2">
 
         <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
           <div style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
@@ -460,20 +526,20 @@
       <h1 style="font-size:clamp(1.6rem,4vw,var(--text-3xl)); color:#fff; max-width:760px; line-height:1.2; margin-bottom:20px;">
         Tackling the Silent Crisis of Maternal Anaemia in Nigeria Using AI-Enabled Reminder &amp; Risk Stratification Tools
       </h1>
-      <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:28px;">
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+      <div class="stat-strip">
+        <div class="stat-card">
           <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">22%</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">of maternal deaths linked to anaemia</p>
         </div>
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+        <div class="stat-card">
           <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">10M+</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">mothers &amp; newborns at risk</p>
         </div>
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+        <div class="stat-card">
           <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">58%</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">of pregnant women in Nigeria are anaemic</p>
         </div>
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+        <div class="stat-card">
           <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">5M+</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">pregnant women we aim to reach</p>
         </div>
@@ -572,16 +638,16 @@
       <h1 style="font-size:clamp(1.6rem,4vw,var(--text-3xl)); color:#fff; max-width:760px; line-height:1.2; margin-bottom:20px;">
         Investigating the Human Cost of Declining Donor Support for HIV and TB Care
       </h1>
-      <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:28px;">
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+      <div class="stat-strip">
+        <div class="stat-card">
           <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">RSTMH</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">Grant-funded research</p>
         </div>
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+        <div class="stat-card">
           <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">80+</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">HIV care sites disrupted in Nigeria</p>
         </div>
-        <div style="background:rgba(255,255,255,.1); border-radius:var(--rounded-md); padding:14px 20px; text-align:center;">
+        <div class="stat-card">
           <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">Nigeria</p>
           <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">Primary study setting</p>
         </div>
@@ -796,7 +862,7 @@
   <div style="max-width:800px; margin:0 auto; padding:80px 24px;">
 
     <!-- Principle 1 -->
-    <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:48px;">
+    <div class="principle-item">
       <div style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">01</div>
       <div>
         <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We ask whether the work meaningfully improves people's lives, and for whom</h2>
@@ -807,7 +873,7 @@
     <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;"/>
 
     <!-- Principle 2 -->
-    <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:48px;">
+    <div class="principle-item">
       <div style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">02</div>
       <div>
         <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We seek partnerships grounded in shared objectives and mutual commitment to impact</h2>
@@ -818,7 +884,7 @@
     <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;"/>
 
     <!-- Principle 3 -->
-    <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:48px;">
+    <div class="principle-item">
       <div style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">03</div>
       <div>
         <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We design solutions together with those who are directly affected</h2>
@@ -828,7 +894,7 @@
     <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;"/>
 
     <!-- Principle 4 -->
-    <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:48px;">
+    <div class="principle-item">
       <div style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">04</div>
       <div>
         <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We leverage the value of technology to maximise impact</h2>
@@ -839,7 +905,7 @@
     <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;"/>
 
     <!-- Principle 5 -->
-    <div style="display:flex; gap:24px; align-items:flex-start;">
+    <div class="principle-item" style="margin-bottom:0;">
       <div style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">05</div>
       <div>
         <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We generate evidence for scale and design pathways to local ownership</h2>
