@@ -153,11 +153,15 @@
         bottom: 56px !important;
         justify-content: center !important;
       }
+      /* Push slide content up so it clears the buttons at the bottom */
+      #hero-slides > div { padding-bottom: 120px; }
     }
     @media (max-width: 400px) {
-      #hero-carousel { height: 480px !important; }
+      #hero-carousel { height: 520px !important; }
       #hero-buttons  { flex-direction: column !important; align-items: center !important; }
       #hero-buttons .btn { width: 100%; text-align: center; }
+      /* Stacked buttons are taller — give more clearance */
+      #hero-slides > div { padding-bottom: 150px; }
     }
 
     /* Services: mobile-first responsive grid */
@@ -1182,15 +1186,27 @@
   let heroCurrent = 0;
   const heroSlides = document.getElementById('hero-slides');
 
+  // Slide durations: slide 0 = 5s, slide 1 = 15s
+  const heroDurations = [5000, 15000];
+  let heroTimer;
+
+  function heroScheduleNext() {
+    clearTimeout(heroTimer);
+    heroTimer = setTimeout(function() {
+      heroGo(heroCurrent === 0 ? 1 : 0);
+    }, heroDurations[heroCurrent]);
+  }
+
   function heroGo(index) {
     heroCurrent = index;
     heroSlides.style.transform = 'translateX(-' + (index * 50) + '%)';
     document.getElementById('hero-dot-0').style.opacity = index === 0 ? '1' : '0.4';
     document.getElementById('hero-dot-1').style.opacity = index === 1 ? '1' : '0.4';
+    heroScheduleNext();
   }
 
-  // Auto-advance every 6s
-  let heroTimer = setInterval(function() { heroGo(heroCurrent === 0 ? 1 : 0); }, 6000);
+  // Kick off from slide 0
+  heroScheduleNext();
 
   // Touch/swipe support
   (function() {
@@ -1200,9 +1216,7 @@
     el.addEventListener('touchend', function(e) {
       const diff = startX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) {
-        clearInterval(heroTimer);
         heroGo(diff > 0 ? 1 : 0);
-        heroTimer = setInterval(function() { heroGo(heroCurrent === 0 ? 1 : 0); }, 6000);
       }
     }, { passive: true });
   })();
