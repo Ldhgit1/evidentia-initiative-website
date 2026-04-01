@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evidence for Good | Evidential Consulting Group</title>
+  <meta name="description"
+    content="Evidential Consulting Group is a social impact organisation using evidence to save and improve lives across sub-Saharan Africa. We work in maternal health, environmental health, and infectious disease control." />
+  <meta name="keywords"
+    content="evidence for good, evidential consulting group, social impact, global health, sub-Saharan Africa, maternal health, evidence-based interventions, effective altruism" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph (for social sharing and richer Google previews) -->
+  <meta property="og:title" content="Evidence for Good | Evidential Consulting Group" />
+  <meta property="og:description"
+    content="A social impact organisation using rigorous evidence to improve lives across sub-Saharan Africa — in maternal health, environmental health, and infectious disease control." />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Dax"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --container: 1120px;
+      --height-header: 80px;
+      --text-xs: 12px;
+      --text-sm: 14px;
+      --text-base: 16px;
+      --text-md: 18px;
+      --text-lg: 20px;
+      --text-xl: 24px;
+      --text-2xl: 32px;
+      --text-3xl: 40px;
+      --text-4xl: 48px;
+      --suffix-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      --fontfamily-sans: "Dax", var(--suffix-family);
+      --padding-button: 15px 30px;
+      --rounded-xs: 2px;
+      --rounded-sm: 4px;
+      --rounded: 6px;
+      --rounded-md: 10px;
+      --rounded-lg: 16px;
+      --rounded-xl: 24px;
+      --rounded-full: 999999px;
+      --transparent: rgba(0, 0, 0, 0);
+      --white: #fff;
+      --black: #000;
+      --blue: #004e74;
+      --yellow: #e69d00;
+      --green: #225c41;
+      --dark-green: #003366;
+      --midnight-green: #00193a;
+      --orange: #f06632;
+      --gray: #f4f7fb;
+      --gray-300: #d6e0ef;
+      --gray-700: #3d5a80;
+      --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+      --duration: 0.3s;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      word-break: break-word;
+    }
+
+    ::selection {
+      color: #fff;
+      background-color: #00193a;
+      text-shadow: none;
+    }
+
+    body {
+      font-family: var(--fontfamily-sans);
+      color: var(--midnight-green);
+      line-height: 175%;
+      font-size: var(--text-base);
+      font-weight: 400;
+      background-color: var(--white);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: var(--padding-button);
+      border-radius: var(--rounded-full);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      line-height: 1;
+      cursor: pointer;
+      transition: opacity var(--duration), background-color var(--duration), color var(--duration);
+      text-decoration: none;
+      border: none;
+      font-family: var(--fontfamily-sans);
+    }
+
+    .btn-orange {
+      background-color: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-orange:hover {
+      opacity: 0.88;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--midnight-green);
+    }
+
+    .btn-dark {
+      background-color: var(--midnight-green);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      opacity: 0.88;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .nav-link.active {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .nav-link {
+      transition: color var(--duration);
+    }
+
+    .nav-link:hover {
+      color: var(--orange);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      line-height: 125%;
+      font-weight: 700;
+      color: var(--midnight-green);
+    }
+
+    .tag {
+      display: block;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .card {
+      transition: box-shadow var(--duration), transform var(--duration);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid var(--orange);
+      border-color: var(--orange);
+    }
+
+
+    /* value icon circle */
+    .val-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--rounded-full);
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    /* ── Team animated widget ───────────────────────── */
+    .team-img-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      transform-origin: bottom center;
+      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .team-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    @keyframes team-word-in {
+      from {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+
+    .team-word {
+      display: inline-block;
+      animation: team-word-in 0.25s ease both;
+    }
+
+    @media (max-width: 640px) {
+      #team-widget {
+        grid-template-columns: 1fr !important;
+      }
+
+      #team-img-stack {
+        height: 260px !important;
+      }
+    }
+
+    /* ─── Mobile Responsive ────────────────────────── */
+
+    /* Nav: shrink logo on small screens, hide wordmark on tiny */
+    @media (max-width: 480px) {
+      .nav-logo-svg {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      .nav-wordmark {
+        font-size: 18px !important;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .nav-wordmark {
+        display: none !important;
+      }
+    }
+
+    /* Hero: reduce height on mobile, reposition CTA buttons */
+    @media (max-width: 640px) {
+      #hero-carousel {
+        height: 520px !important;
+      }
+
+      #hero-buttons {
+        left: 16px !important;
+        right: 16px !important;
+        bottom: 56px !important;
+        justify-content: center !important;
+      }
+
+      /* Push slide content up so it clears the buttons at the bottom */
+      #hero-slides>div {
+        padding-bottom: 120px !important;
+      }
+    }
+
+    @media (max-width: 400px) {
+      #hero-carousel {
+        height: 520px !important;
+      }
+
+      #hero-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      #hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Stacked buttons are taller — give more clearance */
+      #hero-slides>div {
+        padding-bottom: 150px !important;
+      }
+    }
+
+    /* Services: mobile-first responsive grid */
+    .svc-row1,
+    .svc-row2 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .svc-row1 {
+      margin-bottom: 20px;
+      grid-template-columns: 1fr;
+    }
+
+    .svc-row2 {
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 560px) {
+      .svc-row1 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .svc-row2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .svc-row1 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .svc-row2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: calc(66.66% + 10px);
+      }
+    }
+
+    /* Work carousel: reduce height on small screens */
+    @media (max-width: 640px) {
+      #work-track {
+        min-height: 420px !important;
+      }
+
+      .work-slide {
+        height: 420px !important;
+      }
+
+      #work-prev,
+      #work-next {
+        width: 38px !important;
+        height: 38px !important;
+      }
+    }
+
+    /* Approach principles: let flex items wrap on very small screens */
+    .principle-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 420px) {
+      .principle-item {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* Stat cards on project pages: ensure they wrap */
+    .stat-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, .1);
+      border-radius: var(--rounded-md);
+      padding: 14px 20px;
+      text-align: center;
+      min-width: 110px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav
+    style="background:#fff; border-bottom:1px solid var(--gray-300); position:sticky; top:0; z-index:50; height:var(--height-header);">
+    <div
+      style="width:100%; padding:0 32px; height:100%; display:flex; align-items:center; justify-content:space-between;">
+      <button onclick="showPage('home')"
+        style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:12px;">
+        <!-- Logo mark + wordmark -->
+        <span style="display:flex; align-items:center; gap:12px;">
+
+          <!-- Logo: dark blue square with E4G -->
+          <svg class="nav-logo-svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="52" height="52" fill="#00193a" />
+            <text x="26" y="26" text-anchor="middle" dominant-baseline="central" fill="#ffffff"
+              font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17"
+              font-weight="300" letter-spacing="1.5">E4G</text>
+          </svg>
+
+          <!-- wordmark -->
+          <span class="nav-wordmark"
+            style="font-family:'Playfair Display', Georgia, serif; font-size:24px; font-weight:900; color:var(--midnight-green); letter-spacing:-.01em; line-height:1;">Evidence
+            for Good</span>
+
+        </span>
+      </button>
+
+      <div class="hidden md:flex" style="gap:28px; align-items:center;">
+        <button id="nav-home" onclick="showPage('home')" class="nav-link"
+          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</button>
+        <button id="nav-about" onclick="showPage('about')" class="nav-link"
+          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+          Us</button>
+        <button id="nav-approach" onclick="showPage('approach')" class="nav-link"
+          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+          Approach</button>
+        <button id="nav-blog" onclick="showPage('blog')" class="nav-link"
+          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</button>
+        <button id="nav-evidence" onclick="showPage('evidence')" class="nav-link"
+          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</button>
+        <button onclick="showPage('about')" class="btn btn-orange" style="margin-left:8px;">Get in touch</button>
+      </div>
+
+      <button onclick="toggleMenu()" class="md:hidden"
+        style="background:none;border:none;cursor:pointer;color:var(--midnight-green);">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu"
+      style="display:none; background:#fff; border-top:1px solid var(--gray-300); padding:16px 24px; flex-direction:column; gap:12px;">
+      <button onclick="showPage('home');toggleMenu()"
+        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</button>
+      <button onclick="showPage('about');toggleMenu()"
+        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+        Us</button>
+      <button onclick="showPage('approach');toggleMenu()"
+        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+        Approach</button>
+      <button onclick="showPage('blog');toggleMenu()"
+        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</button>
+      <button onclick="showPage('evidence');toggleMenu()"
+        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</button>
+      <button onclick="showPage('about');toggleMenu()" class="btn btn-orange" style="width:fit-content;">Get in
+        touch</button>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════
+     HOME
+════════════════════════════════════════════════════ -->
+  <section id="page-home" class="page">
+
+    <!-- Hero Carousel -->
+    <div id="hero-carousel" style="position:relative; width:100%; height:620px; overflow:hidden;">
+
+      <!-- Background image — shared across both slides -->
+      <img src="image-baby.jpeg" alt="Hero"
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;" />
+      <!-- Dark overlay -->
+      <div
+        style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,25,58,0.55) 0%, rgba(0,25,58,0.45) 60%, rgba(0,25,58,0.75) 100%); z-index:1;">
+      </div>
+
+      <!-- Slides track -->
+      <div id="hero-track" style="position:absolute; inset:0; z-index:2; overflow:hidden;">
+        <div id="hero-slides"
+          style="display:flex; width:200%; height:100%; transition:transform 0.75s cubic-bezier(0.77,0,0.18,1);">
+
+          <!-- Slide 1: headline + orange pill -->
+          <div
+            style="width:50%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:0 24px; text-align:center;">
+            <h1
+              style="font-size:clamp(2rem,5.5vw,3.8rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:28px; text-shadow:0 2px 12px rgba(0,0,0,0.3);">
+              Where Evidence Meets Scale
+            </h1>
+            <span
+              style="display:inline-block; background-color:var(--orange); color:#fff; font-size:clamp(1rem,2vw,1.25rem); font-weight:700; line-height:1.2; padding:16px 36px; border-radius:var(--rounded-full);">
+              Everyone should live a good life.
+            </span>
+          </div>
+
+          <!-- Slide 2: big white text -->
+          <div
+            style="width:50%; height:100%; display:flex; align-items:center; justify-content:center; padding:0 clamp(24px,8vw,140px); text-align:center;">
+            <div>
+              <p
+                style="font-size:clamp(1.1rem,2.4vw,1.55rem); color:#fff; font-weight:400; line-height:160%; margin-bottom:20px; text-shadow:0 1px 8px rgba(0,0,0,0.4);">
+                Too often, interventions intended to reduce inequities and improve quality of life fail to reach those
+                who need them most because they are not guided by local evidence or designed to be cost-effective.
+              </p>
+              <p
+                style="font-size:clamp(1rem,2vw,1.3rem); color:rgba(255,255,255,0.9); font-weight:700; line-height:150%; text-shadow:0 1px 8px rgba(0,0,0,0.4);">
+                More lives can be impacted through interventions that work and are cost-effective.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Buttons — bottom right, always visible -->
+      <div id="hero-buttons"
+        style="position:absolute; bottom:32px; right:32px; z-index:4; display:flex; gap:12px; flex-wrap:wrap;">
+        <button onclick="showPage('approach')" class="btn btn-orange">Our Approach</button>
+        <button onclick="showPage('about')" class="btn btn-outline">Who We Are</button>
+      </div>
+
+      <!-- Slide dots — bottom centre -->
+      <div
+        style="position:absolute; bottom:36px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:4;">
+        <button id="hero-dot-0" onclick="heroGo(0)"
+          style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:#fff; opacity:1; transition:opacity 0.3s;"></button>
+        <button id="hero-dot-1" onclick="heroGo(1)"
+          style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:#fff; opacity:0.4; transition:opacity 0.3s;"></button>
+      </div>
+
+    </div>
+
+    <!-- Focus Areas -->
+    <div style="padding:72px 24px; background:var(--gray);">
+      <div style="max-width:var(--container); margin:0 auto;">
+        <div style="text-align:center; margin-bottom:48px;">
+          <p class="tag" style="font-size:16px; margin-bottom:12px;">Our Focus Areas</p>
+          <h2 style="font-size:var(--text-2xl);">Three enduring challenges that affect millions of lives across
+            sub-Saharan Africa</h2>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+
+          <!-- Focus 1: Maternal Health -->
+          <div class="card"
+            style="background:#fff; border-radius:var(--rounded-xl); padding:32px; border-top:4px solid var(--orange);">
+            <div
+              style="width:48px; height:48px; background:rgba(240,102,50,.1); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <!-- Pregnant woman -->
+              <svg width="26" height="26" fill="none" stroke="var(--orange)" stroke-width="1.8" viewBox="0 0 24 24">
+                <circle cx="12" cy="4.5" r="2.5" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.5 9.5C9.5 8.1 10.6 7 12 7s2.5 1.1 2.5 2.5c1.4.7 2.3 2.2 2.3 3.8 0 3.1-2.2 5.2-4.8 5.2S7.2 16.4 7.2 13.3c0-1.6.9-3.1 2.3-3.8z" />
+                <path stroke-linecap="round" d="M10 19.5V22M14 19.5V22" />
+              </svg>
+            </div>
+            <h3 style="font-size:var(--text-lg); margin-bottom:10px; color:var(--midnight-green);">Maternal Health &amp;
+              Nutrition</h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:8px;">Every year,
+              about <a href="https://www.who.int/news-room/fact-sheets/detail/maternal-mortality" target="_blank"
+                style="color:var(--gray-700); text-decoration:underline; text-underline-offset:3px;">260,000 women</a>
+              die from pregnancy or childbirth-related complications, 70% of which are in sub-Saharan Africa. We are
+              supporting health system strengthening, developing and scaling interventions that work.</p>
+            <p style="font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); margin-bottom:20px;">No
+              mother should die giving life.</p>
+            <button onclick="showPage('project1')"
+              style="background:none; border:none; cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--orange); padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px;">
+              See our work
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Focus 2: Early Childhood Development -->
+          <div class="card"
+            style="background:#fff; border-radius:var(--rounded-xl); padding:32px; border-top:4px solid var(--dark-green);">
+            <div
+              style="width:48px; height:48px; background:rgba(0,51,102,.08); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <!-- Leaf / environment icon -->
+              <svg width="26" height="26" fill="none" stroke="var(--dark-green)" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 2C6.5 2 3 7 3 12c0 3.5 2 6.5 5 8l1-3c-1.5-1-2.5-2.8-2.5-5 0-3.5 2.5-7 5.5-7s5.5 3.5 5.5 7c0 2.2-1 4-2.5 5l1 3c3-1.5 5-4.5 5-8 0-5-3.5-10-9-10z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-8M9 17l3-3 3 3" />
+              </svg>
+            </div>
+            <h3 style="font-size:var(--text-lg); margin-bottom:10px; color:var(--midnight-green);">Environmental Health
+            </h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:20px;">
+              Environmental exposures are a silent driver of preventable illness and death. We generate evidence on
+              toxic exposures — including lead from Tiro, a traditional eye product widely applied to infants — and
+              their impact on health and development.</p>
+            <span
+              style="font-size:var(--text-sm); font-weight:700; color:var(--dark-green); display:inline-flex; align-items:center; gap:6px;">
+              Research in progress
+            </span>
+          </div>
+
+          <!-- Focus 3: Infectious Disease Control -->
+          <div class="card"
+            style="background:#fff; border-radius:var(--rounded-xl); padding:32px; border-top:4px solid var(--midnight-green);">
+            <div
+              style="width:48px; height:48px; background:rgba(0,25,58,.08); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <!-- Syringe / vaccine -->
+              <svg width="26" height="26" fill="none" stroke="var(--midnight-green)" stroke-width="1.8"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M19 2l3 3-1.5 1.5-3-3L19 2zM17.5 3.5l3 3M5 21l5-5M14.5 5.5l4 4-5.5 5.5-4-4 5.5-5.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 9.5l3 3M3 21l1.5-1.5" />
+                <path stroke-linecap="round" d="M9 13l2-2" />
+              </svg>
+            </div>
+            <h3 style="font-size:var(--text-lg); margin-bottom:10px; color:var(--midnight-green);">Infectious Disease
+              Control</h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:20px;">Generating
+              and translating evidence on what works — from vaccine effectiveness to the real-world human cost of
+              declining donor support for HIV and TB care.</p>
+            <button onclick="showPage('project2')"
+              style="background:none; border:none; cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px;">
+              See our work
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Who We Are -->
+    <div style="padding:80px 24px;">
+      <div
+        style="max-width:var(--container); margin:0 auto; display:flex; flex-wrap:wrap; gap:64px; align-items:center;">
+        <div style="flex:1 1 280px;">
+          <img src="Africa-1.jpg" alt="Who We Are"
+            style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;" />
+        </div>
+        <div style="flex:1 1 340px;">
+          <p class="tag" style="margin-bottom:12px; font-size:16px;">Who We Are</p>
+          <h2 style="font-size:var(--text-2xl); margin-bottom:20px;">Operating at the intersection of research,
+            implementation and digital innovation</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:20px;">
+            Evidence for Good (E4G) is a social impact organization partnering with stakeholders to generate evidence
+            and deploy cost-effective solutions that advance equity and meaningfully improve lives.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:28px;">
+            <div style="border-left:3px solid var(--orange); padding-left:16px;">
+              <p style="font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); margin-bottom:4px;">
+                Vision</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">A world where anyone can
+                achieve their potential regardless of who they are and where they are born.</p>
+            </div>
+            <div style="border-left:3px solid var(--orange); padding-left:16px;">
+              <p style="font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); margin-bottom:4px;">
+                Mission</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">To meaningfully improve the
+                lives of those who need it most by delivering evidence-based, cost-effective solutions in partnership
+                with governments, institutions, and communities.</p>
+            </div>
+          </div>
+          <button onclick="showPage('about')" class="btn btn-dark">Learn more about us</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Five Principles Summary -->
+    <div style="background:var(--dark-green); color:#fff; padding:80px 24px;">
+      <div style="max-width:var(--container); margin:0 auto;">
+        <div style="text-align:center; margin-bottom:48px;">
+          <p class="tag" style="color:var(--orange); margin-bottom:12px; font-size:16px;">How We Work</p>
+          <h2 style="font-size:var(--text-2xl); color:#fff;">Our approach — five guiding principles</h2>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px;">
+          <div
+            style="background:rgba(255,255,255,.07); border-radius:var(--rounded-lg); padding:28px 20px; text-align:center;">
+            <div style="font-size:var(--text-xl); font-weight:800; color:var(--orange); margin-bottom:10px;">01</div>
+            <h4 style="color:#fff; font-size:var(--text-sm); margin-bottom:8px; line-height:140%;">Evidence of impact
+            </h4>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.65); line-height:165%;">We ask whether every
+              intervention leads to meaningful improvements and at what cost.</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.07); border-radius:var(--rounded-lg); padding:28px 20px; text-align:center;">
+            <div style="font-size:var(--text-xl); font-weight:800; color:var(--orange); margin-bottom:10px;">02</div>
+            <h4 style="color:#fff; font-size:var(--text-sm); margin-bottom:8px; line-height:140%;">Partnerships for
+              shared impact</h4>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.65); line-height:165%;">Grounded in shared
+              objectives and mutual commitment to results.</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.07); border-radius:var(--rounded-lg); padding:28px 20px; text-align:center;">
+            <div style="font-size:var(--text-xl); font-weight:800; color:var(--orange); margin-bottom:10px;">03</div>
+            <h4 style="color:#fff; font-size:var(--text-sm); margin-bottom:8px; line-height:140%;">Co-design with those
+              affected</h4>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.65); line-height:165%;">No one understands the
+              problem better than those who live it.</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.07); border-radius:var(--rounded-lg); padding:28px 20px; text-align:center;">
+            <div style="font-size:var(--text-xl); font-weight:800; color:var(--orange); margin-bottom:10px;">04</div>
+            <h4 style="color:#fff; font-size:var(--text-sm); margin-bottom:8px; line-height:140%;">Technology as a tool
+              for impact</h4>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.65); line-height:165%;">We deploy technology
+              selectively — where it demonstrably improves outcomes.</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.07); border-radius:var(--rounded-lg); padding:28px 20px; text-align:center;">
+            <div style="font-size:var(--text-xl); font-weight:800; color:var(--orange); margin-bottom:10px;">05</div>
+            <h4 style="color:#fff; font-size:var(--text-sm); margin-bottom:8px; line-height:140%;">Evidence for scale &
+              local ownership</h4>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.65); line-height:165%;">We build pathways for
+              sustainable, locally-led adoption from the outset.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+          <button onclick="showPage('approach')" class="btn btn-orange">Read the full approach</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- What We Do -->
+    <div id="what-we-do"
+      style="padding:80px 24px; background-color:#ffffff; background-image:radial-gradient(rgba(0,0,0,0.08) 0.6px, transparent 0.6px); background-size:16px 16px;">
+      <div style="max-width:var(--container); margin:0 auto;">
+        <p class="tag" style="text-align:center; margin-bottom:12px; font-size:16px;">What We Do</p>
+        <h2 style="font-size:var(--text-2xl); text-align:center; margin-bottom:12px;">Our services</h2>
+        <p style="color:var(--gray-700); text-align:center; max-width:560px; margin:0 auto 48px; line-height:175%;">We
+          partner with governments, institutions, and communities to design, test, and scale what works.</p>
+        <!-- Row 1: 3 cards -->
+        <div class="svc-row1">
+
+          <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
+            <div
+              style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h4 style="font-size:var(--text-md); margin-bottom:8px;">Intervention Design &amp; Deployment</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Co-designing evidence-informed
+              interventions with communities and institutions for real-world feasibility.</p>
+          </div>
+
+          <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
+            <div
+              style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+              </svg>
+            </div>
+            <h4 style="font-size:var(--text-md); margin-bottom:8px;">Evidence Generation &amp; Impact Evaluation</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Generating credible evidence
+              through rigorous evaluation to assess what works and for whom.</p>
+          </div>
+
+          <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
+            <div
+              style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 style="font-size:var(--text-md); margin-bottom:8px;">Equity-Informed Cost-Effectiveness Analysis</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Ensuring resources flow to
+              interventions delivering the most benefit for the most vulnerable.</p>
+          </div>
+
+        </div>
+
+        <!-- Row 2: 2 cards left-aligned -->
+        <div class="svc-row2">
+
+          <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
+            <div
+              style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <h4 style="font-size:var(--text-md); margin-bottom:8px;">Impact Modelling &amp; Scale Strategy</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Mathematical modelling to
+              project impact and design responsible, evidence-based pathways to scale.</p>
+          </div>
+
+          <div class="card" style="background:#fff; border-radius:var(--rounded-lg); padding:28px;">
+            <div
+              style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h4 style="font-size:var(--text-md); margin-bottom:8px;">Technology-Enabled Solutions</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Deploying digital and AI tools
+              selectively where they demonstrably improve outcomes at scale.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Work / Projects — fullscreen swipe carousel -->
+    <div style="position:relative; overflow:hidden; background:var(--midnight-green);">
+
+      <!-- Slides wrapper -->
+      <div id="work-track"
+        style="display:flex; transition:transform 0.7s cubic-bezier(0.77,0,0.18,1); will-change:transform; min-height:520px;">
+
+        <!-- Slide 1 -->
+        <div class="work-slide" onclick="showPage('project1')"
+          style="min-width:100%; position:relative; cursor:pointer; overflow:hidden; height:520px;">
+          <img src="https://placehold.co/1400x520/00193a/00193a?text=+" alt=""
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover; filter:brightness(0.45); transition:transform 0.8s ease; transform:scale(1);"
+            class="slide-bg" />
+          <!-- animated colour wash overlay -->
+          <div
+            style="position:absolute;inset:0; background:linear-gradient(120deg, rgba(0,25,58,0.88) 0%, rgba(0,63,136,0.5) 100%);">
+          </div>
+          <div class="slide-content"
+            style="position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:48px clamp(24px,6vw,80px); max-width:860px;">
+            <span class="tag"
+              style="color:var(--orange); margin-bottom:14px; opacity:0; transform:translateY(20px); transition:opacity 0.5s 0.1s, transform 0.5s 0.1s;">Digital
+              Health · Nigeria</span>
+            <h2
+              style="font-size:clamp(1.4rem,3.5vw,var(--text-3xl)); color:#fff; line-height:1.2; margin-bottom:16px; opacity:0; transform:translateY(24px); transition:opacity 0.5s 0.2s, transform 0.5s 0.2s;">
+              Tackling Maternal Anaemia Using AI-Enabled Reminder &amp; Risk Stratification Tools
+            </h2>
+            <p
+              style="font-size:var(--text-md); color:rgba(255,255,255,.75); max-width:580px; line-height:175%; margin-bottom:28px; opacity:0; transform:translateY(24px); transition:opacity 0.5s 0.3s, transform 0.5s 0.3s;">
+              Using low-cost technology and AI to improve antenatal care adherence and identify high-risk mothers across
+              Nigeria.
+            </p>
+            <span
+              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); display:inline-flex; align-items:center; gap:6px; opacity:0; transform:translateY(16px); transition:opacity 0.5s 0.4s, transform 0.5s 0.4s;">
+              Explore this project
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="work-slide" onclick="showPage('project2')"
+          style="min-width:100%; position:relative; cursor:pointer; overflow:hidden; height:520px;">
+          <img src="https://placehold.co/1400x520/003366/003366?text=+" alt=""
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover; filter:brightness(0.45); transition:transform 0.8s ease; transform:scale(1);"
+            class="slide-bg" />
+          <div
+            style="position:absolute;inset:0; background:linear-gradient(120deg, rgba(0,51,102,0.88) 0%, rgba(0,25,58,0.6) 100%);">
+          </div>
+          <div class="slide-content"
+            style="position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:48px clamp(24px,6vw,80px); max-width:860px;">
+            <span class="tag"
+              style="color:var(--orange); margin-bottom:14px; opacity:0; transform:translateY(20px); transition:opacity 0.5s 0.1s, transform 0.5s 0.1s;">Mathematical
+              Modelling · Nigeria</span>
+            <h2
+              style="font-size:clamp(1.4rem,3.5vw,var(--text-3xl)); color:#fff; line-height:1.2; margin-bottom:16px; opacity:0; transform:translateY(24px); transition:opacity 0.5s 0.2s, transform 0.5s 0.2s;">
+              Investigating the Human Cost of Declining Donor Support for HIV and TB Care
+            </h2>
+            <p
+              style="font-size:var(--text-md); color:rgba(255,255,255,.75); max-width:580px; line-height:175%; margin-bottom:28px; opacity:0; transform:translateY(24px); transition:opacity 0.5s 0.3s, transform 0.5s 0.3s;">
+              Deploying mathematical modelling to evaluate the real-world impact of funding cuts on the most vulnerable
+              populations.
+            </p>
+            <span
+              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); display:inline-flex; align-items:center; gap:6px; opacity:0; transform:translateY(16px); transition:opacity 0.5s 0.4s, transform 0.5s 0.4s;">
+              Explore this project
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+
+      <!-- Header overlay (top-left) -->
+      <div style="position:absolute; top:40px; left:clamp(24px,6vw,80px); z-index:5; pointer-events:none;">
+        <p class="tag" style="color:var(--orange); margin-bottom:6px; font-size:16px;">Our Work</p>
+        <p style="color:rgba(255,255,255,.5); font-size:var(--text-sm);">Swipe or use arrows to explore</p>
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <button id="work-prev" onclick="workSlide(-1)"
+        style="position:absolute; left:clamp(24px,4vw,48px); top:50%; transform:translateY(-50%); z-index:10; width:48px; height:48px; border-radius:var(--rounded-full); background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.25); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--duration);"
+        onmouseover="this.style.background='rgba(240,102,50,0.8)'"
+        onmouseout="this.style.background='rgba(255,255,255,.12)'">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button id="work-next" onclick="workSlide(1)"
+        style="position:absolute; right:clamp(24px,4vw,48px); top:50%; transform:translateY(-50%); z-index:10; width:48px; height:48px; border-radius:var(--rounded-full); background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.25); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--duration);"
+        onmouseover="this.style.background='rgba(240,102,50,0.8)'"
+        onmouseout="this.style.background='rgba(255,255,255,.12)'">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <!-- Dot indicators -->
+      <div
+        style="position:absolute; bottom:24px; right:clamp(24px,6vw,80px); z-index:10; display:flex; gap:8px; align-items:center;">
+        <button class="work-dot active-dot" onclick="workGoTo(0)"
+          style="width:28px; height:4px; border-radius:2px; background:var(--orange); border:none; cursor:pointer; transition:width var(--duration), background var(--duration); padding:0;"></button>
+        <button class="work-dot" onclick="workGoTo(1)"
+          style="width:14px; height:4px; border-radius:2px; background:rgba(255,255,255,.35); border:none; cursor:pointer; transition:width var(--duration), background var(--duration); padding:0;"></button>
+      </div>
+
+      <!-- Slide counter -->
+      <div style="position:absolute; bottom:20px; left:clamp(24px,6vw,80px); z-index:10;">
+        <span id="work-counter"
+          style="font-size:var(--text-xs); font-weight:700; color:rgba(255,255,255,.5); letter-spacing:.1em;">01 /
+          02</span>
+      </div>
+
+    </div><!-- /carousel -->
+
+
+  </section><!-- /HOME -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     PROJECT PAGE 1: MATERNAL ANAEMIA
+════════════════════════════════════════════════════ -->
+  <section id="page-project1" class="page">
+
+    <!-- Hero banner -->
+    <div style="background:var(--dark-green); color:#fff; padding:64px 24px;">
+      <div style="max-width:var(--container); margin:0 auto;">
+        <button onclick="showPage('home')"
+          style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:var(--text-sm);font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:28px;padding:0;font-family:inherit;"
+          onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+          ← Back to Our Work
+        </button>
+        <span class="tag" style="color:var(--orange); margin-bottom:12px;">Digital Health · Nigeria</span>
+        <h1
+          style="font-size:clamp(1.6rem,4vw,var(--text-3xl)); color:#fff; max-width:760px; line-height:1.2; margin-bottom:20px;">
+          Tackling the Silent Crisis of Maternal Anaemia in Nigeria Using AI-Enabled Reminder &amp; Risk Stratification
+          Tools
+        </h1>
+        <div class="stat-strip">
+          <div class="stat-card">
+            <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">22%</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">of maternal deaths linked
+              to anaemia</p>
+          </div>
+          <div class="stat-card">
+            <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">10M+</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">mothers &amp; newborns at
+              risk</p>
+          </div>
+          <div class="stat-card">
+            <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">58%</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">of pregnant women in
+              Nigeria are anaemic</p>
+          </div>
+          <div class="stat-card">
+            <p style="font-size:var(--text-2xl); font-weight:800; color:#fff; line-height:1;">5M+</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">pregnant women we aim to
+              reach</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div style="max-width:800px; margin:0 auto; padding:64px 24px;">
+
+      <img src="https://placehold.co/800x360/00193a/ffffff?text=Maternal+Anaemia+%26+AI"
+        style="width:100%; border-radius:var(--rounded-xl); margin-bottom:48px; object-fit:cover;" />
+
+      <p style="color:var(--gray-700); line-height:175%; margin-bottom:24px; font-size:var(--text-md);">
+        Maternal anaemia is a silent killer in Nigeria, contributing to over <strong>22%</strong> of the country's
+        75,000 annual maternal deaths and placing more than <strong>10 million</strong> mothers and newborns at risk of
+        poor outcomes (WHO, 2023). We are tackling this problem where it matters most: at primary health clinics within
+        rural and underserved communities that are most affected. We are deploying simple but tailored behaviour-focused
+        reminder messages and a risk stratification tool to solve this problem.
+      </p>
+
+      <!-- Why it matters -->
+      <div style="border-left:4px solid var(--orange); padding-left:24px; margin-bottom:40px;">
+        <h2 style="font-size:var(--text-xl); margin-bottom:16px;">Why This Matters</h2>
+        <p style="color:var(--gray-700); line-height:175%; margin-bottom:14px;">National data from 2023–2024 (NDHS) show
+          that <strong>58% of pregnant women in Nigeria are anaemic</strong>. The burden is particularly severe in
+          Northern Nigeria, where only one in every three pregnant women completed four antenatal care (ANC) visits and
+          nearly half did not take any iron/folic acid (IFA) supplements.</p>
+        <p style="color:var(--gray-700); line-height:175%; margin-bottom:14px;">Our pre-pilot survey confirmed that
+          forgetfulness, fear of drug side effects, low health literacy, and weak follow-up drive poor IFA adherence.
+          Although national guidelines recommend haemoglobin testing at the first antenatal visit, many primary health
+          centres lack the equipment to routinely screen for anaemia — so it is frequently detected late or only after
+          symptoms appear.</p>
+        <p style="color:var(--gray-700); line-height:175%;">With over 90% mobile phone penetration in Nigeria, these
+          challenges can be addressed through digital tools — if they are co-designed with the women who need them.</p>
+      </div>
+
+      <!-- Building on evidence -->
+      <div style="border-left:4px solid var(--orange); padding-left:24px; margin-bottom:40px;">
+        <h2 style="font-size:var(--text-xl); margin-bottom:16px;">Building on Evidence</h2>
+        <p style="color:var(--gray-700); line-height:175%;">In Phase I, implemented in Kwara State, we used a
+          person-based approach to map the sociocultural and behavioural drivers affecting ANC attendance and IFA use,
+          and co-designed a culturally grounded reminder system with pregnant women and their families. The solution
+          includes reminders for antenatal care visits and daily supplement use, alongside clear health information on
+          nutrition, infection prevention, and pregnancy care. Messages are delivered in women's preferred languages,
+          complemented by community health workers' follow-up for women who may need extra attention. While early
+          results were promising, we found that generic messaging does not address individual women's needs or
+          proactively identify those at high risk of poor outcomes.</p>
+      </div>
+
+      <!-- Phase II -->
+      <div style="border-left:4px solid var(--orange); padding-left:24px; margin-bottom:40px;">
+        <h2 style="font-size:var(--text-xl); margin-bottom:16px;">Next Steps — Phase II</h2>
+        <p style="color:var(--gray-700); line-height:175%; margin-bottom:20px;">In line with WHO's
+          identify–reach–deliver guidance, we are now prototyping an AI-risk stratification tool to identify women at
+          the highest risk of adverse outcomes, enabling timely intervention. In Phase II, we aim to scale responsibly
+          through:</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              1</div>
+            <div>
+              <p style="font-weight:700; margin-bottom:4px;">Model Improvement</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Collecting data from
+                approximately 2,500 women across all six geopolitical zones in Nigeria to train a robust and
+                representative AI model.</p>
+            </div>
+          </div>
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              2</div>
+            <div>
+              <p style="font-weight:700; margin-bottom:4px;">Technology for All</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Developing a low-tech
+                application that delivers personalised messages via SMS, WhatsApp, and IVR in local languages, while
+                flagging women at high risk of anaemia.</p>
+            </div>
+          </div>
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              3</div>
+            <div>
+              <p style="font-weight:700; margin-bottom:4px;">Capacity Building</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Training frontline health
+                workers in anaemia management using AI-enabled digital tools.</p>
+            </div>
+          </div>
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              4</div>
+            <div>
+              <p style="font-weight:700; margin-bottom:4px;">Evaluation</p>
+              <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Conducting a 6–9 month field
+                evaluation of effectiveness (RCT) and cost-effectiveness. If effective, we will open-source the tool to
+                enable rapid adoption by governments and partners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Impact -->
+      <div
+        style="background:var(--dark-green); border-radius:var(--rounded-xl); padding:32px; color:#fff; margin-bottom:40px;">
+        <h3 style="color:#fff; font-size:var(--text-xl); margin-bottom:12px;">Potential Impact</h3>
+        <p style="color:rgba(255,255,255,.8); line-height:175%; margin-bottom:16px;">This project has the potential to
+          reach <strong style="color:#fff;">more than 5 million pregnant women</strong> and impact <strong
+            style="color:#fff;">more than 7 million newborns</strong> annually across Nigeria.</p>
+      </div>
+
+      <!-- CTA -->
+      <div style="background:var(--gray); border-radius:var(--rounded-xl); padding:28px; margin-bottom:40px;">
+        <h4 style="font-size:var(--text-lg); margin-bottom:10px;">Call to Action</h4>
+        <p style="color:var(--gray-700); line-height:175%;">We invite policymakers and funders to join us in translating
+          evidence into policy, financing sustainable scale-up, and ensuring every mother has the information and care
+          she needs to survive and thrive.</p>
+      </div>
+
+      <button onclick="showPage('home')" class="btn btn-dark">← Back to Our Work</button>
+    </div>
+  </section><!-- /PROJECT1 -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     PROJECT PAGE 2: HIV / TB FUNDING
+════════════════════════════════════════════════════ -->
+  <section id="page-project2" class="page">
+
+    <!-- Hero banner -->
+    <div style="background:var(--dark-green); color:#fff; padding:64px 24px;">
+      <div style="max-width:var(--container); margin:0 auto;">
+        <button onclick="showPage('home')"
+          style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:var(--text-sm);font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:28px;padding:0;font-family:inherit;"
+          onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+          ← Back to Our Work
+        </button>
+        <span class="tag" style="color:var(--orange); margin-bottom:12px;">Mathematical Modelling · Nigeria</span>
+        <h1
+          style="font-size:clamp(1.6rem,4vw,var(--text-3xl)); color:#fff; max-width:760px; line-height:1.2; margin-bottom:20px;">
+          Investigating the Human Cost of Declining Donor Support for HIV and TB Care
+        </h1>
+        <div class="stat-strip">
+          <div class="stat-card">
+            <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">RSTMH</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">Grant-funded research</p>
+          </div>
+          <div class="stat-card">
+            <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">80+</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">HIV care sites disrupted in
+              Nigeria</p>
+          </div>
+          <div class="stat-card">
+            <p style="font-size:var(--text-xl); font-weight:800; color:#fff; line-height:1;">Nigeria</p>
+            <p style="font-size:var(--text-xs); color:rgba(255,255,255,.7); margin-top:4px;">Primary study setting</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div style="max-width:800px; margin:0 auto; padding:64px 24px;">
+
+      <img src="https://placehold.co/800x360/003366/ffffff?text=HIV+%26+TB+Funding+Cuts"
+        style="width:100%; border-radius:var(--rounded-xl); margin-bottom:48px; object-fit:cover;" />
+
+      <p style="color:var(--gray-700); line-height:175%; margin-bottom:24px; font-size:var(--text-md);">
+        We are pleased to announce that the Evidence for Good Research Director has been awarded a grant from the
+        <strong>Royal Society of Tropical Medicine and Hygiene (RSTMH)</strong>. This funding will support a critical
+        project aimed at examining the real-world impacts of declining international donor support on the most
+        vulnerable populations living with HIV and TB in Nigeria.
+      </p>
+
+      <!-- Why it matters -->
+      <div style="border-left:4px solid var(--orange); padding-left:24px; margin-bottom:40px;">
+        <h2 style="font-size:var(--text-xl); margin-bottom:16px;">Why This Matters Now</h2>
+        <p style="color:var(--gray-700); line-height:175%; margin-bottom:14px;">For decades, international aid has
+          served as a lifeline for millions of people affected by HIV, TB, and other tropical diseases. However, as
+          international funding dwindles — evidenced by recent disruptions to more than <strong>80 "One-Stop Shops" for
+            HIV care in Nigeria alone</strong> — the safety net is rapidly falling apart.</p>
+        <p style="color:var(--gray-700); line-height:175%;">This project goes beyond statistics to capture lived
+          realities. For women, children, and marginalised groups, funding cuts often mean impossible choices between
+          buying food or buying medicines, staying home sick or risking job loss, and enduring illness in silence or
+          facing stigma through disclosure. These underexplored consequences risk compounding poverty, deepening
+          inequality, and reinforcing systemic neglect — underscoring the urgent need for evidence-based, actionable
+          solutions.</p>
+      </div>
+
+      <!-- Our goal -->
+      <div style="border-left:4px solid var(--orange); padding-left:24px; margin-bottom:40px;">
+        <h2 style="font-size:var(--text-xl); margin-bottom:16px;">Our Goal</h2>
+        <p style="color:var(--gray-700); line-height:175%; margin-bottom:20px;">We are stepping in to quantitatively
+          measure the impact on physical health, mental well-being, and financial security. By combining community-based
+          surveys with advanced mathematical modelling, we aim to quantify what is truly at stake and the real cost of
+          inaction. The resulting evidence will be critical to:</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              1</div>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Inform national health
+              financing reforms and prioritise the most vulnerable populations.</p>
+          </div>
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              2</div>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Strengthen the case for
+              increased investment by local governments and philanthropies.</p>
+          </div>
+          <div
+            style="background:var(--gray); border-radius:var(--rounded-lg); padding:20px; display:flex; gap:16px; align-items:flex-start;">
+            <div
+              style="width:36px; height:36px; background:var(--orange); border-radius:var(--rounded-full); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; flex-shrink:0; font-size:var(--text-sm);">
+              3</div>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%;">Support a shift from reliance
+              on volatile international aid toward resilient, self-sustaining health systems across Africa and other
+              resource-constrained settings.</p>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="showPage('home')" class="btn btn-dark">← Back to Our Work</button>
+    </div>
+  </section><!-- /PROJECT2 -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     ABOUT US
+════════════════════════════════════════════════════ -->
+  <section id="page-about" class="page">
+
+    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Who We Are</p>
+      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">About Us</h1>
+      <p style="color:rgba(255,255,255,.7); max-width:560px; margin:0 auto; line-height:175%;">Meet the people and
+        principles behind Evidence for Good.</p>
+    </div>
+
+    <div style="padding:80px 24px; max-width:var(--container); margin:0 auto;">
+
+      <!-- Org intro -->
+      <div style="display:flex; flex-wrap:wrap; gap:64px; align-items:center; margin-bottom:80px;">
+        <div style="flex:1 1 300px;">
+          <p class="tag" style="margin-bottom:12px;">Our Organisation</p>
+          <h2 style="font-size:var(--text-2xl); margin-bottom:20px;">Driven by evidence,<br />Committed to equity.</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:16px;">Evidence for Good (E4G) is a social
+            impact organization operating at the intersection of digital innovation and research. We partner with
+            stakeholders to generate evidence and deploy cost-effective solutions that advance equity and meaningfully
+            improve lives.</p>
+          <p style="color:var(--gray-700); line-height:175%;">Our work spans health systems, digital health, and health
+            financing — wherever the evidence points to the greatest opportunity to improve the lives of those who need
+            it most.</p>
+        </div>
+        <div style="flex:1 1 280px;">
+          <img src="https://placehold.co/480x360/003366/ffffff?text=E4G+Team" alt="Organisation"
+            style="width:100%; border-radius:var(--rounded-xl);" />
+        </div>
+      </div>
+
+      <!-- Vision / Mission / Values -->
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; margin-bottom:80px;">
+        <div style="border-left:4px solid var(--orange); padding-left:20px;">
+          <h3 style="font-size:var(--text-lg); margin-bottom:10px;">Vision</h3>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">A world where anyone can achieve
+            their potential regardless of who they are and where they are born.</p>
+        </div>
+        <div style="border-left:4px solid var(--orange); padding-left:20px;">
+          <h3 style="font-size:var(--text-lg); margin-bottom:10px;">Mission</h3>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">To meaningfully improve the
+            lives of those who need it most by delivering evidence-based, cost-effective solutions in partnership with
+            governments, institutions, and communities.</p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <p class="tag" style="text-align:center; margin-bottom:12px;">What Guides Us</p>
+      <h2 style="font-size:var(--text-2xl); text-align:center; margin-bottom:12px;">Our core values</h2>
+      <p style="color:var(--gray-700); text-align:center; max-width:520px; margin:0 auto 48px;">Six values that shape
+        how we work every day.</p>
+
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-bottom:80px;">
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">I</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">Impact</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">At the heart of our work is a
+              deep commitment to improving people's lives. We focus on interventions that deliver tangible benefits,
+              prioritising real-world outcomes over abstract inputs.</p>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">E</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">Evidence-Driven</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Passion fuels our commitment
+              to solving problems, yet we always lead with evidence. We are strongly committed to obtaining and using
+              the best available evidence to chart a course.</p>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">X</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">Excellence</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">Whatever is worth doing at all
+              is worth doing well. We are dedicated to delivering the highest standards of technical and operational
+              excellence in all we do.</p>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">A</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">Authenticity</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">We communicate with honesty
+              and clarity, addressing challenges as they are rather than as we wish them to be. Until gaps are fully
+              acknowledged, they are rarely filled.</p>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">P</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">People-First</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">The greatest asset we have is
+              not the tools, data, or skills we possess — but the people we work with. We treat one another with
+              fairness, dignity, and respect.</p>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:16px; align-items:flex-start; background:var(--gray); border-radius:var(--rounded-lg); padding:24px;">
+          <div class="val-icon">L</div>
+          <div>
+            <h4 style="font-size:var(--text-md); margin-bottom:6px;">Local Ownership</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%;">The most impactful and
+              sustainable solutions are those co-created and ultimately led by those most affected by the challenge.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Team -->
+      <p class="tag" style="text-align:center; margin-bottom:12px;">The People</p>
+      <h2 style="font-size:var(--text-2xl); text-align:center; margin-bottom:12px;">Our team</h2>
+      <p style="color:var(--gray-700); text-align:center; max-width:520px; margin:0 auto 48px;">Each person bringing
+        their own skills, talents and ambitions to our shared mission.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:24px;">
+
+        <div
+          style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
+          <img src="https://placehold.co/280x260/003366/ffffff?text=Photo" alt="Team Member"
+            style="width:100%; height:220px; object-fit:cover;" />
+          <div style="padding:16px 16px 0;">
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
+            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Research
+              Director</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Leading evidence generation,
+              impact evaluation, and partnerships with global health institutions.</p>
+          </div>
+        </div>
+
+        <div
+          style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
+          <img src="https://placehold.co/280x260/f06632/ffffff?text=Photo" alt="Team Member"
+            style="width:100%; height:220px; object-fit:cover;" />
+          <div style="padding:16px 16px 0;">
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
+            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Digital Health
+              Lead</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Designing and deploying
+              technology-enabled solutions for maternal and community health.</p>
+          </div>
+        </div>
+
+        <div
+          style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
+          <img src="https://placehold.co/280x260/003f88/ffffff?text=Photo" alt="Team Member"
+            style="width:100%; height:220px; object-fit:cover;" />
+          <div style="padding:16px 16px 0;">
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
+            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Policy &amp;
+              Partnerships Lead</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Building government and
+              institutional partnerships to translate evidence into policy and sustained investment.</p>
+          </div>
+        </div>
+
+        <div
+          style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
+          <img src="https://placehold.co/280x260/004e74/ffffff?text=Photo" alt="Team Member"
+            style="width:100%; height:220px; object-fit:cover;" />
+          <div style="padding:16px 16px 0;">
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
+            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Data &amp;
+              Modelling Specialist</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Mathematical modelling and
+              cost-effectiveness analysis to quantify impact and inform scale decisions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div style="background:var(--dark-green); color:#fff; padding:64px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Work With Us</p>
+      <h2 style="font-size:var(--text-2xl); color:#fff; margin-bottom:16px;">Find out what we can do for you</h2>
+      <p style="color:rgba(255,255,255,.7); max-width:480px; margin:0 auto 28px; line-height:175%;">Book an introductory
+        meeting to explore how we can support your work.</p>
+      <button class="btn btn-orange">Book a meeting</button>
+    </div>
+
+  </section><!-- /ABOUT -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     OUR APPROACH
+════════════════════════════════════════════════════ -->
+  <section id="page-approach" class="page">
+
+    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">How We Work</p>
+      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Our Approach</h1>
+      <p style="color:rgba(255,255,255,.7); max-width:600px; margin:0 auto; line-height:175%;">We believe the most
+        effective way to improve people's lives is by deploying solutions that are proven to work, cost-effective, and
+        capable of reaching those who need them most. Our work is guided by five core principles.</p>
+    </div>
+
+    <div style="max-width:800px; margin:0 auto; padding:80px 24px;">
+
+      <!-- Principle 1 -->
+      <div class="principle-item">
+        <div
+          style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">
+          01</div>
+        <div>
+          <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We ask whether the work meaningfully improves
+            people's lives, and for whom</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:10px;">For every intervention, we ask whether
+            it leads to meaningful improvements in people's lives, how many people benefit, and at what cost. We
+            actively seek existing evidence to assess the strength and credibility of proposed solutions.</p>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">Where evidence is limited or
+            absent, we prioritise generating it through small, focused testing before scaling. This approach allows us
+            to learn quickly, allocate resources responsibly, and avoid investing in interventions that do not deliver
+            meaningful impact.</p>
+        </div>
+      </div>
+      <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;" />
+
+      <!-- Principle 2 -->
+      <div class="principle-item">
+        <div
+          style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">
+          02</div>
+        <div>
+          <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We seek partnerships grounded in shared objectives
+            and mutual commitment to impact</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:10px;">We value partnerships grounded in
+            shared objectives and a mutual commitment to impact. Our partners contribute essential resources — including
+            funding, technical expertise, operational platforms, policy engagement, and local knowledge — that enable us
+            to design, test, and scale effective interventions.</p>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">We approach partnerships as
+            collaborative, long-term relationships focused on co-creation, shared learning, and accountability for
+            results.</p>
+        </div>
+      </div>
+      <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;" />
+
+      <!-- Principle 3 -->
+      <div class="principle-item">
+        <div
+          style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">
+          03</div>
+        <div>
+          <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We design solutions together with those who are
+            directly affected</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:10px;">We believe that no one understands the
+            problem better than those who are affected. We champion and actively co-create solutions with communities,
+            governments, and institutions to ensure they are contextual, feasible to implement, and positioned for
+            sustainable adoption.</p>
+        </div>
+      </div>
+      <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;" />
+
+      <!-- Principle 4 -->
+      <div class="principle-item">
+        <div
+          style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">
+          04</div>
+        <div>
+          <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We leverage the value of technology to maximise
+            impact</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:10px;">We leverage technology as a tool to
+            maximise impact, not as an end in itself. We deploy technology selectively, focusing on areas where it can
+            demonstrably improve outcomes, reduce costs, and strengthen delivery at scale.</p>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">As new digital solutions —
+            including artificial intelligence — continue to emerge, we engage proactively while remaining deliberate. We
+            prioritise solutions that demonstrably improve lives and deploy them with careful attention to equity,
+            ethics, privacy, and real-world feasibility.</p>
+        </div>
+      </div>
+      <hr style="border:none; border-top:1px solid var(--gray-300); margin-bottom:48px;" />
+
+      <!-- Principle 5 -->
+      <div class="principle-item" style="margin-bottom:0;">
+        <div
+          style="flex-shrink:0; width:52px; height:52px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; font-size:var(--text-lg); font-weight:800; color:#fff;">
+          05</div>
+        <div>
+          <h2 style="font-size:var(--text-xl); margin-bottom:12px;">We generate evidence for scale and design pathways
+            to local ownership</h2>
+          <p style="color:var(--gray-700); line-height:175%; margin-bottom:10px;">We focus on generating credible
+            evidence to inform decisions about scale. From the outset, we work with partners to design clear pathways
+            for local ownership, enabling interventions to be sustainably adopted, managed, and scaled beyond our
+            involvement.</p>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); line-height:175%;">Our evidence generation draws on
+            scientific research, equity-informed cost-effectiveness analysis, impact modelling, and advocacy to
+            governments — ensuring that scale decisions are grounded in data, not assumption.</p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- /APPROACH -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     BLOG
+════════════════════════════════════════════════════ -->
+  <section id="page-blog" class="page">
+
+    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Insights</p>
+      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Blog</h1>
+      <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Perspectives, updates, and thinking from
+        our team.</p>
+    </div>
+
+    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
+
+      <div id="blog-posts-container"
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; margin-bottom:80px;">
+
+        <div class="card"
+          style="background:#fff; border-radius:var(--rounded-xl); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--gray-300);">
+          <img src="https://placehold.co/480x220/00193a/ffffff?text=Blog+Post+1"
+            style="width:100%;height:200px;object-fit:cover;" />
+          <div style="padding:24px;">
+            <span class="tag">Evidence &amp; Method</span>
+            <h3 style="font-size:var(--text-lg); margin:8px 0 10px;">What Does "Evidence-Based" Really Mean?</h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:16px;">The phrase
+              is used everywhere, but its meaning varies enormously. We unpack what it actually takes to put evidence at
+              the centre of decision-making.</p>
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; font-size:var(--text-xs); color:var(--gray-700);">
+              <span>March 2026</span>
+              <span style="color:var(--orange); font-weight:700; cursor:pointer;">Read more →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card"
+          style="background:#fff; border-radius:var(--rounded-xl); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--gray-300);">
+          <img src="https://placehold.co/480x220/003366/ffffff?text=Blog+Post+2"
+            style="width:100%;height:200px;object-fit:cover;" />
+          <div style="padding:24px;">
+            <span class="tag">Digital Health</span>
+            <h3 style="font-size:var(--text-lg); margin:8px 0 10px;">Co-designing with Communities: Lessons from Kwara
+              State</h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:16px;">What we
+              learned from working directly with pregnant women to design culturally grounded reminder tools — and why
+              it changed our approach.</p>
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; font-size:var(--text-xs); color:var(--gray-700);">
+              <span>February 2026</span>
+              <span style="color:var(--orange); font-weight:700; cursor:pointer;">Read more →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card"
+          style="background:#fff; border-radius:var(--rounded-xl); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--gray-300);">
+          <img src="https://placehold.co/480x220/004e74/ffffff?text=Blog+Post+3"
+            style="width:100%;height:200px;object-fit:cover;" />
+          <div style="padding:24px;">
+            <span class="tag">Health Financing</span>
+            <h3 style="font-size:var(--text-lg); margin:8px 0 10px;">The Real Cost of Declining Aid: Who Bears the
+              Burden?</h3>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:16px;">When
+              international aid shrinks, statistics rarely capture the human cost. We explore what the evidence says
+              about who is most at risk — and what can be done.</p>
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; font-size:var(--text-xs); color:var(--gray-700);">
+              <span>January 2026</span>
+              <span style="color:var(--orange); font-weight:700; cursor:pointer;">Read more →</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add post form -->
+      <div style="border-top:1px solid var(--gray-300); padding-top:56px;">
+        <p class="tag" style="margin-bottom:8px;">Admin</p>
+        <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Add a New Post</h2>
+        <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Publish a new blog entry
+          directly here.</p>
+        <form id="blog-form" onsubmit="addBlogPost(event)"
+          style="max-width:560px; display:flex; flex-direction:column; gap:16px;">
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
+            <input id="post-title" type="text" placeholder="Post title..."
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          </div>
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
+            <input id="post-category" type="text" placeholder="e.g. Digital Health"
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          </div>
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary</label>
+            <textarea id="post-summary" rows="3" placeholder="Short summary..."
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+          </div>
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
+            <input id="post-date" type="text" placeholder="e.g. March 2026"
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          </div>
+          <button type="submit" class="btn btn-orange" style="width:fit-content;">Publish Post</button>
+        </form>
+      </div>
+    </div>
+  </section><!-- /BLOG -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+     EVIDENCE
+════════════════════════════════════════════════════ -->
+  <section id="page-evidence" class="page">
+
+    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Research</p>
+      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Evidence</h1>
+      <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Our research findings, reports, and
+        publications — open and accessible.</p>
+    </div>
+
+    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
+
+      <div id="evidence-container"
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; margin-bottom:80px;">
+
+        <div class="card"
+          style="background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;">
+          <div
+            style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <span class="tag">Digital Health</span>
+            <h4 style="font-size:var(--text-md); margin:6px 0;">Maternal Anaemia in Nigeria: Phase I Findings</h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">
+              Sociocultural and behavioural drivers of ANC attendance and IFA adherence in Kwara State. Co-design of a
+              culturally grounded reminder system.</p>
+            <a href="#"
+              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); text-decoration:none;">Download PDF
+              →</a>
+          </div>
+        </div>
+
+        <div class="card"
+          style="background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;">
+          <div
+            style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <span class="tag">Health Financing</span>
+            <h4 style="font-size:var(--text-md); margin:6px 0;">HIV &amp; TB Funding Cuts: Baseline Modelling Report
+            </h4>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">
+              RSTMH-supported baseline mathematical modelling of the impact of declining donor support on vulnerable
+              populations in Nigeria.</p>
+            <a href="#"
+              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); text-decoration:none;">Download PDF
+              →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Upload -->
+      <div style="border-top:1px solid var(--gray-300); padding-top:56px;">
+        <p class="tag" style="margin-bottom:8px;">Admin</p>
+        <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Upload Research Findings</h2>
+        <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Add new reports or evidence
+          documents to make them available here.</p>
+        <form id="evidence-form" onsubmit="addEvidence(event)"
+          style="max-width:560px; display:flex; flex-direction:column; gap:16px;">
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
+            <input id="ev-title" type="text" placeholder="Report title..."
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          </div>
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
+            <input id="ev-category" type="text" placeholder="e.g. Digital Health"
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          </div>
+          <div>
+            <label
+              style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Description</label>
+            <textarea id="ev-desc" rows="2" placeholder="Brief description..."
+              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+          </div>
+          <div>
+            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">File
+              (PDF)</label>
+            <input id="ev-file" type="file" accept=".pdf" style="font-size:var(--text-sm); color:var(--gray-700);" />
+          </div>
+          <button type="submit" class="btn btn-orange" style="width:fit-content;">Upload Finding</button>
+        </form>
+      </div>
+    </div>
+  </section><!-- /EVIDENCE -->
+
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer
+    style="background:var(--gray); color:var(--gray-700); border-top:1px solid var(--gray-300); padding:56px 24px 32px;">
+    <div style="max-width:var(--container); margin:0 auto;">
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:40px; margin-bottom:48px;">
+        <div>
+          <div style="display:flex; flex-direction:column; line-height:1; margin-bottom:10px;">
+            <span style="font-size:22px; font-weight:900; color:var(--midnight-green); letter-spacing:-.03em;">Evidence
+              for Good</span>
+            <span
+              style="font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); margin-top:3px;">Initiative</span>
+          </div>
+          <p style="font-size:var(--text-sm); line-height:175%;">Evidence-based · Cost-effective · Equity-driven.</p>
+        </div>
+        <div>
+          <p
+            style="font-size:var(--text-xs); font-weight:700; color:var(--midnight-green); margin-bottom:16px; text-transform:uppercase; letter-spacing:.06em;">
+            Pages</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button onclick="showPage('home')"
+              style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
+              onmouseover="this.style.color='var(--orange)'"
+              onmouseout="this.style.color='var(--gray-700)'">Home</button>
+            <button onclick="showPage('about')"
+              style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
+              onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--gray-700)'">About
+              Us</button>
+            <button onclick="showPage('approach')"
+              style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
+              onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--gray-700)'">Our
+              Approach</button>
+            <button onclick="showPage('blog')"
+              style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
+              onmouseover="this.style.color='var(--orange)'"
+              onmouseout="this.style.color='var(--gray-700)'">Blog</button>
+            <button onclick="showPage('evidence')"
+              style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
+              onmouseover="this.style.color='var(--orange)'"
+              onmouseout="this.style.color='var(--gray-700)'">Evidence</button>
+          </div>
+        </div>
+        <div>
+          <p
+            style="font-size:var(--text-xs); font-weight:700; color:var(--midnight-green); margin-bottom:16px; text-transform:uppercase; letter-spacing:.06em;">
+            Contact</p>
+          <p style="font-size:var(--text-sm); line-height:175%;">info@evidenceforgood.org<br />+00 (0) 000 000 0000</p>
+        </div>
+      </div>
+      <div
+        style="border-top:1px solid var(--gray-300); padding-top:24px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;">
+        <p style="font-size:var(--text-xs); color:var(--gray-700);">&copy; 2026 Evidence for Good. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script>
+    function showPage(page, updateHistory = true) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const a = document.getElementById('nav-' + page);
+      if (a) a.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Update URL hash without reloading the page
+      if (updateHistory) {
+        window.history.pushState({ page: page }, '', '#' + page);
+      }
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+      if (event.state && event.state.page) {
+        showPage(event.state.page, false);
+      } else {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && document.getElementById('page-' + hash)) {
+          showPage(hash, false);
+        } else {
+          showPage('home', false);
+        }
+      }
+    });
+
+    function toggleMenu() {
+      const m = document.getElementById('mobile-menu');
+      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function addBlogPost(e) {
+      e.preventDefault();
+      const title = document.getElementById('post-title').value.trim();
+      const category = document.getElementById('post-category').value.trim();
+      const summary = document.getElementById('post-summary').value.trim();
+      const date = document.getElementById('post-date').value.trim();
+      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
+      const colors = ['00193a', '003366', '003f88', 'f06632'];
+      const col = colors[Math.floor(Math.random() * colors.length)];
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'background:#fff; border-radius:var(--rounded-xl); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--gray-300);';
+      card.innerHTML = `
+      <img src="https://placehold.co/480x220/${col}/ffffff?text=New+Post" style="width:100%;height:200px;object-fit:cover;"/>
+      <div style="padding:24px;">
+        <span class="tag">${category || 'General'}</span>
+        <h3 style="font-size:var(--text-lg); margin:8px 0 10px;">${title}</h3>
+        <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:16px;">${summary}</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:var(--text-xs); color:var(--gray-700);">
+          <span>${date || 'Just now'}</span>
+          <span style="color:var(--orange); font-weight:700; cursor:pointer;">Read more →</span>
+        </div>
+      </div>`;
+      document.getElementById('blog-posts-container').prepend(card);
+      e.target.reset();
+    }
+
+    function addEvidence(e) {
+      e.preventDefault();
+      const title = document.getElementById('ev-title').value.trim();
+      const category = document.getElementById('ev-category').value.trim();
+      const desc = document.getElementById('ev-desc').value.trim();
+      const fileEl = document.getElementById('ev-file');
+      const fileName = fileEl.files[0] ? fileEl.files[0].name : null;
+      if (!title) { alert('Please enter a title.'); return; }
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;';
+      card.innerHTML = `
+      <div style="width:44px;height:44px;background:var(--orange);border-radius:var(--rounded-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+      <div>
+        <span class="tag">${category || 'General'}</span>
+        <h4 style="font-size:var(--text-md); margin:6px 0;">${title}</h4>
+        <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">${desc}</p>
+        ${fileName ? `<span style="font-size:var(--text-sm); font-weight:700; color:var(--orange);">${fileName} uploaded</span>` : ''}
+      </div>`;
+      document.getElementById('evidence-container').prepend(card);
+      e.target.reset();
+    }
+
+
+    // Initialize active page based on URL hash or default to 'home'
+    const initialHash = window.location.hash.replace('#', '');
+    const startPage = (initialHash && document.getElementById('page-' + initialHash)) ? initialHash : 'home';
+    showPage(startPage, false);
+    window.history.replaceState({ page: startPage }, '', '#' + startPage);
+
+
+    // ── Hero carousel ────────────────────────────────
+    let heroCurrent = 0;
+    const heroSlides = document.getElementById('hero-slides');
+
+    // Slide durations: slide 0 = 5s, slide 1 = 15s
+    const heroDurations = [5000, 15000];
+    let heroTimer;
+
+    function heroScheduleNext() {
+      clearTimeout(heroTimer);
+      heroTimer = setTimeout(function () {
+        heroGo(heroCurrent === 0 ? 1 : 0);
+      }, heroDurations[heroCurrent]);
+    }
+
+    function heroGo(index) {
+      heroCurrent = index;
+      heroSlides.style.transform = 'translateX(-' + (index * 50) + '%)';
+      document.getElementById('hero-dot-0').style.opacity = index === 0 ? '1' : '0.4';
+      document.getElementById('hero-dot-1').style.opacity = index === 1 ? '1' : '0.4';
+      heroScheduleNext();
+    }
+
+    // Kick off from slide 0
+    heroScheduleNext();
+
+    // Touch/swipe support
+    (function () {
+      const el = document.getElementById('hero-carousel');
+      let startX = 0;
+      el.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', function (e) {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          heroGo(diff > 0 ? 1 : 0);
+        }
+      }, { passive: true });
+    })();
+
+    // ── Work carousel ────────────────────────────────
+    let workCurrent = 0;
+    const workTotal = 2;
+    let workTimer;
+
+    function workAnimate(index) {
+      const slides = document.querySelectorAll('.work-slide');
+      slides.forEach((s, i) => {
+        const els = s.querySelectorAll('.slide-content > *');
+        const bg = s.querySelector('.slide-bg');
+        if (i === index) {
+          els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+          if (bg) bg.style.transform = 'scale(1.04)';
+        } else {
+          els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; });
+          if (bg) bg.style.transform = 'scale(1)';
+        }
+      });
+
+      // dots
+      document.querySelectorAll('.work-dot').forEach((d, i) => {
+        d.style.width = i === index ? '28px' : '14px';
+        d.style.background = i === index ? 'var(--orange)' : 'rgba(255,255,255,.35)';
+      });
+
+      // counter
+      const counter = document.getElementById('work-counter');
+      if (counter) counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(workTotal).padStart(2, '0');
+    }
+
+    function workGoTo(index) {
+      workCurrent = index;
+      const track = document.getElementById('work-track');
+      if (track) track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      workAnimate(index);
+      resetWorkTimer();
+    }
+
+    function workSlide(dir) {
+      workGoTo((workCurrent + dir + workTotal) % workTotal);
+    }
+
+    function resetWorkTimer() {
+      clearInterval(workTimer);
+      workTimer = setInterval(() => workSlide(1), 5000);
+    }
+
+    // touch / swipe support
+    (function () {
+      let startX = 0;
+      const track = document.getElementById('work-track');
+      if (!track) return;
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) workSlide(diff > 0 ? 1 : -1);
+      });
+    })();
+
+    // init
+    workAnimate(0);
+    resetWorkTimer();
+  </script>
+</body>
+
+</html>
