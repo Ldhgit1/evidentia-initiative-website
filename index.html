@@ -17,6 +17,7 @@
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -446,6 +447,18 @@
       }
     }
 
+    /* ── Blog contenteditable area ─────────────────── */
+    .blog-edit-area { min-height: 120px; padding: 12px 14px; font-size: 15px; font-family: var(--fontfamily-sans); outline: none; line-height: 175%; color: var(--midnight-green); }
+    .blog-edit-area ul, #bm-blocks ul { padding-left: 24px; margin-bottom: 12px; }
+    .blog-edit-area ul li, #bm-blocks ul li { list-style-type: disc; margin-bottom: 4px; }
+    .blog-edit-area ol, #bm-blocks ol { padding-left: 24px; margin-bottom: 12px; }
+    .blog-edit-area ol li, #bm-blocks ol li { list-style-type: decimal; margin-bottom: 4px; }
+    .blog-edit-area:empty::before { content: attr(data-placeholder); color: #aab8cc; pointer-events: none; }
+    .blog-edit-area a, #bm-blocks a { color: var(--dark-green); text-decoration: underline; text-underline-offset: 3px; }
+    .blog-edit-area a:hover, #bm-blocks a:hover { color: var(--orange); }
+    /* Blog card summary clamp */
+    .blog-card-summary { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
     /* Stat cards on project pages: ensure they wrap */
     .stat-strip {
       display: flex;
@@ -832,7 +845,7 @@
       <div
         style="max-width:var(--container); margin:0 auto; display:flex; flex-wrap:wrap; gap:64px; align-items:center;">
         <div style="flex:1 1 280px;">
-          <img src="Africa-1.jpg" alt="Who We Are"
+          <img src="facility.jpeg" alt="Who We Are"
             style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;" />
         </div>
         <div style="flex:1 1 340px;">
@@ -1339,8 +1352,8 @@
             it most.</p>
         </div>
         <div style="flex:1 1 280px;">
-          <img src="https://placehold.co/480x360/003366/ffffff?text=E4G+Team" alt="Organisation"
-            style="width:100%; border-radius:var(--rounded-xl);" />
+          <img src="facility.jpeg" alt="E4G Facility"
+            style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;" />
         </div>
       </div>
 
@@ -1458,53 +1471,45 @@
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="https://placehold.co/280x260/003366/ffffff?text=Photo" alt="Team Member"
-            style="width:100%; height:220px; object-fit:cover;" />
+          <img src="Kunle.jpg" alt="Kunle Oreagba"
+            style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
-            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Research
-              Director</p>
-            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Leading evidence generation,
-              impact evaluation, and partnerships with global health institutions.</p>
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Kunle Oreagba</h4>
+            <p style="font-size:var(--text-sm); color:var(--dark-green); font-weight:700; margin-bottom:8px;">Managing Partner</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Leading overall organisation direction, strategy, and partnerships to advance the mission of Evidence for Good across sub-Saharan Africa.</p>
           </div>
         </div>
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="https://placehold.co/280x260/f06632/ffffff?text=Photo" alt="Team Member"
-            style="width:100%; height:220px; object-fit:cover;" />
+          <img src="Lawal Lukman.jpeg" alt="Dr. Lawal Lukman"
+            style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
-            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Digital Health
-              Lead</p>
-            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Designing and deploying
-              technology-enabled solutions for maternal and community health.</p>
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Dr. Lawal Lukman</h4>
+            <p style="font-size:var(--text-sm); color:var(--dark-green); font-weight:700; margin-bottom:8px;">Research Director</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Leading evidence generation, impact evaluation, and partnerships with global health institutions.</p>
           </div>
         </div>
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="https://placehold.co/280x260/003f88/ffffff?text=Photo" alt="Team Member"
-            style="width:100%; height:220px; object-fit:cover;" />
+          <img src="Rodiat Loke.jpeg" alt="Rodiat Loke"
+            style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
-            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Policy &amp;
-              Partnerships Lead</p>
-            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Building government and
-              institutional partnerships to translate evidence into policy and sustained investment.</p>
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Rodiat Loke</h4>
+            <p style="font-size:var(--text-sm); color:var(--dark-green); font-weight:700; margin-bottom:8px;">Program Analyst</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Supporting program implementation on reducing maternal anaemia through technology, under the ARIS initiative.</p>
           </div>
         </div>
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="https://placehold.co/280x260/004e74/ffffff?text=Photo" alt="Team Member"
-            style="width:100%; height:220px; object-fit:cover;" />
+          <img src="Yusuff.jpeg" alt="Yusuff Adesoji"
+            style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
-            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Placeholder Name</h4>
-            <p style="font-size:var(--text-sm); color:var(--orange); font-weight:700; margin-bottom:8px;">Data &amp;
-              Modelling Specialist</p>
-            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Mathematical modelling and
-              cost-effectiveness analysis to quantify impact and inform scale decisions.</p>
+            <h4 style="font-size:var(--text-md); margin-bottom:4px;">Yusuff Adesoji</h4>
+            <p style="font-size:var(--text-sm); color:var(--dark-green); font-weight:700; margin-bottom:8px;">Program Intern</p>
+            <p style="font-size:var(--text-xs); color:var(--gray-700); line-height:165%;">Supporting program implementation on tackling lead poisoning from traditional eyeliner use in Nigeria.</p>
           </div>
         </div>
 
@@ -1673,42 +1678,74 @@
         <div id="admin-form-wrapper" style="display:none;">
           <p class="tag" style="margin-bottom:8px;">Admin</p>
           <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Add a New Post</h2>
-          <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Publish a new blog entry
-            directly here.</p>
-        <form id="blog-form" onsubmit="addBlogPost(event)"
-          style="max-width:560px; display:flex; flex-direction:column; gap:16px;">
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
-            <input id="post-title" type="text" placeholder="Post title..."
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
+          <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Build your post below — add text, headings, images and charts in any order.</p>
+
+          <div style="max-width:700px; display:flex; flex-direction:column; gap:20px;">
+
+            <!-- Title + Category -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
+                <input id="post-title" type="text" placeholder="Post title..."
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
+                <input id="post-category" type="text" placeholder="e.g. Digital Health"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+            </div>
+
+            <!-- Cover image + Date -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Cover Image <span style="font-weight:400; color:var(--gray-700);">(card thumbnail)</span></label>
+                <input id="post-image" type="file" accept="image/*"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; background:#fff; cursor:pointer;" />
+              </div>
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
+                <input id="post-date" type="text" placeholder="e.g. April 2026"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary / Introduction <span style="font-weight:400; color:var(--gray-700);">— shown highlighted at top of post and on the card</span></label>
+              <textarea id="post-summary" rows="3" placeholder="Write a brief intro that readers see first..."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+            </div>
+
+            <!-- Block editor -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:10px;">Post Content <span style="font-weight:400; color:var(--gray-700);">— add blocks in any order</span></label>
+              <!-- Toolbar -->
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                <button type="button" onclick="addEditorBlock('text')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg> Paragraph
+                </button>
+                <button type="button" onclick="addEditorBlock('heading')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h4m0 0v12m0-6h8m0-6h4m-4 0v12m0-6H8"/></svg> Heading
+                </button>
+                <button type="button" onclick="addEditorBlock('image')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/></svg> Image
+                </button>
+                <button type="button" onclick="addEditorBlock('chart')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg> Chart
+                </button>
+              </div>
+              <!-- Blocks list -->
+              <div id="blocks-editor" style="display:flex; flex-direction:column; gap:10px;"></div>
+              <p id="blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
+            </div>
+
+            <!-- Publish -->
+            <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
+              <button type="button" onclick="publishBlogPost()" class="btn btn-orange">Publish Post</button>
+            </div>
+
           </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
-            <input id="post-category" type="text" placeholder="e.g. Digital Health"
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Cover Image</label>
-            <input id="post-image" type="file" accept="image/*"
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 16px; font-size:var(--text-sm); font-family:inherit; background:#fff; cursor:pointer;" />
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary <span style="font-weight:400; color:var(--gray-700);">(shown on card)</span></label>
-            <textarea id="post-summary" rows="3" placeholder="Short summary..."
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Full Content <span style="font-weight:400; color:var(--gray-700);">(shown when opened)</span></label>
-            <textarea id="post-content" rows="8" placeholder="Write the full post here..."
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
-            <input id="post-date" type="text" placeholder="e.g. March 2026"
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
-          </div>
-          <button type="submit" class="btn btn-orange" style="width:fit-content;">Publish Post</button>
-        </form>
         </div><!-- /admin-form-wrapper -->
       </div><!-- /admin-panel -->
     </div>
@@ -1716,17 +1753,25 @@
 
   <!-- Blog post modal -->
   <div id="blog-modal" onclick="closeBlogModal(event)"
-    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9000; overflow-y:auto; padding:40px 16px;">
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9000; overflow-y:auto; padding:40px 16px;">
     <div id="blog-modal-inner" onclick="event.stopPropagation()"
-      style="background:#fff; border-radius:var(--rounded-xl); max-width:760px; margin:0 auto; overflow:hidden;">
-      <img id="bm-img" src="" alt="" style="width:100%; max-height:360px; object-fit:cover; display:none;" />
-      <div style="padding:40px 40px 48px;">
+      style="background:#fff; border-radius:var(--rounded-xl); max-width:780px; margin:0 auto; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.25);">
+      <!-- Cover image -->
+      <img id="bm-img" src="" alt="" style="width:100%; max-height:380px; object-fit:cover; display:none;" />
+      <div style="padding:44px 48px 56px;">
+        <!-- Meta -->
         <p id="bm-category" class="tag" style="margin-bottom:10px;"></p>
-        <h2 id="bm-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.3;"></h2>
-        <p id="bm-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:28px;"></p>
-        <div id="bm-content" style="font-size:var(--text-base); color:var(--midnight-green); line-height:185%; white-space:pre-wrap;"></div>
+        <h2 id="bm-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.25;"></h2>
+        <p id="bm-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:32px; letter-spacing:.04em;"></p>
+        <!-- Summary box -->
+        <div id="bm-summary-box"
+          style="display:none; background:var(--gray); border-left:4px solid var(--orange); padding:20px 24px; margin-bottom:40px; border-radius:0 var(--rounded-md) var(--rounded-md) 0;">
+          <p id="bm-summary" style="font-size:var(--text-md); font-style:italic; color:var(--midnight-green); line-height:180%; margin:0;"></p>
+        </div>
+        <!-- Post blocks rendered here -->
+        <div id="bm-blocks"></div>
         <button onclick="closeBlogModalBtn()"
-          style="margin-top:36px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+          style="margin-top:40px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
           ← Back to Blog
         </button>
       </div>
@@ -1749,87 +1794,127 @@
     <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
 
       <div id="evidence-container"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; margin-bottom:80px;">
-
-        <div class="card"
-          style="background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;">
-          <div
-            style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <div>
-            <span class="tag">Digital Health</span>
-            <h4 style="font-size:var(--text-md); margin:6px 0;">Maternal Anaemia in Nigeria: Phase I Findings</h4>
-            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">
-              Sociocultural and behavioural drivers of ANC attendance and IFA adherence in Kwara State. Co-design of a
-              culturally grounded reminder system.</p>
-            <a href="#"
-              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); text-decoration:none;">Download PDF
-              →</a>
-          </div>
-        </div>
-
-        <div class="card"
-          style="background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;">
-          <div
-            style="width:44px; height:44px; background:var(--orange); border-radius:var(--rounded-md); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <div>
-            <span class="tag">Health Financing</span>
-            <h4 style="font-size:var(--text-md); margin:6px 0;">HIV &amp; TB Funding Cuts: Baseline Modelling Report
-            </h4>
-            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">
-              RSTMH-supported baseline mathematical modelling of the impact of declining donor support on vulnerable
-              populations in Nigeria.</p>
-            <a href="#"
-              style="font-size:var(--text-sm); font-weight:700; color:var(--orange); text-decoration:none;">Download PDF
-              →</a>
-          </div>
-        </div>
-
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; margin-bottom:80px;">
       </div>
 
-      <!-- Upload -->
-      <div style="border-top:1px solid var(--gray-300); padding-top:56px;">
-        <p class="tag" style="margin-bottom:8px;">Admin</p>
-        <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Upload Research Findings</h2>
-        <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Add new reports or evidence
-          documents to make them available here.</p>
-        <form id="evidence-form" onsubmit="addEvidence(event)"
-          style="max-width:560px; display:flex; flex-direction:column; gap:16px;">
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
-            <input id="ev-title" type="text" placeholder="Report title..."
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
-            <input id="ev-category" type="text" placeholder="e.g. Digital Health"
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit;" />
-          </div>
-          <div>
-            <label
-              style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Description</label>
-            <textarea id="ev-desc" rows="2" placeholder="Brief description..."
-              style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:14px 16px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
-          </div>
-          <div>
-            <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">File
-              (PDF)</label>
-            <input id="ev-file" type="file" accept=".pdf" style="font-size:var(--text-sm); color:var(--gray-700);" />
-          </div>
-          <button type="submit" class="btn btn-orange" style="width:fit-content;">Upload Finding</button>
-        </form>
+      <!-- Admin panel (hidden by default) -->
+      <div style="border-top:1px solid var(--gray-300); padding-top:40px; text-align:right;">
+        <button onclick="toggleEvAdminPanel()" id="ev-admin-toggle-btn"
+          style="background:none; border:none; color:var(--gray-300); font-size:var(--text-xs); cursor:pointer; font-family:inherit; opacity:0.4;">
+          &#9679;&#9679;&#9679;
+        </button>
       </div>
+      <div id="ev-admin-panel" style="display:none; padding-top:24px;">
+        <div id="ev-admin-lock">
+          <p class="tag" style="margin-bottom:8px;">Admin Access</p>
+          <div style="display:flex; gap:12px; align-items:center; max-width:360px;">
+            <input id="ev-admin-password" type="password" placeholder="Enter admin password"
+              style="flex:1; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 16px; font-size:var(--text-sm); font-family:inherit;" />
+            <button onclick="checkEvAdminPassword()"
+              style="background:var(--dark-green); color:#fff; border:none; border-radius:var(--rounded); padding:12px 20px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+              Enter
+            </button>
+          </div>
+          <p id="ev-admin-error" style="color:#c0392b; font-size:var(--text-xs); margin-top:8px; display:none;">Incorrect password.</p>
+        </div>
+        <div id="ev-admin-form-wrapper" style="display:none;">
+          <p class="tag" style="margin-bottom:8px;">Admin</p>
+          <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Upload Research Findings</h2>
+          <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Build your evidence report below — add text, headings, images and charts in any order.</p>
+
+          <div style="max-width:700px; display:flex; flex-direction:column; gap:20px;">
+
+            <!-- Title + Category -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
+                <input id="ev-post-title" type="text" placeholder="Report title..."
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
+                <input id="ev-post-category" type="text" placeholder="e.g. Maternal Health"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+            </div>
+
+            <!-- Cover image + Date -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Cover Image <span style="font-weight:400; color:var(--gray-700);">(card thumbnail)</span></label>
+                <input id="ev-post-image" type="file" accept="image/*"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; background:#fff; cursor:pointer;" />
+              </div>
+              <div>
+                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
+                <input id="ev-post-date" type="text" placeholder="e.g. April 2026"
+                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary / Key Findings <span style="font-weight:400; color:var(--gray-700);">— shown highlighted at top of report and on the card</span></label>
+              <textarea id="ev-post-summary" rows="3" placeholder="Brief summary of key findings..."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+            </div>
+
+            <!-- Block editor -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:10px;">Report Content <span style="font-weight:400; color:var(--gray-700);">— add blocks in any order</span></label>
+              <!-- Toolbar -->
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                <button type="button" onclick="addEvEditorBlock('text')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg> Paragraph
+                </button>
+                <button type="button" onclick="addEvEditorBlock('heading')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h4m0 0v12m0-6h8m0-6h4m-4 0v12m0-6H8"/></svg> Heading
+                </button>
+                <button type="button" onclick="addEvEditorBlock('image')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/></svg> Image
+                </button>
+                <button type="button" onclick="addEvEditorBlock('chart')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg> Chart
+                </button>
+              </div>
+              <!-- Blocks list -->
+              <div id="ev-blocks-editor" style="display:flex; flex-direction:column; gap:10px;"></div>
+              <p id="ev-blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
+            </div>
+
+            <!-- Publish -->
+            <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
+              <button type="button" onclick="publishEvidencePost()" class="btn btn-orange">Publish Report</button>
+            </div>
+
+          </div>
+        </div><!-- /ev-admin-form-wrapper -->
+      </div><!-- /ev-admin-panel -->
     </div>
   </section><!-- /EVIDENCE -->
+
+  <!-- Evidence post modal -->
+  <div id="evidence-modal" onclick="closeEvidenceModal(event)"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9000; overflow-y:auto; padding:40px 16px;">
+    <div id="evidence-modal-inner" onclick="event.stopPropagation()"
+      style="background:#fff; border-radius:var(--rounded-xl); max-width:780px; margin:0 auto; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.25);">
+      <img id="em-img" src="" alt="" style="width:100%; max-height:380px; object-fit:cover; display:none;" />
+      <div style="padding:44px 48px 56px;">
+        <p id="em-category" class="tag" style="margin-bottom:10px;"></p>
+        <h2 id="em-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.25;"></h2>
+        <p id="em-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:32px; letter-spacing:.04em;"></p>
+        <div id="em-summary-box"
+          style="display:none; background:var(--gray); border-left:4px solid var(--orange); padding:20px 24px; margin-bottom:40px; border-radius:0 var(--rounded-md) var(--rounded-md) 0;">
+          <p id="em-summary" style="font-size:var(--text-md); font-style:italic; color:var(--midnight-green); line-height:180%; margin:0;"></p>
+        </div>
+        <div id="em-blocks"></div>
+        <button onclick="closeEvidenceModalBtn()"
+          style="margin-top:40px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+          ← Back to Evidence
+        </button>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ═══════ FOOTER ═══════ -->
@@ -1923,7 +2008,7 @@
     function setSvcPanel(i) {
       document.querySelectorAll('#svc-accordion .svc-panel').forEach(function(p, idx) {
         var isActive = idx === i;
-        p.style.flex = isActive ? '3.5' : '1';
+        p.style.flex = isActive ? '3.5' : '1.5';
         var ac = p.querySelector('.svc-active-content');
         var it = p.querySelector('.svc-inactive-title');
         if (ac) ac.style.display = isActive ? 'flex' : 'none';
@@ -1936,6 +2021,18 @@
       m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
     }
 
+    function showCardDeleteButtons(containerId) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'flex'; });
+    }
+
+    function hideCardDeleteButtons(containerId) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'none'; });
+    }
+
     function toggleAdminPanel() {
       var panel = document.getElementById('admin-panel');
       panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
@@ -1943,6 +2040,8 @@
       document.getElementById('admin-form-wrapper').style.display = 'none';
       document.getElementById('admin-password').value = '';
       document.getElementById('admin-error').style.display = 'none';
+      blogAdminActive = false;
+      hideCardDeleteButtons('blog-posts-container');
     }
 
     function checkAdminPassword() {
@@ -1950,21 +2049,347 @@
       if (pw === 'e4gadmin') {
         document.getElementById('admin-lock').style.display = 'none';
         document.getElementById('admin-form-wrapper').style.display = 'block';
+        blogAdminActive = true;
+        showCardDeleteButtons('blog-posts-container');
       } else {
         document.getElementById('admin-error').style.display = 'block';
       }
     }
 
-    function openBlogModal(title, category, date, content, imgSrc) {
-      document.getElementById('bm-title').textContent = title;
-      document.getElementById('bm-category').textContent = category || 'General';
-      document.getElementById('bm-date').textContent = date || 'Just now';
-      document.getElementById('bm-content').textContent = content || '';
-      const img = document.getElementById('bm-img');
-      img.src = imgSrc || '';
-      img.style.display = imgSrc ? 'block' : 'none';
+    // ── Block editor ─────────────────────────────────
+    var editorBlocks = [];
+    var blockCounter = 0;
+    var chartInstances = {};
+    var blogAdminActive = false;
+
+    var blockIStyle = 'width:100%;border:none;padding:12px 14px;font-size:14px;font-family:inherit;outline:none;background:#fff;';
+    var blockFieldStyle = 'width:100%;border:1px solid var(--gray-300);border-radius:4px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;';
+
+    function addEditorBlock(type) {
+      var id = 'b' + (blockCounter++);
+      editorBlocks.push({ id: id, type: type });
+      document.getElementById('blocks-hint').style.display = 'none';
+
+      var wrap = document.createElement('div');
+      wrap.id = 'eb-' + id;
+
+      var headerColor = { text: '#f4f7fb', heading: '#eef2f8', image: '#f0faf4', chart: '#fff8f5' }[type];
+      var typeLabel = { text: '¶ Paragraph', heading: 'H Heading', image: '⬜ Image', chart: '▦ Chart' }[type];
+
+      var controls = '<div style="display:flex;gap:4px;">'
+        + '<button type="button" onclick="moveEditorBlock(\'' + id + '\',-1)" title="Move up" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↑</button>'
+        + '<button type="button" onclick="moveEditorBlock(\'' + id + '\',1)" title="Move down" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↓</button>'
+        + '<button type="button" onclick="removeEditorBlock(\'' + id + '\')" title="Remove" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:#c0392b;font-size:13px;font-weight:700;line-height:1;">✕</button>'
+        + '</div>';
+
+      var header = '<div style="background:' + headerColor + ';padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gray-300);">'
+        + '<span style="font-size:11px;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;">' + typeLabel + '</span>'
+        + controls + '</div>';
+
+      var body = '';
+      if (type === 'text') {
+        var tbBtn = 'background:none;border:1px solid var(--gray-300);border-radius:3px;cursor:pointer;padding:3px 7px;font-size:12px;font-family:inherit;color:var(--midnight-green);line-height:1.4;';
+        var toolbar = '<div style="background:#f8fafc;border-bottom:1px solid var(--gray-300);padding:6px 10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;">'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'bold\')" style="' + tbBtn + 'font-weight:700;" title="Bold">B</button>'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'italic\')" style="' + tbBtn + 'font-style:italic;" title="Italic">I</button>'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'insertUnorderedList\')" style="' + tbBtn + '" title="Bullet list">• List</button>'
+          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'13px\')" style="' + tbBtn + 'font-size:10px;" title="Small text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'15px\')" style="' + tbBtn + 'font-size:12px;" title="Normal text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'19px\')" style="' + tbBtn + 'font-size:15px;" title="Large text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'24px\')" style="' + tbBtn + 'font-size:18px;" title="Extra large text">A</button>'
+          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
+          + '<button type="button" onmousedown="event.preventDefault();insertBlockLink(\'' + id + '\')" style="' + tbBtn + 'color:var(--dark-green);" title="Insert hyperlink">🔗 Link</button>'
+          + '</div>';
+        body = toolbar + '<div id="eb-c-' + id + '" contenteditable="true" class="blog-edit-area" data-placeholder="Write your paragraph here..."></div>';
+      } else if (type === 'heading') {
+        body = '<input id="eb-c-' + id + '" type="text" placeholder="Heading text..." style="' + blockIStyle + 'font-weight:700;font-size:18px;display:block;"/>';
+      } else if (type === 'image') {
+        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:10px;">'
+          + '<input id="eb-f-' + id + '" type="file" accept="image/*" onchange="previewBlockImage(\'' + id + '\')" style="font-size:13px;color:var(--gray-700);"/>'
+          + '<img id="eb-p-' + id + '" style="display:none;max-width:100%;max-height:260px;object-fit:contain;border-radius:var(--rounded);"/>'
+          + '<input id="eb-cap-' + id + '" type="text" placeholder="Caption (optional)..." style="' + blockFieldStyle + '"/>'
+          + '</div>';
+      } else if (type === 'chart') {
+        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:12px;">'
+          + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
+          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Type</label>'
+          +   '<select id="eb-ct-' + id + '" style="' + blockFieldStyle + '">'
+          +   '<option value="bar">Bar Chart</option><option value="line">Line Chart</option><option value="pie">Pie Chart</option><option value="doughnut">Doughnut</option>'
+          +   '</select></div>'
+          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Title</label>'
+          +   '<input id="eb-ctit-' + id + '" type="text" placeholder="e.g. Monthly Outcomes" style="' + blockFieldStyle + '"/></div>'
+          + '</div>'
+          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Labels <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
+          + '<input id="eb-cl-' + id + '" type="text" placeholder="Jan, Feb, Mar, Apr" style="' + blockFieldStyle + '"/></div>'
+          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Values <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
+          + '<input id="eb-cv-' + id + '" type="text" placeholder="12, 25, 18, 30" style="' + blockFieldStyle + '"/></div>'
+          + '<button type="button" onclick="previewBlockChart(\'' + id + '\')" style="background:var(--dark-green);color:#fff;border:none;border-radius:var(--rounded-sm);padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;width:fit-content;">Preview Chart</button>'
+          + '<div id="eb-cw-' + id + '" style="display:none;background:var(--gray);border-radius:var(--rounded);padding:16px;"><canvas id="eb-cv2-' + id + '"></canvas></div>'
+          + '</div>';
+      }
+
+      wrap.style.cssText = 'border:1px solid var(--gray-300);border-radius:var(--rounded);overflow:hidden;background:#fff;';
+      wrap.innerHTML = header + body;
+      document.getElementById('blocks-editor').appendChild(wrap);
+    }
+
+    function removeEditorBlock(id) {
+      editorBlocks = editorBlocks.filter(function(b) { return b.id !== id; });
+      var el = document.getElementById('eb-' + id);
+      if (el) el.remove();
+      if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
+      if (editorBlocks.length === 0) document.getElementById('blocks-hint').style.display = 'block';
+    }
+
+    function moveEditorBlock(id, dir) {
+      var idx = editorBlocks.findIndex(function(b) { return b.id === id; });
+      var newIdx = idx + dir;
+      if (newIdx < 0 || newIdx >= editorBlocks.length) return;
+      var tmp = editorBlocks[idx]; editorBlocks[idx] = editorBlocks[newIdx]; editorBlocks[newIdx] = tmp;
+      var container = document.getElementById('blocks-editor');
+      var elA = document.getElementById('eb-' + id);
+      var elB = document.getElementById('eb-' + editorBlocks[idx].id);
+      if (dir === -1) container.insertBefore(elA, elB);
+      else container.insertBefore(elB, elA);
+    }
+
+    function insertBlockLink(id) {
+      var el = document.getElementById('eb-c-' + id);
+      if (!el) return;
+      var sel = window.getSelection();
+      if (!sel || !sel.rangeCount || sel.isCollapsed) {
+        alert('Select the text you want to turn into a link first, then click 🔗 Link.');
+        return;
+      }
+      var savedRange = sel.getRangeAt(0).cloneRange();
+      var url = prompt('Enter the URL (e.g. https://example.com):');
+      if (!url) return;
+      if (!url.match(/^https?:\/\//) && !url.startsWith('mailto:')) url = 'https://' + url;
+      el.focus();
+      sel.removeAllRanges();
+      sel.addRange(savedRange);
+      document.execCommand('createLink', false, url);
+      el.querySelectorAll('a').forEach(function(a) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      });
+    }
+
+    function previewBlockImage(id) {
+      var fi = document.getElementById('eb-f-' + id);
+      var pr = document.getElementById('eb-p-' + id);
+      if (fi && fi.files && fi.files[0]) {
+        pr.src = URL.createObjectURL(fi.files[0]);
+        pr.style.display = 'block';
+      }
+    }
+
+    function setBlockFontSize(id, size) {
+      var el = document.getElementById('eb-c-' + id);
+      if (!el) return;
+      el.focus();
+      var sel = window.getSelection();
+      if (!sel || !sel.rangeCount || sel.isCollapsed) return;
+      var range = sel.getRangeAt(0);
+      try {
+        var frag = range.extractContents();
+        var span = document.createElement('span');
+        span.style.fontSize = size;
+        span.appendChild(frag);
+        range.insertNode(span);
+        range.selectNodeContents(span);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch(e) {}
+    }
+
+    function previewBlockChart(id) {
+      var type  = document.getElementById('eb-ct-' + id).value;
+      var title = document.getElementById('eb-ctit-' + id).value;
+      var labelsRaw = document.getElementById('eb-cl-' + id).value;
+      var valuesRaw = document.getElementById('eb-cv-' + id).value;
+      var labels = labelsRaw.split(',').map(function(s){return s.trim();}).filter(Boolean);
+      var values = valuesRaw.split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
+      if (!labels.length || !values.length) { alert('Please enter labels and values.'); return; }
+      var wrap = document.getElementById('eb-cw-' + id);
+      wrap.style.display = 'block';
+      var canvas = document.getElementById('eb-cv2-' + id);
+      if (chartInstances[id]) { chartInstances[id].destroy(); }
+      chartInstances[id] = buildChart(canvas, type, title, labels, values);
+    }
+
+    function buildChart(canvas, type, title, labels, values) {
+      var isPie = (type === 'pie' || type === 'doughnut');
+      var palette = ['#f06632','#003366','#00193a','#225c41','#004e74','#e69d00','#3d5a80'];
+      return new Chart(canvas, {
+        type: type,
+        data: {
+          labels: labels,
+          datasets: [{
+            label: title || 'Data',
+            data: values,
+            backgroundColor: isPie ? palette.slice(0, values.length) : 'rgba(240,102,50,0.75)',
+            borderColor: isPie ? palette.slice(0, values.length) : '#f06632',
+            borderWidth: isPie ? 0 : 2,
+            tension: 0.35,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: { display: !!title, text: title, font: { size: 14 } },
+            legend: { display: isPie }
+          },
+          scales: isPie ? {} : { y: { beginAtZero: true } }
+        }
+      });
+    }
+
+    function collectBlocks() {
+      return editorBlocks.map(function(b) {
+        var type = b.type;
+        if (type === 'text') {
+          var el = document.getElementById('eb-c-' + b.id);
+          return { type: 'text', content: el ? el.innerHTML : '' };
+        }
+        if (type === 'heading') {
+          var el = document.getElementById('eb-c-' + b.id);
+          return { type: 'heading', content: el ? el.value : '' };
+        }
+        if (type === 'image') {
+          var fi = document.getElementById('eb-f-' + b.id);
+          var cap = document.getElementById('eb-cap-' + b.id);
+          var src = (fi && fi.files && fi.files[0]) ? URL.createObjectURL(fi.files[0]) : '';
+          return { type: 'image', src: src, caption: cap ? cap.value : '' };
+        }
+        if (type === 'chart') {
+          var labels = (document.getElementById('eb-cl-' + b.id).value || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
+          var values = (document.getElementById('eb-cv-' + b.id).value || '').split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
+          return {
+            type: 'chart',
+            chartType: document.getElementById('eb-ct-' + b.id).value,
+            title: document.getElementById('eb-ctit-' + b.id).value,
+            labels: labels,
+            values: values
+          };
+        }
+        return null;
+      }).filter(Boolean);
+    }
+
+    function publishBlogPost() {
+      var title    = document.getElementById('post-title').value.trim();
+      var category = document.getElementById('post-category').value.trim();
+      var summary  = document.getElementById('post-summary').value.trim();
+      var date     = document.getElementById('post-date').value.trim();
+      var imgEl    = document.getElementById('post-image');
+      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
+
+      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
+      var blocks   = collectBlocks();
+      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
+
+      var coverHtml = coverSrc
+        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
+        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
+
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
+      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this post?\'))this.closest(\'.card\').remove();" style="display:' + (blogAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
+        + coverHtml
+        + '<div style="padding:24px;">'
+        + '<span class="tag">' + (category || 'General') + '</span>'
+        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
+        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
+        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
+        + '<span>' + (date || 'Just now') + '</span>'
+        + '<span style="color:var(--orange);font-weight:700;">Read more →</span>'
+        + '</div></div>';
+
+      card.onclick = function() { openBlogModal(postData); };
+      document.getElementById('blog-posts-container').prepend(card);
+
+      // Reset
+      document.getElementById('post-title').value = '';
+      document.getElementById('post-category').value = '';
+      document.getElementById('post-summary').value = '';
+      document.getElementById('post-date').value = '';
+      document.getElementById('post-image').value = '';
+      document.getElementById('blocks-editor').innerHTML = '';
+      document.getElementById('blocks-hint').style.display = 'block';
+      editorBlocks = [];
+      Object.keys(chartInstances).forEach(function(k){ chartInstances[k].destroy(); });
+      chartInstances = {};
+
+      document.getElementById('admin-form-wrapper').style.display = 'none';
+      document.getElementById('admin-lock').style.display = 'block';
+      document.getElementById('admin-panel').style.display = 'none';
+      blogAdminActive = false;
+    }
+
+    function openBlogModal(postData) {
+      document.getElementById('bm-title').textContent = postData.title;
+      document.getElementById('bm-category').textContent = postData.category || 'General';
+      document.getElementById('bm-date').textContent = postData.date || 'Just now';
+      var img = document.getElementById('bm-img');
+      img.src = postData.coverSrc || '';
+      img.style.display = postData.coverSrc ? 'block' : 'none';
+      var summaryBox = document.getElementById('bm-summary-box');
+      if (postData.summary) {
+        document.getElementById('bm-summary').textContent = postData.summary;
+        summaryBox.style.display = 'block';
+      } else {
+        summaryBox.style.display = 'none';
+      }
+      renderBlocksInModal(postData.blocks || [], document.getElementById('bm-blocks'));
       document.getElementById('blog-modal').style.display = 'block';
       document.body.style.overflow = 'hidden';
+    }
+
+    function renderBlocksInModal(blocks, container) {
+      container.innerHTML = '';
+      blocks.forEach(function(block, idx) {
+        if (block.type === 'text') {
+          var p = document.createElement('div');
+          p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:190%;margin-bottom:24px;';
+          p.innerHTML = block.content;
+          container.appendChild(p);
+        } else if (block.type === 'heading') {
+          var h = document.createElement('h3');
+          h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;';
+          h.textContent = block.content;
+          container.appendChild(h);
+        } else if (block.type === 'image') {
+          var div = document.createElement('div');
+          div.style.cssText = 'margin-bottom:32px;text-align:center;';
+          if (block.src) {
+            var im = document.createElement('img');
+            im.src = block.src;
+            im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;';
+            div.appendChild(im);
+          }
+          if (block.caption) {
+            var cap = document.createElement('p');
+            cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:8px;font-style:italic;';
+            cap.textContent = block.caption;
+            div.appendChild(cap);
+          }
+          container.appendChild(div);
+        } else if (block.type === 'chart') {
+          var cWrap = document.createElement('div');
+          cWrap.style.cssText = 'background:var(--gray);border-radius:var(--rounded-lg);padding:24px;margin-bottom:32px;';
+          var canvas = document.createElement('canvas');
+          canvas.id = 'mc-' + idx + '-' + Date.now();
+          cWrap.appendChild(canvas);
+          container.appendChild(cWrap);
+          (function(c, b) {
+            setTimeout(function() { buildChart(c, b.chartType || 'bar', b.title, b.labels, b.values); }, 60);
+          })(canvas, block);
+        }
+      });
     }
 
     function closeBlogModalBtn() {
@@ -1976,76 +2401,248 @@
       if (e.target.id === 'blog-modal') closeBlogModalBtn();
     }
 
-    function addBlogPost(e) {
-      e.preventDefault();
-      const title = document.getElementById('post-title').value.trim();
-      const category = document.getElementById('post-category').value.trim();
-      const summary = document.getElementById('post-summary').value.trim();
-      const content = document.getElementById('post-content').value.trim() || summary;
-      const date = document.getElementById('post-date').value.trim();
-      const imgEl = document.getElementById('post-image');
-      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-      
-      let imgSrc = '';
-      if (imgEl && imgEl.files && imgEl.files[0]) {
-        imgSrc = URL.createObjectURL(imgEl.files[0]);
-      } else {
-        const colors = ['00193a', '003366', '003f88', 'f06632'];
-        const col = colors[Math.floor(Math.random() * colors.length)];
-        imgSrc = `https://placehold.co/480x220/${col}/ffffff?text=New+Post`;
-      }
+    // ── Evidence block editor ─────────────────────────────────
+    var evEditorBlocks = [];
+    var evBlockCounter = 0;
+    var evChartInstances = {};
+    var evAdminActive = false;
 
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.style.cssText = 'background:#fff; border-radius:var(--rounded-xl); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--gray-300); cursor:pointer;';
-      card.innerHTML = `
-      <img src="${imgSrc}" style="width:100%;height:200px;object-fit:cover;"/>
-      <div style="padding:24px;">
-        <span class="tag">${category || 'General'}</span>
-        <h3 style="font-size:var(--text-lg); margin:8px 0 10px;">${title}</h3>
-        <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:16px;">${summary}</p>
-        <div style="display:flex; justify-content:space-between; align-items:center; font-size:var(--text-xs); color:var(--gray-700);">
-          <span>${date || 'Just now'}</span>
-          <span style="color:var(--orange); font-weight:700;">Read more →</span>
-        </div>
-      </div>`;
-      
-      card.onclick = function() {
-        openBlogModal(title, category, date, content, imgSrc);
-      };
-
-      document.getElementById('blog-posts-container').prepend(card);
-      e.target.reset();
-      
-      // Auto-hide admin panel after publishing
-      document.getElementById('admin-form-wrapper').style.display = 'none';
-      document.getElementById('admin-lock').style.display = 'block';
-      document.getElementById('admin-panel').style.display = 'none';
+    function toggleEvAdminPanel() {
+      var panel = document.getElementById('ev-admin-panel');
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+      document.getElementById('ev-admin-lock').style.display = 'block';
+      document.getElementById('ev-admin-form-wrapper').style.display = 'none';
+      document.getElementById('ev-admin-password').value = '';
+      document.getElementById('ev-admin-error').style.display = 'none';
+      evAdminActive = false;
+      hideCardDeleteButtons('evidence-container');
     }
 
-    function addEvidence(e) {
-      e.preventDefault();
-      const title = document.getElementById('ev-title').value.trim();
-      const category = document.getElementById('ev-category').value.trim();
-      const desc = document.getElementById('ev-desc').value.trim();
-      const fileEl = document.getElementById('ev-file');
-      const fileName = fileEl.files[0] ? fileEl.files[0].name : null;
-      if (!title) { alert('Please enter a title.'); return; }
-      const card = document.createElement('div');
+    function checkEvAdminPassword() {
+      var pw = document.getElementById('ev-admin-password').value;
+      if (pw === 'e4gadmin') {
+        document.getElementById('ev-admin-lock').style.display = 'none';
+        document.getElementById('ev-admin-form-wrapper').style.display = 'block';
+        evAdminActive = true;
+        showCardDeleteButtons('evidence-container');
+      } else {
+        document.getElementById('ev-admin-error').style.display = 'block';
+      }
+    }
+
+    function addEvEditorBlock(type) {
+      var id = 'evb' + (evBlockCounter++);
+      evEditorBlocks.push({ id: id, type: type });
+      document.getElementById('ev-blocks-hint').style.display = 'none';
+
+      var wrap = document.createElement('div');
+      wrap.id = 'eb-' + id;
+
+      var headerColor = { text: '#f4f7fb', heading: '#eef2f8', image: '#f0faf4', chart: '#fff8f5' }[type];
+      var typeLabel = { text: '¶ Paragraph', heading: 'H Heading', image: '⬜ Image', chart: '▦ Chart' }[type];
+
+      var controls = '<div style="display:flex;gap:4px;">'
+        + '<button type="button" onclick="moveEvEditorBlock(\'' + id + '\',-1)" title="Move up" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↑</button>'
+        + '<button type="button" onclick="moveEvEditorBlock(\'' + id + '\',1)" title="Move down" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↓</button>'
+        + '<button type="button" onclick="removeEvEditorBlock(\'' + id + '\')" title="Remove" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:#c0392b;font-size:13px;font-weight:700;line-height:1;">✕</button>'
+        + '</div>';
+
+      var header = '<div style="background:' + headerColor + ';padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gray-300);">'
+        + '<span style="font-size:11px;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;">' + typeLabel + '</span>'
+        + controls + '</div>';
+
+      var body = '';
+      if (type === 'text') {
+        var tbBtn = 'background:none;border:1px solid var(--gray-300);border-radius:3px;cursor:pointer;padding:3px 7px;font-size:12px;font-family:inherit;color:var(--midnight-green);line-height:1.4;';
+        var toolbar = '<div style="background:#f8fafc;border-bottom:1px solid var(--gray-300);padding:6px 10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;">'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'bold\')" style="' + tbBtn + 'font-weight:700;" title="Bold">B</button>'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'italic\')" style="' + tbBtn + 'font-style:italic;" title="Italic">I</button>'
+          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'insertUnorderedList\')" style="' + tbBtn + '" title="Bullet list">• List</button>'
+          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'13px\')" style="' + tbBtn + 'font-size:10px;" title="Small text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'15px\')" style="' + tbBtn + 'font-size:12px;" title="Normal text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'19px\')" style="' + tbBtn + 'font-size:15px;" title="Large text">A</button>'
+          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'24px\')" style="' + tbBtn + 'font-size:18px;" title="Extra large text">A</button>'
+          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
+          + '<button type="button" onmousedown="event.preventDefault();insertBlockLink(\'' + id + '\')" style="' + tbBtn + 'color:var(--dark-green);" title="Insert hyperlink">🔗 Link</button>'
+          + '</div>';
+        body = toolbar + '<div id="eb-c-' + id + '" contenteditable="true" class="blog-edit-area" data-placeholder="Write your paragraph here..."></div>';
+      } else if (type === 'heading') {
+        body = '<input id="eb-c-' + id + '" type="text" placeholder="Heading text..." style="' + blockIStyle + 'font-weight:700;font-size:18px;display:block;"/>';
+      } else if (type === 'image') {
+        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:10px;">'
+          + '<input id="eb-f-' + id + '" type="file" accept="image/*" onchange="previewBlockImage(\'' + id + '\')" style="font-size:13px;color:var(--gray-700);"/>'
+          + '<img id="eb-p-' + id + '" style="display:none;max-width:100%;max-height:260px;object-fit:contain;border-radius:var(--rounded);"/>'
+          + '<input id="eb-cap-' + id + '" type="text" placeholder="Caption (optional)..." style="' + blockFieldStyle + '"/>'
+          + '</div>';
+      } else if (type === 'chart') {
+        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:12px;">'
+          + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
+          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Type</label>'
+          +   '<select id="eb-ct-' + id + '" style="' + blockFieldStyle + '">'
+          +   '<option value="bar">Bar Chart</option><option value="line">Line Chart</option><option value="pie">Pie Chart</option><option value="doughnut">Doughnut</option>'
+          +   '</select></div>'
+          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Title</label>'
+          +   '<input id="eb-ctit-' + id + '" type="text" placeholder="e.g. Monthly Outcomes" style="' + blockFieldStyle + '"/></div>'
+          + '</div>'
+          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Labels <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
+          + '<input id="eb-cl-' + id + '" type="text" placeholder="Jan, Feb, Mar, Apr" style="' + blockFieldStyle + '"/></div>'
+          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Values <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
+          + '<input id="eb-cv-' + id + '" type="text" placeholder="12, 25, 18, 30" style="' + blockFieldStyle + '"/></div>'
+          + '<button type="button" onclick="previewEvBlockChart(\'' + id + '\')" style="background:var(--dark-green);color:#fff;border:none;border-radius:var(--rounded-sm);padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;width:fit-content;">Preview Chart</button>'
+          + '<div id="eb-cw-' + id + '" style="display:none;background:var(--gray);border-radius:var(--rounded);padding:16px;"><canvas id="eb-cv2-' + id + '"></canvas></div>'
+          + '</div>';
+      }
+
+      wrap.style.cssText = 'border:1px solid var(--gray-300);border-radius:var(--rounded);overflow:hidden;background:#fff;';
+      wrap.innerHTML = header + body;
+      document.getElementById('ev-blocks-editor').appendChild(wrap);
+    }
+
+    function removeEvEditorBlock(id) {
+      evEditorBlocks = evEditorBlocks.filter(function(b) { return b.id !== id; });
+      var el = document.getElementById('eb-' + id);
+      if (el) el.remove();
+      if (evChartInstances[id]) { evChartInstances[id].destroy(); delete evChartInstances[id]; }
+      if (evEditorBlocks.length === 0) document.getElementById('ev-blocks-hint').style.display = 'block';
+    }
+
+    function moveEvEditorBlock(id, dir) {
+      var idx = evEditorBlocks.findIndex(function(b) { return b.id === id; });
+      var newIdx = idx + dir;
+      if (newIdx < 0 || newIdx >= evEditorBlocks.length) return;
+      var tmp = evEditorBlocks[idx]; evEditorBlocks[idx] = evEditorBlocks[newIdx]; evEditorBlocks[newIdx] = tmp;
+      var container = document.getElementById('ev-blocks-editor');
+      var elA = document.getElementById('eb-' + id);
+      var elB = document.getElementById('eb-' + evEditorBlocks[idx].id);
+      if (dir === -1) container.insertBefore(elA, elB);
+      else container.insertBefore(elB, elA);
+    }
+
+    function previewEvBlockChart(id) {
+      var type  = document.getElementById('eb-ct-' + id).value;
+      var title = document.getElementById('eb-ctit-' + id).value;
+      var labelsRaw = document.getElementById('eb-cl-' + id).value;
+      var valuesRaw = document.getElementById('eb-cv-' + id).value;
+      var labels = labelsRaw.split(',').map(function(s){return s.trim();}).filter(Boolean);
+      var values = valuesRaw.split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
+      if (!labels.length || !values.length) { alert('Please enter labels and values.'); return; }
+      var wrap = document.getElementById('eb-cw-' + id);
+      wrap.style.display = 'block';
+      var canvas = document.getElementById('eb-cv2-' + id);
+      if (evChartInstances[id]) { evChartInstances[id].destroy(); }
+      evChartInstances[id] = buildChart(canvas, type, title, labels, values);
+    }
+
+    function collectEvBlocks() {
+      return evEditorBlocks.map(function(b) {
+        var type = b.type;
+        if (type === 'text') {
+          var el = document.getElementById('eb-c-' + b.id);
+          return { type: 'text', content: el ? el.innerHTML : '' };
+        }
+        if (type === 'heading') {
+          var el = document.getElementById('eb-c-' + b.id);
+          return { type: 'heading', content: el ? el.value : '' };
+        }
+        if (type === 'image') {
+          var fi = document.getElementById('eb-f-' + b.id);
+          var cap = document.getElementById('eb-cap-' + b.id);
+          var src = (fi && fi.files && fi.files[0]) ? URL.createObjectURL(fi.files[0]) : '';
+          return { type: 'image', src: src, caption: cap ? cap.value : '' };
+        }
+        if (type === 'chart') {
+          var labels = (document.getElementById('eb-cl-' + b.id).value || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
+          var values = (document.getElementById('eb-cv-' + b.id).value || '').split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
+          return {
+            type: 'chart',
+            chartType: document.getElementById('eb-ct-' + b.id).value,
+            title: document.getElementById('eb-ctit-' + b.id).value,
+            labels: labels,
+            values: values
+          };
+        }
+        return null;
+      }).filter(Boolean);
+    }
+
+    function publishEvidencePost() {
+      var title    = document.getElementById('ev-post-title').value.trim();
+      var category = document.getElementById('ev-post-category').value.trim();
+      var summary  = document.getElementById('ev-post-summary').value.trim();
+      var date     = document.getElementById('ev-post-date').value.trim();
+      var imgEl    = document.getElementById('ev-post-image');
+      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
+
+      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
+      var blocks   = collectEvBlocks();
+      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
+
+      var coverHtml = coverSrc
+        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
+        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
+
+      var card = document.createElement('div');
       card.className = 'card';
-      card.style.cssText = 'background:var(--gray); border-radius:var(--rounded-lg); padding:28px; display:flex; gap:16px; align-items:flex-start;';
-      card.innerHTML = `
-      <div style="width:44px;height:44px;background:var(--orange);border-radius:var(--rounded-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-      </div>
-      <div>
-        <span class="tag">${category || 'General'}</span>
-        <h4 style="font-size:var(--text-md); margin:6px 0;">${title}</h4>
-        <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:165%; margin-bottom:10px;">${desc}</p>
-        ${fileName ? `<span style="font-size:var(--text-sm); font-weight:700; color:var(--orange);">${fileName} uploaded</span>` : ''}
-      </div>`;
+      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
+      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this report?\'))this.closest(\'.card\').remove();" style="display:' + (evAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
+        + coverHtml
+        + '<div style="padding:24px;">'
+        + '<span class="tag">' + (category || 'Research') + '</span>'
+        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
+        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
+        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
+        + '<span>' + (date || 'Just now') + '</span>'
+        + '<span style="color:var(--orange);font-weight:700;">Read report →</span>'
+        + '</div></div>';
+
+      card.onclick = function() { openEvidenceModal(postData); };
       document.getElementById('evidence-container').prepend(card);
-      e.target.reset();
+
+      // Reset
+      document.getElementById('ev-post-title').value = '';
+      document.getElementById('ev-post-category').value = '';
+      document.getElementById('ev-post-summary').value = '';
+      document.getElementById('ev-post-date').value = '';
+      document.getElementById('ev-post-image').value = '';
+      document.getElementById('ev-blocks-editor').innerHTML = '';
+      document.getElementById('ev-blocks-hint').style.display = 'block';
+      evEditorBlocks = [];
+      Object.keys(evChartInstances).forEach(function(k){ evChartInstances[k].destroy(); });
+      evChartInstances = {};
+
+      document.getElementById('ev-admin-form-wrapper').style.display = 'none';
+      document.getElementById('ev-admin-lock').style.display = 'block';
+      document.getElementById('ev-admin-panel').style.display = 'none';
+      evAdminActive = false;
+    }
+
+    function openEvidenceModal(postData) {
+      document.getElementById('em-title').textContent = postData.title;
+      document.getElementById('em-category').textContent = postData.category || 'Research';
+      document.getElementById('em-date').textContent = postData.date || 'Just now';
+      var img = document.getElementById('em-img');
+      img.src = postData.coverSrc || '';
+      img.style.display = postData.coverSrc ? 'block' : 'none';
+      var summaryBox = document.getElementById('em-summary-box');
+      if (postData.summary) {
+        document.getElementById('em-summary').textContent = postData.summary;
+        summaryBox.style.display = 'block';
+      } else {
+        summaryBox.style.display = 'none';
+      }
+      renderBlocksInModal(postData.blocks || [], document.getElementById('em-blocks'));
+      document.getElementById('evidence-modal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeEvidenceModalBtn() {
+      document.getElementById('evidence-modal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeEvidenceModal(e) {
+      if (e.target.id === 'evidence-modal') closeEvidenceModalBtn();
     }
 
 
