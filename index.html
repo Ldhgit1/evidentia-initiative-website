@@ -2261,13 +2261,13 @@
       if (!file) return '';
       var ext = file.name.split('.').pop();
       var filename = Date.now() + '-' + Math.random().toString(36).substr(2,9) + '.' + ext;
-      var { error } = await getSB().storage.from('cover').upload(filename, file, { contentType: file.type, upsert: false });
+      var { error } = await getSB().storage.from('post-images').upload(filename, file, { contentType: file.type, upsert: false });
       if (error) { 
         alert('Image upload failed (Storage Policy Error): ' + error.message);
         console.error('Image upload error:', error); 
         return ''; 
       }
-      return getSB().storage.from('cover').getPublicUrl(filename).data.publicUrl;
+      return getSB().storage.from('post-images').getPublicUrl(filename).data.publicUrl;
     }
 
     // ── Async block collectors (uploads images) ───────────────
@@ -2307,13 +2307,13 @@
       var sb = getSB();
       var ext = file.name.split('.').pop().toLowerCase();
       var fileName = folder + '/' + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
-      var { data, error } = await sb.storage.from('cover').upload(fileName, file, { contentType: file.type, upsert: false });
+      var { data, error } = await sb.storage.from('post-images').upload(fileName, file, { contentType: file.type, upsert: false });
       if (error) { 
         alert('Image upload failed (Storage Policy Error): ' + error.message);
         console.error('Image upload error:', error); 
         return ''; 
       }
-      var { data: urlData } = sb.storage.from('cover').getPublicUrl(fileName);
+      var { data: urlData } = sb.storage.from('post-images').getPublicUrl(fileName);
       return urlData.publicUrl || '';
     }
 
