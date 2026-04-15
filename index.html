@@ -18,6 +18,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -2247,6 +2249,14 @@
       hideCardDeleteButtons('blog-posts-container');
     }
 
+    // ── Supabase shared client ────────────────────────────────
+    var _sbClient = null;
+    function getSB() {
+      if (!_sbClient) _sbClient = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      return _sbClient;
+    }
+
+    // ── Admin password gate ───────────────────────────────────
     function checkAdminPassword() {
       var pw = document.getElementById('admin-password').value;
       if (pw === 'e4gadmin') {
@@ -2256,6 +2266,18 @@
         showCardDeleteButtons('blog-posts-container');
       } else {
         document.getElementById('admin-error').style.display = 'block';
+      }
+    }
+
+    function checkEvAdminPassword() {
+      var pw = document.getElementById('ev-admin-password').value;
+      if (pw === 'e4gadmin') {
+        document.getElementById('ev-admin-lock').style.display = 'none';
+        document.getElementById('ev-admin-form-wrapper').style.display = 'block';
+        evAdminActive = true;
+        showCardDeleteButtons('evidence-container');
+      } else {
+        document.getElementById('ev-admin-error').style.display = 'block';
       }
     }
 
@@ -2501,32 +2523,45 @@
       openBlogModal(data, true);
     }
 
-    function publishBlogPost() {
-      var data = collectBlogFormData();
-      if (!data.title || !data.summary) { alert('Please fill in a title and summary.'); return; }
-
-      var coverHtml = data.coverSrc
-        ? '<img src="' + data.coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
+    function renderBlogCard(postData) {
+      var coverHtml = postData.coverSrc
+        ? '<img src="' + postData.coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
         : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
-
-      var byline = (data.author ? 'By ' + data.author : '') + (data.author && data.date ? ' &nbsp;·&nbsp; ' : '') + (data.date || (!data.author ? 'Just now' : ''));
-
+      var byline = (postData.author ? 'By ' + postData.author : '') + (postData.author && postData.date ? ' &nbsp;·&nbsp; ' : '') + (postData.date || (!postData.author ? 'Just now' : ''));
       var card = document.createElement('div');
       card.className = 'card';
       card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
-      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this post?\'))this.closest(\'.card\').remove();" style="display:' + (blogAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
+      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();deleteBlogPost(\'' + postData.id + '\',this);" style="display:' + (blogAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
         + coverHtml
         + '<div style="padding:24px;">'
-        + '<span class="tag">' + (data.category || 'General') + '</span>'
-        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + data.title + '</h3>'
-        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + data.summary + '</p>'
+        + '<span class="tag">' + (postData.category || 'General') + '</span>'
+        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + postData.title + '</h3>'
+        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + postData.summary + '</p>'
         + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
         + '<span>' + byline + '</span>'
         + '<span style="color:var(--orange);font-weight:700;">Read more →</span>'
         + '</div></div>';
+      card.onclick = function() { openBlogModal(postData, false); };
+      document.getElementById('blog-posts-container').appendChild(card);
+    }
 
-      card.onclick = function() { openBlogModal(data, false); };
-      document.getElementById('blog-posts-container').prepend(card);
+    async function loadBlogPosts() {
+      var sb = getSB();
+      var { data, error } = await sb.from('blog_posts').select('*').order('created_at', { ascending: false });
+      if (error) { console.error('Error loading blog posts:', error); return; }
+      document.getElementById('blog-posts-container').innerHTML = '';
+      (data || []).forEach(function(row) {
+        renderBlogCard({ id: row.id, title: row.title, category: row.category, summary: row.summary, author: row.author, date: row.date, coverSrc: row.cover_src || '', blocks: row.blocks || [], references: row.post_references || '' });
+      });
+    }
+
+    async function publishBlogPost() {
+      var data = collectBlogFormData();
+      if (!data.title || !data.summary) { alert('Please fill in a title and summary.'); return; }
+      var sb = getSB();
+      var { error } = await sb.from('blog_posts').insert([{ title: data.title, category: data.category, summary: data.summary, author: data.author, date: data.date, cover_src: data.coverSrc, blocks: data.blocks, post_references: data.references, write_token: window.SUPABASE_WRITE_TOKEN }]);
+      if (error) { alert('Error saving post: ' + error.message); return; }
+      await loadBlogPosts();
 
       // Reset
       document.getElementById('post-title').value = '';
@@ -2541,11 +2576,18 @@
       editorBlocks = [];
       Object.keys(chartInstances).forEach(function(k){ chartInstances[k].destroy(); });
       chartInstances = {};
-
       document.getElementById('admin-form-wrapper').style.display = 'none';
       document.getElementById('admin-lock').style.display = 'block';
       document.getElementById('admin-panel').style.display = 'none';
       blogAdminActive = false;
+    }
+
+    async function deleteBlogPost(id, btn) {
+      if (!confirm('Delete this post?')) return;
+      var sb = getSB();
+      var { error } = await sb.from('blog_posts').delete().eq('id', id);
+      if (error) { alert('Error deleting post: ' + error.message); return; }
+      btn.closest('.card').remove();
     }
 
     function openBlogModal(postData, isPreview) {
@@ -2705,17 +2747,6 @@
       hideCardDeleteButtons('evidence-container');
     }
 
-    function checkEvAdminPassword() {
-      var pw = document.getElementById('ev-admin-password').value;
-      if (pw === 'e4gadmin') {
-        document.getElementById('ev-admin-lock').style.display = 'none';
-        document.getElementById('ev-admin-form-wrapper').style.display = 'block';
-        evAdminActive = true;
-        showCardDeleteButtons('evidence-container');
-      } else {
-        document.getElementById('ev-admin-error').style.display = 'block';
-      }
-    }
 
     function addEvEditorBlock(type) {
       var id = 'evb' + (evBlockCounter++);
@@ -2853,39 +2884,51 @@
       }).filter(Boolean);
     }
 
-    function publishEvidencePost() {
+    function renderEvidenceCard(postData) {
+      var coverHtml = postData.coverSrc
+        ? '<img src="' + postData.coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
+        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
+      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();deleteEvidencePost(\'' + postData.id + '\',this);" style="display:' + (evAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
+        + coverHtml
+        + '<div style="padding:24px;">'
+        + '<span class="tag">' + (postData.category || 'Research') + '</span>'
+        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + postData.title + '</h3>'
+        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + postData.summary + '</p>'
+        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
+        + '<span>' + (postData.date || 'Just now') + '</span>'
+        + '<span style="color:var(--orange);font-weight:700;">Read report →</span>'
+        + '</div></div>';
+      card.onclick = function() { openEvidenceModal(postData); };
+      document.getElementById('evidence-container').appendChild(card);
+    }
+
+    async function loadEvidencePosts() {
+      var sb = getSB();
+      var { data, error } = await sb.from('evidence_posts').select('*').order('created_at', { ascending: false });
+      if (error) { console.error('Error loading evidence posts:', error); return; }
+      document.getElementById('evidence-container').innerHTML = '';
+      (data || []).forEach(function(row) {
+        renderEvidenceCard({ id: row.id, title: row.title, category: row.category, summary: row.summary, date: row.date, coverSrc: row.cover_src || '', blocks: row.blocks || [], references: row.post_references || '' });
+      });
+    }
+
+    async function publishEvidencePost() {
       var title    = document.getElementById('ev-post-title').value.trim();
       var category = document.getElementById('ev-post-category').value.trim();
       var summary  = document.getElementById('ev-post-summary').value.trim();
       var date     = document.getElementById('ev-post-date').value.trim();
       var imgEl    = document.getElementById('ev-post-image');
       if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-
       var coverSrc   = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
       var blocks     = collectEvBlocks();
       var references = document.getElementById('ev-post-references').value.trim();
-      var postData   = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks, references: references };
-
-      var coverHtml = coverSrc
-        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
-        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
-
-      var card = document.createElement('div');
-      card.className = 'card';
-      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
-      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this report?\'))this.closest(\'.card\').remove();" style="display:' + (evAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
-        + coverHtml
-        + '<div style="padding:24px;">'
-        + '<span class="tag">' + (category || 'Research') + '</span>'
-        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
-        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
-        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
-        + '<span>' + (date || 'Just now') + '</span>'
-        + '<span style="color:var(--orange);font-weight:700;">Read report →</span>'
-        + '</div></div>';
-
-      card.onclick = function() { openEvidenceModal(postData); };
-      document.getElementById('evidence-container').prepend(card);
+      var sb = getSB();
+      var { error } = await sb.from('evidence_posts').insert([{ title: title, category: category, summary: summary, date: date, cover_src: coverSrc, blocks: blocks, post_references: references, write_token: window.SUPABASE_WRITE_TOKEN }]);
+      if (error) { alert('Error saving report: ' + error.message); return; }
+      await loadEvidencePosts();
 
       // Reset
       document.getElementById('ev-post-title').value = '';
@@ -2899,11 +2942,18 @@
       evEditorBlocks = [];
       Object.keys(evChartInstances).forEach(function(k){ evChartInstances[k].destroy(); });
       evChartInstances = {};
-
       document.getElementById('ev-admin-form-wrapper').style.display = 'none';
       document.getElementById('ev-admin-lock').style.display = 'block';
       document.getElementById('ev-admin-panel').style.display = 'none';
       evAdminActive = false;
+    }
+
+    async function deleteEvidencePost(id, btn) {
+      if (!confirm('Delete this report?')) return;
+      var sb = getSB();
+      var { error } = await sb.from('evidence_posts').delete().eq('id', id);
+      if (error) { alert('Error deleting report: ' + error.message); return; }
+      btn.closest('.card').remove();
     }
 
     function openEvidenceModal(postData) {
@@ -2943,6 +2993,11 @@
     const startPage = (initialHash && document.getElementById('page-' + initialHash)) ? initialHash : 'home';
     showPage(startPage, false);
     window.history.replaceState({ page: startPage }, '', '#' + startPage);
+
+    // Load posts from Supabase on startup
+    loadBlogPosts();
+    loadEvidencePosts();
+
 
 
     // ── Hero carousel ────────────────────────────────
