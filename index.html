@@ -2261,8 +2261,12 @@
       if (!file) return '';
       var ext = file.name.split('.').pop();
       var filename = Date.now() + '-' + Math.random().toString(36).substr(2,9) + '.' + ext;
-      var { error } = await getSB().storage.from('covers').upload(filename, file);
-      if (error) { console.error('Image upload error:', error); return ''; }
+      var { error } = await getSB().storage.from('covers').upload(filename, file, { contentType: file.type, upsert: false });
+      if (error) { 
+        alert('Image upload failed (Storage Policy Error): ' + error.message);
+        console.error('Image upload error:', error); 
+        return ''; 
+      }
       return getSB().storage.from('covers').getPublicUrl(filename).data.publicUrl;
     }
 
@@ -2304,7 +2308,11 @@
       var ext = file.name.split('.').pop().toLowerCase();
       var fileName = folder + '/' + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
       var { data, error } = await sb.storage.from('covers').upload(fileName, file, { contentType: file.type, upsert: false });
-      if (error) { console.error('Image upload error:', error); return ''; }
+      if (error) { 
+        alert('Image upload failed (Storage Policy Error): ' + error.message);
+        console.error('Image upload error:', error); 
+        return ''; 
+      }
       var { data: urlData } = sb.storage.from('covers').getPublicUrl(fileName);
       return urlData.publicUrl || '';
     }
