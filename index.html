@@ -2229,13 +2229,13 @@
     function showCardDeleteButtons(containerId) {
       var container = document.getElementById(containerId);
       if (!container) return;
-      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'flex'; });
+      container.querySelectorAll('.card-admin-btns').forEach(function(btn) { btn.style.display = 'flex'; });
     }
 
     function hideCardDeleteButtons(containerId) {
       var container = document.getElementById(containerId);
       if (!container) return;
-      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'none'; });
+      container.querySelectorAll('.card-admin-btns').forEach(function(btn) { btn.style.display = 'none'; });
     }
 
     function toggleAdminPanel() {
