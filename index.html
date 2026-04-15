@@ -456,6 +456,18 @@
     .blog-edit-area:empty::before { content: attr(data-placeholder); color: #aab8cc; pointer-events: none; }
     .blog-edit-area a, #bm-blocks a { color: var(--dark-green); text-decoration: underline; text-underline-offset: 3px; }
     .blog-edit-area a:hover, #bm-blocks a:hover { color: var(--orange); }
+    /* Force site font on all rendered post content regardless of pasted styles */
+    #bm-blocks *, #em-blocks * { font-family: var(--fontfamily-sans) !important; }
+    /* Post page two-column layout */
+    .post-layout { display: flex; gap: 48px; align-items: flex-start; }
+    .post-sidebar { width: 200px; flex-shrink: 0; position: sticky; top: 80px; }
+    .post-main { flex: 1; min-width: 0; }
+    .post-toc-link { display: block; font-size: var(--text-xs); color: var(--gray-700); text-decoration: none; padding: 5px 0; border-left: 2px solid var(--gray-300); padding-left: 10px; margin-bottom: 2px; line-height: 1.4; transition: color .15s, border-color .15s; }
+    .post-toc-link:hover { color: var(--midnight-green); border-left-color: var(--orange); }
+    @media (max-width: 768px) {
+      .post-layout { flex-direction: column; gap: 24px; }
+      .post-sidebar { width: 100%; position: static; }
+    }
     /* Blog card summary clamp */
     .blog-card-summary { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
@@ -486,7 +498,7 @@
         padding-bottom: 52px !important;
       }
       /* Reduce large flex/grid gaps */
-      [style*="gap:64px"] {
+      [style*="gap: 64px"] {
         gap: 32px !important;
       }
     }
@@ -501,7 +513,7 @@
         padding-left: 16px !important;
         padding-right: 16px !important;
       }
-      [style*="gap:64px"] {
+      [style*="gap: 64px"] {
         gap: 24px !important;
       }
       /* Stack two-column form grids */
@@ -515,18 +527,6 @@
       #blog-posts-container,
       #evidence-container {
         grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* Blog & Evidence modals: reduce inner padding on phones */
-    @media (max-width: 480px) {
-      #blog-modal-inner > div:last-child,
-      #evidence-modal-inner > div:last-child {
-        padding: 28px 20px 36px !important;
-      }
-      #blog-modal,
-      #evidence-modal {
-        padding: 16px 8px !important;
       }
     }
 
@@ -1768,7 +1768,7 @@
     <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
 
       <div id="blog-posts-container"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:40px;">
       </div>
 
       <!-- Add post form (admin only) -->
@@ -1826,6 +1826,13 @@
               </div>
             </div>
 
+            <!-- Author -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Author</label>
+              <input id="post-author" type="text" placeholder="e.g. Kunle Oreagba"
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
+            </div>
+
             <!-- Summary -->
             <div>
               <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary / Introduction <span style="font-weight:400; color:var(--gray-700);">— shown highlighted at top of post and on the card</span></label>
@@ -1856,8 +1863,19 @@
               <p id="blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
             </div>
 
-            <!-- Publish -->
-            <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
+            <!-- References -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">References <span style="font-weight:400; color:var(--gray-700);">— one per line</span></label>
+              <textarea id="post-references" rows="4" placeholder="e.g. WHO (2023). Global Malaria Report. Geneva: World Health Organization."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+            </div>
+
+            <!-- Preview + Publish -->
+            <div style="padding-top:8px; border-top:1px solid var(--gray-300); display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+              <button type="button" onclick="previewBlogPost()"
+                style="background:#fff; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+                Preview
+              </button>
               <button type="button" onclick="publishBlogPost()" class="btn btn-orange">Publish Post</button>
             </div>
 
@@ -1867,32 +1885,71 @@
     </div>
   </section><!-- /BLOG -->
 
-  <!-- Blog post modal -->
-  <div id="blog-modal" onclick="closeBlogModal(event)"
-    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9000; overflow-y:auto; padding:40px 16px;">
-    <div id="blog-modal-inner" onclick="event.stopPropagation()"
-      style="background:#fff; border-radius:var(--rounded-xl); max-width:780px; margin:0 auto; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.25);">
-      <!-- Cover image -->
-      <img id="bm-img" src="" alt="" style="width:100%; max-height:380px; object-fit:cover; display:none;" />
-      <div style="padding:44px 48px 56px;">
-        <!-- Meta -->
-        <p id="bm-category" class="tag" style="margin-bottom:10px;"></p>
-        <h2 id="bm-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.25;"></h2>
-        <p id="bm-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:32px; letter-spacing:.04em;"></p>
-        <!-- Summary box -->
-        <div id="bm-summary-box"
-          style="display:none; background:var(--gray); border-left:4px solid var(--orange); padding:20px 24px; margin-bottom:40px; border-radius:0 var(--rounded-md) var(--rounded-md) 0;">
-          <p id="bm-summary" style="font-size:var(--text-md); font-style:italic; color:var(--midnight-green); line-height:180%; margin:0;"></p>
+  <!-- Blog post page -->
+  <section id="page-blog-post" class="page">
+    <div style="background:var(--midnight-green); padding:0;">
+      <img id="bm-img" src="" alt="" style="width:100%; max-height:420px; object-fit:cover; display:none;" />
+    </div>
+    <div style="max-width:1100px; margin:0 auto; padding:32px 24px 48px;">
+      <button onclick="showPage('blog')"
+        style="background:none; border:none; cursor:pointer; color:var(--gray-700); font-size:var(--text-sm); font-weight:600; display:flex; align-items:center; gap:6px; margin-bottom:32px; padding:0; font-family:inherit;"
+        onmouseover="this.style.color='var(--midnight-green)'" onmouseout="this.style.color='var(--gray-700)'">
+        ← Back to Blog
+      </button>
+      <div class="post-layout">
+        <!-- Sidebar -->
+        <div class="post-sidebar">
+          <div style="margin-bottom:20px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Category</p>
+            <p id="bm-category" class="tag" style="margin:0;"></p>
+          </div>
+          <div id="bm-sidebar-author-wrap" style="display:none; margin-bottom:20px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Author</p>
+            <p id="bm-sidebar-author" style="font-size:var(--text-sm); color:var(--midnight-green); margin:0;"></p>
+          </div>
+          <div id="bm-sidebar-date-wrap" style="display:none; margin-bottom:28px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Date Published</p>
+            <p id="bm-sidebar-date" style="font-size:var(--text-sm); color:var(--midnight-green); margin:0;"></p>
+          </div>
+          <div id="bm-toc" style="display:none;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 10px;">Contents</p>
+            <ul id="bm-toc-list" style="list-style:none; padding:0; margin:0;"></ul>
+          </div>
         </div>
-        <!-- Post blocks rendered here -->
-        <div id="bm-blocks"></div>
-        <button onclick="closeBlogModalBtn()"
-          style="margin-top:40px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
-          ← Back to Blog
-        </button>
+        <!-- Main content -->
+        <div class="post-main">
+          <h1 id="bm-title" style="font-size:clamp(1.6rem,4vw,var(--text-2xl)); margin-bottom:24px; line-height:1.25;"></h1>
+          <div id="bm-summary-box" style="display:none; margin-bottom:32px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 8px;">Summary</p>
+            <p id="bm-summary" style="font-size:var(--text-base); color:var(--midnight-green); line-height:1.7; margin:0;"></p>
+          </div>
+          <div id="bm-blocks"></div>
+
+          <!-- Comments -->
+          <div style="margin-top:40px; padding-top:32px; border-top:1px solid var(--gray-300);">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 20px;">Comments</p>
+            <div id="bm-comments-list" style="display:flex; flex-direction:column; gap:16px; margin-bottom:28px;"></div>
+            <form onsubmit="submitBlogComment(event)" style="display:flex; flex-direction:column; gap:10px;">
+              <input id="bm-comment-name" type="text" placeholder="Your name"
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit;" required />
+              <textarea id="bm-comment-text" rows="3" placeholder="Write a comment..."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;" required></textarea>
+              <div>
+                <button type="submit" class="btn btn-orange" style="padding:10px 24px;">Post Comment</button>
+              </div>
+            </form>
+          </div>
+
+          <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--gray-300);">
+            <button onclick="showPage('blog')"
+              style="background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+              ← Back to Blog
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <!-- ═══════════════════════════════════════════════════
@@ -1910,7 +1967,7 @@
     <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
 
       <div id="evidence-container"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:40px;">
       </div>
 
       <!-- Admin panel (hidden by default) -->
@@ -1998,6 +2055,13 @@
               <p id="ev-blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
             </div>
 
+            <!-- References -->
+            <div>
+              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">References <span style="font-weight:400; color:var(--gray-700);">— one per line</span></label>
+              <textarea id="ev-post-references" rows="4" placeholder="e.g. WHO (2023). Global Malaria Report. Geneva: World Health Organization."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
+            </div>
+
             <!-- Publish -->
             <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
               <button type="button" onclick="publishEvidencePost()" class="btn btn-orange">Publish Report</button>
@@ -2009,33 +2073,56 @@
     </div>
   </section><!-- /EVIDENCE -->
 
-  <!-- Evidence post modal -->
-  <div id="evidence-modal" onclick="closeEvidenceModal(event)"
-    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9000; overflow-y:auto; padding:40px 16px;">
-    <div id="evidence-modal-inner" onclick="event.stopPropagation()"
-      style="background:#fff; border-radius:var(--rounded-xl); max-width:780px; margin:0 auto; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.25);">
-      <img id="em-img" src="" alt="" style="width:100%; max-height:380px; object-fit:cover; display:none;" />
-      <div style="padding:44px 48px 56px;">
-        <p id="em-category" class="tag" style="margin-bottom:10px;"></p>
-        <h2 id="em-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.25;"></h2>
-        <p id="em-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:32px; letter-spacing:.04em;"></p>
-        <div id="em-summary-box"
-          style="display:none; background:var(--gray); border-left:4px solid var(--orange); padding:20px 24px; margin-bottom:40px; border-radius:0 var(--rounded-md) var(--rounded-md) 0;">
-          <p id="em-summary" style="font-size:var(--text-md); font-style:italic; color:var(--midnight-green); line-height:180%; margin:0;"></p>
+  <!-- Evidence post page -->
+  <section id="page-evidence-post" class="page">
+    <div style="background:var(--midnight-green); padding:0;">
+      <img id="em-img" src="" alt="" style="width:100%; max-height:420px; object-fit:cover; display:none;" />
+    </div>
+    <div style="max-width:1100px; margin:0 auto; padding:32px 24px 48px;">
+      <button onclick="showPage('evidence')"
+        style="background:none; border:none; cursor:pointer; color:var(--gray-700); font-size:var(--text-sm); font-weight:600; display:flex; align-items:center; gap:6px; margin-bottom:32px; padding:0; font-family:inherit;"
+        onmouseover="this.style.color='var(--midnight-green)'" onmouseout="this.style.color='var(--gray-700)'">
+        ← Back to Evidence
+      </button>
+      <div class="post-layout">
+        <!-- Sidebar -->
+        <div class="post-sidebar">
+          <div style="margin-bottom:20px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Category</p>
+            <p id="em-category" class="tag" style="margin:0;"></p>
+          </div>
+          <div id="em-sidebar-date-wrap" style="display:none; margin-bottom:28px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Date Published</p>
+            <p id="em-sidebar-date" style="font-size:var(--text-sm); color:var(--midnight-green); margin:0;"></p>
+          </div>
+          <div id="em-toc" style="display:none;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 10px;">Contents</p>
+            <ul id="em-toc-list" style="list-style:none; padding:0; margin:0;"></ul>
+          </div>
         </div>
-        <div id="em-blocks"></div>
-        <button onclick="closeEvidenceModalBtn()"
-          style="margin-top:40px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
-          ← Back to Evidence
-        </button>
+        <!-- Main content -->
+        <div class="post-main">
+          <h1 id="em-title" style="font-size:clamp(1.6rem,4vw,var(--text-2xl)); margin-bottom:24px; line-height:1.25;"></h1>
+          <div id="em-summary-box" style="display:none; margin-bottom:32px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 8px;">Summary</p>
+            <p id="em-summary" style="font-size:var(--text-base); color:var(--midnight-green); line-height:1.7; margin:0;"></p>
+          </div>
+          <div id="em-blocks"></div>
+          <div style="margin-top:24px; padding-top:24px; border-top:1px solid var(--gray-300);">
+            <button onclick="showPage('evidence')"
+              style="background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+              ← Back to Evidence
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <!-- ═══════ FOOTER ═══════ -->
   <footer
-    style="background:var(--gray); color:var(--gray-700); border-top:1px solid var(--gray-300); padding:56px 24px 32px;">
+    style="background:var(--gray); color:var(--gray-700); border-top:1px solid var(--gray-300); padding:40px 24px 28px;">
     <div style="max-width:var(--container); margin:0 auto;">
       <div
         style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:40px; margin-bottom:48px;">
@@ -2395,21 +2482,34 @@
       }).filter(Boolean);
     }
 
-    function publishBlogPost() {
+    function collectBlogFormData() {
       var title    = document.getElementById('post-title').value.trim();
       var category = document.getElementById('post-category').value.trim();
       var summary  = document.getElementById('post-summary').value.trim();
       var date     = document.getElementById('post-date').value.trim();
+      var author   = document.getElementById('post-author').value.trim();
       var imgEl    = document.getElementById('post-image');
-      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-
       var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
-      var blocks   = collectBlocks();
-      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
+      var blocks     = collectBlocks();
+      var references = document.getElementById('post-references').value.trim();
+      return { title: title, category: category, summary: summary, date: date, author: author, coverSrc: coverSrc, blocks: blocks, references: references };
+    }
 
-      var coverHtml = coverSrc
-        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
+    function previewBlogPost() {
+      var data = collectBlogFormData();
+      if (!data.title) { alert('Please fill in a title before previewing.'); return; }
+      openBlogModal(data, true);
+    }
+
+    function publishBlogPost() {
+      var data = collectBlogFormData();
+      if (!data.title || !data.summary) { alert('Please fill in a title and summary.'); return; }
+
+      var coverHtml = data.coverSrc
+        ? '<img src="' + data.coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
         : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
+
+      var byline = (data.author ? 'By ' + data.author : '') + (data.author && data.date ? ' &nbsp;·&nbsp; ' : '') + (data.date || (!data.author ? 'Just now' : ''));
 
       var card = document.createElement('div');
       card.className = 'card';
@@ -2417,15 +2517,15 @@
       card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this post?\'))this.closest(\'.card\').remove();" style="display:' + (blogAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
         + coverHtml
         + '<div style="padding:24px;">'
-        + '<span class="tag">' + (category || 'General') + '</span>'
-        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
-        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
+        + '<span class="tag">' + (data.category || 'General') + '</span>'
+        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + data.title + '</h3>'
+        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + data.summary + '</p>'
         + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
-        + '<span>' + (date || 'Just now') + '</span>'
+        + '<span>' + byline + '</span>'
         + '<span style="color:var(--orange);font-weight:700;">Read more →</span>'
         + '</div></div>';
 
-      card.onclick = function() { openBlogModal(postData); };
+      card.onclick = function() { openBlogModal(data, false); };
       document.getElementById('blog-posts-container').prepend(card);
 
       // Reset
@@ -2433,7 +2533,9 @@
       document.getElementById('post-category').value = '';
       document.getElementById('post-summary').value = '';
       document.getElementById('post-date').value = '';
+      document.getElementById('post-author').value = '';
       document.getElementById('post-image').value = '';
+      document.getElementById('post-references').value = '';
       document.getElementById('blocks-editor').innerHTML = '';
       document.getElementById('blocks-hint').style.display = 'block';
       editorBlocks = [];
@@ -2446,10 +2548,27 @@
       blogAdminActive = false;
     }
 
-    function openBlogModal(postData) {
+    function openBlogModal(postData, isPreview) {
       document.getElementById('bm-title').textContent = postData.title;
       document.getElementById('bm-category').textContent = postData.category || 'General';
-      document.getElementById('bm-date').textContent = postData.date || 'Just now';
+      // Sidebar: author
+      var authorEl = document.getElementById('bm-sidebar-author');
+      var authorWrap = document.getElementById('bm-sidebar-author-wrap');
+      if (postData.author) {
+        authorEl.textContent = postData.author;
+        authorWrap.style.display = 'block';
+      } else {
+        authorWrap.style.display = 'none';
+      }
+      // Sidebar: date
+      var dateEl = document.getElementById('bm-sidebar-date');
+      var dateWrap = document.getElementById('bm-sidebar-date-wrap');
+      if (postData.date) {
+        dateEl.textContent = postData.date;
+        dateWrap.style.display = 'block';
+      } else {
+        dateWrap.style.display = 'none';
+      }
       var img = document.getElementById('bm-img');
       img.src = postData.coverSrc || '';
       img.style.display = postData.coverSrc ? 'block' : 'none';
@@ -2460,61 +2579,113 @@
       } else {
         summaryBox.style.display = 'none';
       }
-      renderBlocksInModal(postData.blocks || [], document.getElementById('bm-blocks'));
-      document.getElementById('blog-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      renderBlocksInModal(postData.blocks || [], document.getElementById('bm-blocks'), 'bm-toc-list', 'bm-toc');
+      renderReferences(postData.references || '', document.getElementById('bm-blocks'));
+      // Update back buttons based on preview mode
+      document.querySelectorAll('#page-blog-post button[onclick="showPage(\'blog\')"]').forEach(function(btn) {
+        btn.innerHTML = isPreview ? '← Back to Editor' : '← Back to Blog';
+        if (isPreview) btn.setAttribute('onclick', 'showPage(\'blog\')');
+      });
+      showPage('blog-post');
     }
 
-    function renderBlocksInModal(blocks, container) {
+    function renderBlocksInModal(blocks, container, tocListId, tocWrapperId) {
       container.innerHTML = '';
+      var tocList = tocListId ? document.getElementById(tocListId) : null;
+      var tocWrap = tocWrapperId ? document.getElementById(tocWrapperId) : null;
+      if (tocList) tocList.innerHTML = '';
+      var headingCount = 0;
       blocks.forEach(function(block, idx) {
         if (block.type === 'text') {
           var p = document.createElement('div');
-          p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:190%;margin-bottom:24px;';
+          p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:1.7;margin-bottom:16px;';
           p.innerHTML = block.content;
           container.appendChild(p);
         } else if (block.type === 'heading') {
           var h = document.createElement('h3');
-          h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;';
+          var anchorId = 'section-' + idx;
+          h.id = anchorId;
+          h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;scroll-margin-top:90px;';
           h.textContent = block.content;
           container.appendChild(h);
+          // Add to TOC
+          if (tocList && block.content) {
+            headingCount++;
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = '#' + anchorId;
+            a.className = 'post-toc-link';
+            a.textContent = block.content;
+            a.onclick = function(e) { e.preventDefault(); h.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+            li.appendChild(a);
+            tocList.appendChild(li);
+          }
         } else if (block.type === 'image') {
           var div = document.createElement('div');
-          div.style.cssText = 'margin-bottom:32px;text-align:center;';
+          div.style.cssText = 'margin-bottom:16px;text-align:center;';
           if (block.src) {
             var im = document.createElement('img');
             im.src = block.src;
-            im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;';
+            im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;display:block;';
             div.appendChild(im);
           }
           if (block.caption) {
             var cap = document.createElement('p');
-            cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:8px;font-style:italic;';
+            cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:4px;';
             cap.textContent = block.caption;
             div.appendChild(cap);
           }
           container.appendChild(div);
         } else if (block.type === 'chart') {
           var cWrap = document.createElement('div');
-          cWrap.style.cssText = 'background:var(--gray);border-radius:var(--rounded-lg);padding:24px;margin-bottom:32px;';
+          cWrap.style.cssText = 'margin-bottom:16px;';
           var canvas = document.createElement('canvas');
           canvas.id = 'mc-' + idx + '-' + Date.now();
           cWrap.appendChild(canvas);
+          if (block.title) {
+            var chartCap = document.createElement('p');
+            chartCap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:4px;';
+            chartCap.textContent = block.title;
+            cWrap.appendChild(chartCap);
+          }
           container.appendChild(cWrap);
           (function(c, b) {
             setTimeout(function() { buildChart(c, b.chartType || 'bar', b.title, b.labels, b.values); }, 60);
           })(canvas, block);
         }
       });
+      // Show/hide TOC based on whether any headings exist
+      if (tocWrap) tocWrap.style.display = headingCount > 0 ? 'block' : 'none';
+    }
+
+    function renderReferences(refs, container) {
+      // Remove any existing references section
+      var existing = container.querySelector('.post-references-section');
+      if (existing) existing.remove();
+      if (!refs) return;
+      var lines = refs.split('\n').map(function(l){ return l.trim(); }).filter(function(l){ return l.length > 0; });
+      if (!lines.length) return;
+      var section = document.createElement('div');
+      section.className = 'post-references-section';
+      section.style.cssText = 'margin-top:32px; padding-top:24px; border-top:1px solid var(--gray-300);';
+      var heading = document.createElement('p');
+      heading.style.cssText = 'font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 12px;';
+      heading.textContent = 'References';
+      section.appendChild(heading);
+      var ol = document.createElement('ol');
+      ol.style.cssText = 'padding-left:20px; margin:0;';
+      lines.forEach(function(line) {
+        var li = document.createElement('li');
+        li.style.cssText = 'font-size:var(--text-sm); color:var(--gray-700); line-height:1.6; margin-bottom:6px;';
+        li.textContent = line;
+        ol.appendChild(li);
+      });
+      section.appendChild(ol);
+      container.appendChild(section);
     }
 
     function closeBlogModalBtn() {
-      document.getElementById('blog-modal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeBlogModal(e) {
-      if (e.target.id === 'blog-modal') closeBlogModalBtn();
+      showPage('blog');
     }
 
     // ── Evidence block editor ─────────────────────────────────
@@ -2690,9 +2861,10 @@
       var imgEl    = document.getElementById('ev-post-image');
       if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
 
-      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
-      var blocks   = collectEvBlocks();
-      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
+      var coverSrc   = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
+      var blocks     = collectEvBlocks();
+      var references = document.getElementById('ev-post-references').value.trim();
+      var postData   = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks, references: references };
 
       var coverHtml = coverSrc
         ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
@@ -2721,6 +2893,7 @@
       document.getElementById('ev-post-summary').value = '';
       document.getElementById('ev-post-date').value = '';
       document.getElementById('ev-post-image').value = '';
+      document.getElementById('ev-post-references').value = '';
       document.getElementById('ev-blocks-editor').innerHTML = '';
       document.getElementById('ev-blocks-hint').style.display = 'block';
       evEditorBlocks = [];
@@ -2736,7 +2909,15 @@
     function openEvidenceModal(postData) {
       document.getElementById('em-title').textContent = postData.title;
       document.getElementById('em-category').textContent = postData.category || 'Research';
-      document.getElementById('em-date').textContent = postData.date || 'Just now';
+      // Sidebar: date
+      var dateEl = document.getElementById('em-sidebar-date');
+      var dateWrap = document.getElementById('em-sidebar-date-wrap');
+      if (postData.date) {
+        dateEl.textContent = postData.date;
+        dateWrap.style.display = 'block';
+      } else {
+        dateWrap.style.display = 'none';
+      }
       var img = document.getElementById('em-img');
       img.src = postData.coverSrc || '';
       img.style.display = postData.coverSrc ? 'block' : 'none';
@@ -2747,18 +2928,13 @@
       } else {
         summaryBox.style.display = 'none';
       }
-      renderBlocksInModal(postData.blocks || [], document.getElementById('em-blocks'));
-      document.getElementById('evidence-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      renderBlocksInModal(postData.blocks || [], document.getElementById('em-blocks'), 'em-toc-list', 'em-toc');
+      renderReferences(postData.references || '', document.getElementById('em-blocks'));
+      showPage('evidence-post');
     }
 
     function closeEvidenceModalBtn() {
-      document.getElementById('evidence-modal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeEvidenceModal(e) {
-      if (e.target.id === 'evidence-modal') closeEvidenceModalBtn();
+      showPage('evidence');
     }
 
 
