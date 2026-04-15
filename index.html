@@ -2256,6 +2256,18 @@
       return _sbClient;
     }
 
+    // ── Upload cover image to Supabase Storage ──────────────────
+    async function uploadCoverImage(file, folder) {
+      if (!file) return '';
+      var sb = getSB();
+      var ext = file.name.split('.').pop().toLowerCase();
+      var fileName = folder + '/' + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
+      var { data, error } = await sb.storage.from('covers').upload(fileName, file, { contentType: file.type, upsert: false });
+      if (error) { console.error('Image upload error:', error); return ''; }
+      var { data: urlData } = sb.storage.from('covers').getPublicUrl(fileName);
+      return urlData.publicUrl || '';
+    }
+
     // ── Admin password gate ───────────────────────────────────
     function checkAdminPassword() {
       var pw = document.getElementById('admin-password').value;
@@ -2511,7 +2523,8 @@
       var date     = document.getElementById('post-date').value.trim();
       var author   = document.getElementById('post-author').value.trim();
       var imgEl    = document.getElementById('post-image');
-      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
+      var coverFile = (imgEl && imgEl.files && imgEl.files[0]) ? imgEl.files[0] : null;
+      var coverSrc = coverFile ? URL.createObjectURL(coverFile) : '';
       var blocks     = collectBlocks();
       var references = document.getElementById('post-references').value.trim();
       return { title: title, category: category, summary: summary, date: date, author: author, coverSrc: coverSrc, blocks: blocks, references: references };
@@ -2558,8 +2571,12 @@
     async function publishBlogPost() {
       var data = collectBlogFormData();
       if (!data.title || !data.summary) { alert('Please fill in a title and summary.'); return; }
+      // Upload cover image to Supabase Storage for a permanent URL
+      var imgEl = document.getElementById('post-image');
+      var coverFile = (imgEl && imgEl.files && imgEl.files[0]) ? imgEl.files[0] : null;
+      var coverUrl = await uploadCoverImage(coverFile, 'blog');
       var sb = getSB();
-      var { error } = await sb.from('blog_posts').insert([{ title: data.title, category: data.category, summary: data.summary, author: data.author, date: data.date, cover_src: data.coverSrc, blocks: data.blocks, post_references: data.references, write_token: window.SUPABASE_WRITE_TOKEN }]);
+      var { error } = await sb.from('blog_posts').insert([{ title: data.title, category: data.category, summary: data.summary, author: data.author, date: data.date, cover_src: coverUrl, blocks: data.blocks, post_references: data.references }]);
       if (error) { alert('Error saving post: ' + error.message); return; }
       await loadBlogPosts();
 
@@ -2922,11 +2939,13 @@
       var date     = document.getElementById('ev-post-date').value.trim();
       var imgEl    = document.getElementById('ev-post-image');
       if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-      var coverSrc   = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
+      // Upload cover image to Supabase Storage for a permanent URL
+      var coverFile = (imgEl && imgEl.files && imgEl.files[0]) ? imgEl.files[0] : null;
+      var coverUrl = await uploadCoverImage(coverFile, 'evidence');
       var blocks     = collectEvBlocks();
       var references = document.getElementById('ev-post-references').value.trim();
       var sb = getSB();
-      var { error } = await sb.from('evidence_posts').insert([{ title: title, category: category, summary: summary, date: date, cover_src: coverSrc, blocks: blocks, post_references: references, write_token: window.SUPABASE_WRITE_TOKEN }]);
+      var { error } = await sb.from('evidence_posts').insert([{ title: title, category: category, summary: summary, date: date, cover_src: coverUrl, blocks: blocks, post_references: references }]);
       if (error) { alert('Error saving report: ' + error.message); return; }
       await loadEvidencePosts();
 
