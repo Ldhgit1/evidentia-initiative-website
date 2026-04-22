@@ -4,20 +4,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evidence for Good | Evidential Consulting Group</title>
-  <meta name="description"
-    content="Evidential Consulting Group is a social impact organisation using evidence to save and improve lives across sub-Saharan Africa. We work in maternal health, environmental health, and infectious disease control." />
-  <meta name="keywords"
-    content="evidence for good, evidential consulting group, social impact, global health, sub-Saharan Africa, maternal health, evidence-based interventions, effective altruism" />
-  <meta name="robots" content="index, follow" />
-  <!-- Open Graph (for social sharing and richer Google previews) -->
-  <meta property="og:title" content="Evidence for Good | Evidential Consulting Group" />
-  <meta property="og:description"
-    content="A social impact organisation using rigorous evidence to improve lives across sub-Saharan Africa — in maternal health, environmental health, and infectious disease control." />
-  <meta property="og:type" content="website" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+<title>Evidence for Good | Evidence-Based Public Health and Digital Innovation in Africa</title>
+
+<meta name="description"
+  content="Evidence for Good partners with governments and communities across Africa to design, evaluate, and scale cost-effective solutions in maternal health, environmental health, and infectious disease control." />
+
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.evidenceforgood.org/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Evidence for Good | Evidence-Based Public Health and Digital Innovation in Africa" />
+<meta property="og:description"
+  content="Evidence for Good partners with governments and communities across Africa to design, evaluate, and scale cost-effective solutions in maternal health, environmental health, and infectious disease control." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.evidenceforgood.org/" />
+<meta property="og:image" content="https://www.evidenceforgood.org/image-baby.jpeg" />
+<meta property="og:image:alt" content="Evidence for Good homepage preview image" />
+<meta property="og:site_name" content="Evidence for Good" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Evidence for Good | Evidence-Based Public Health and Digital Innovation in Africa" />
+<meta name="twitter:description"
+  content="Evidence for Good partners with governments and communities across Africa to design, evaluate, and scale cost-effective solutions in maternal health, environmental health, and infectious disease control." />
+<meta name="twitter:image" content="https://www.evidenceforgood.org/image-baby.jpeg" />
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Evidence for Good",
+      "alternateName": "E4G",
+      "url": "https://www.evidenceforgood.org/",
+      "logo": "https://www.evidenceforgood.org/image-baby.jpeg",
+      "email": "info@evidenceforgood.org",
+      "telephone": "+2347065266421"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Evidence for Good",
+      "url": "https://www.evidenceforgood.org/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Evidence for Good"
+      }
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -602,8 +641,8 @@
     style="background:#fff; border-bottom:1px solid var(--gray-300); position:sticky; top:0; z-index:50; height:var(--height-header);">
     <div
       style="width:100%; padding:0 32px; height:100%; display:flex; align-items:center; justify-content:space-between;">
-      <button onclick="showPage('home')"
-        style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:12px;">
+      <a href="/"
+  style="text-decoration:none;display:flex;align-items:center;gap:12px;">
         <!-- Logo mark + wordmark -->
         <span style="display:flex; align-items:center; gap:12px;">
 
@@ -622,23 +661,23 @@
             for Good</span>
 
         </span>
-      </button>
+      </a>
 
-      <div class="hidden md:flex" style="gap:28px; align-items:center;">
-        <button id="nav-home" onclick="showPage('home')" class="nav-link"
-          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</button>
-        <button id="nav-about" onclick="showPage('about')" class="nav-link"
-          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
-          Us</button>
-        <button id="nav-approach" onclick="showPage('approach')" class="nav-link"
-          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
-          Approach</button>
-        <button id="nav-blog" onclick="showPage('blog')" class="nav-link"
-          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</button>
-        <button id="nav-evidence" onclick="showPage('evidence')" class="nav-link"
-          style="background:none;border:none;cursor:pointer;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</button>
-        <button onclick="showPage('about')" class="btn btn-orange" style="margin-left:8px;">Get in touch</button>
-      </div>
+<div class="hidden md:flex" style="gap:28px; align-items:center;">
+  <a href="/" id="nav-home" class="nav-link"
+    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
+  <a href="/about/" id="nav-about" class="nav-link"
+    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+    Us</a>
+  <a href="/approach/" id="nav-approach" class="nav-link"
+    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+    Approach</a>
+  <a href="/blog/" id="nav-blog" class="nav-link"
+    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
+  <a href="/evidence/" id="nav-evidence" class="nav-link"
+    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
+  <a href="/contact/" class="btn btn-orange" style="margin-left:8px;text-decoration:none;">Get in touch</a>
+</div>
 
       <button onclick="toggleMenu()" class="md:hidden"
         style="background:none;border:none;cursor:pointer;color:var(--midnight-green);">
@@ -648,23 +687,22 @@
       </button>
     </div>
 
-    <div id="mobile-menu"
-      style="display:none; background:#fff; border-top:1px solid var(--gray-300); padding:16px 24px; flex-direction:column; gap:12px;">
-      <button onclick="showPage('home');toggleMenu()"
-        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</button>
-      <button onclick="showPage('about');toggleMenu()"
-        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
-        Us</button>
-      <button onclick="showPage('approach');toggleMenu()"
-        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
-        Approach</button>
-      <button onclick="showPage('blog');toggleMenu()"
-        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</button>
-      <button onclick="showPage('evidence');toggleMenu()"
-        style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</button>
-      <button onclick="showPage('about');toggleMenu()" class="btn btn-orange" style="width:fit-content;">Get in
-        touch</button>
-    </div>
+<div id="mobile-menu"
+  style="display:none; background:#fff; border-top:1px solid var(--gray-300); padding:16px 24px; flex-direction:column; gap:12px;">
+  <a href="/"
+    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
+  <a href="/about/"
+    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+    Us</a>
+  <a href="/approach/"
+    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+    Approach</a>
+  <a href="/blog/"
+    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
+  <a href="/evidence/"
+    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
+  <a href="/contact/" class="btn btn-orange" style="width:fit-content;text-decoration:none;">Get in touch</a>
+</div>
   </nav>
 
 
@@ -677,7 +715,7 @@
     <div id="hero-carousel" style="position:relative; width:100%; height:620px; overflow:hidden;">
 
       <!-- Background image — shared across both slides -->
-      <img src="image-baby.jpeg" alt="Hero"
+      <img src="/image-baby.jpeg" alt="Mother and baby representing health and human development"
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;" />
       <!-- Dark overlay -->
       <div
@@ -724,8 +762,8 @@
       <!-- Buttons — bottom right, always visible -->
       <div id="hero-buttons"
         style="position:absolute; bottom:32px; right:32px; z-index:4; display:flex; gap:12px; flex-wrap:wrap;">
-        <button onclick="showPage('approach')" class="btn btn-orange">Our Approach</button>
-        <button onclick="showPage('about')" class="btn btn-outline">Who We Are</button>
+        <button onclick="window.location.href='/approach/'" class="btn btn-orange">Our Approach</button>
+        <button onclick="window.location.href='/about/'" class="btn btn-outline">Who We Are</button>
       </div>
 
       <!-- Slide dots — bottom centre -->
@@ -771,7 +809,7 @@
               supporting health system strengthening, developing and scaling interventions that work.</p>
             <p style="font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); margin-bottom:20px;">No
               mother should die giving life.</p>
-            <button onclick="showPage('project1')"
+            <button onclick="window.location.href='/project1/'"
               style="background:none; border:none; cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--orange); padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px;">
               See our work
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -796,7 +834,7 @@
             </h3>
             <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:20px;">
               Millions of people across sub-Saharan Africa face daily exposure to environmental hazards, from <a href="https://www.afdb.org/en/news-and-events/world-water-day-2025-preserving-africas-water-resources-81976#:~:text=Each%20year%2C%20World%20Water%20Day,fundamental%20to%20Africa's%20socioeconomic%20development." target="_blank" style="color:var(--gray-700); text-decoration:underline; text-underline-offset:3px;">unsafe water (378 million people affected)</a> and air pollution to toxic substances such as lead. We generate evidence on how these exposures affect health and development, and support interventions to reduce their burden.</p>
-            <button onclick="showPage('evidence')"
+            <button onclick="window.location.href='/evidence/'"
               style="background:none; border:none; cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--dark-green); padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px;">
               Read our work on tackling Lead exposure
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -824,7 +862,7 @@
             <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:20px;">Generating
               and translating evidence on what works, from vaccine effectiveness to the real-world human cost of
               declining donor support for HIV and TB care.</p>
-            <button onclick="showPage('project2')"
+            <button onclick="window.location.href='/project2/'"
               style="background:none; border:none; cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--midnight-green); padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px;">
               See our work
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -862,7 +900,7 @@
           <!-- Panel 1 — active by default -->
           <div class="svc-panel" onclick="setSvcPanel(0)"
             style="flex:3.5; transition:flex 0.45s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; min-width:0; overflow:hidden;">
-            <img src="Africa-1.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <img src="/Africa-1.jpg" alt="Community health and development context in Africa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
             <div style="position:absolute; inset:0; background:rgba(0,0,0,0.5);"></div>
             <div class="svc-active-content"
               style="position:absolute; inset:0; background:var(--dark-green); padding:40px 36px; display:flex; flex-direction:column; justify-content:center; box-sizing:border-box; z-index:2;">
@@ -968,7 +1006,7 @@
       <div
         style="max-width:var(--container); margin:0 auto; display:flex; flex-wrap:wrap; gap:64px; align-items:center;">
         <div style="flex:1 1 280px;">
-          <img src="facility.jpeg" alt="Who We Are"
+          <img src="/facility.jpeg" alt="Evidence for Good facility or workspace" loading="lazy"
             style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;" />
         </div>
         <div style="flex:1 1 340px;">
@@ -994,7 +1032,13 @@
                 with governments, institutions, and communities.</p>
             </div>
           </div>
-          <button onclick="showPage('about')" class="btn btn-dark">Learn more about us</button>
+            <p style="font-size:var(--text-sm); color:var(--gray-700); line-height:175%; margin-bottom:20px;">
+  Learn more about <a href="approach/" style="color:var(--dark-green); text-decoration:underline; text-underline-offset:3px;">how we work</a>,
+  explore our <a href="evidence/" style="color:var(--dark-green); text-decoration:underline; text-underline-offset:3px;">research and evidence</a>,
+  or see our <a href="project1/" style="color:var(--dark-green); text-decoration:underline; text-underline-offset:3px;">current projects</a>.
+</p>
+
+          <button onclick="window.location.href='/about/'" class="btn btn-dark">Learn more about us</button>
         </div>
       </div>
     </div>
@@ -1049,7 +1093,7 @@
           </div>
         </div>
         <div style="text-align:center; margin-top:40px;">
-          <button onclick="showPage('approach')" class="btn btn-orange">Read the full approach</button>
+          <button onclick="window.location.href='/approach/'" class="btn btn-orange">Read the full approach</button>
         </div>
       </div>
     </div>
@@ -1062,7 +1106,7 @@
         style="display:flex; transition:transform 0.7s cubic-bezier(0.77,0,0.18,1); will-change:transform; min-height:520px;">
 
         <!-- Slide 1 -->
-        <div class="work-slide" onclick="showPage('project1')"
+        <div class="work-slide" onclick="window.location.href='/project1/'"
           style="min-width:100%; position:relative; cursor:pointer; overflow:hidden; height:520px;">
           <img src="https://placehold.co/1400x520/00193a/00193a?text=+" alt=""
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover; filter:brightness(0.45); transition:transform 0.8s ease; transform:scale(1);"
@@ -1096,7 +1140,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="work-slide" onclick="showPage('project2')"
+        <div class="work-slide" onclick="window.location.href='/project2/'"
           style="min-width:100%; position:relative; cursor:pointer; overflow:hidden; height:520px;">
           <img src="https://placehold.co/1400x520/003366/003366?text=+" alt=""
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover; filter:brightness(0.45); transition:transform 0.8s ease; transform:scale(1);"
@@ -1184,7 +1228,7 @@
     <!-- Hero banner -->
     <div style="background:var(--dark-green); color:#fff; padding:64px 24px;">
       <div style="max-width:var(--container); margin:0 auto;">
-        <button onclick="showPage('home')"
+        <button onclick="window.location.href='/'"
           style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:var(--text-sm);font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:28px;padding:0;font-family:inherit;"
           onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
           ← Back to Our Work
@@ -1336,7 +1380,7 @@
           she needs to survive and thrive.</p>
       </div>
 
-      <button onclick="showPage('home')" class="btn btn-dark">← Back to Our Work</button>
+      <button onclick="window.location.href='/'" class="btn btn-dark">← Back to Our Work</button>
     </div>
   </section><!-- /PROJECT1 -->
 
@@ -1349,7 +1393,7 @@
     <!-- Hero banner -->
     <div style="background:var(--dark-green); color:#fff; padding:64px 24px;">
       <div style="max-width:var(--container); margin:0 auto;">
-        <button onclick="showPage('home')"
+        <button onclick="window.location.href='/'"
           style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:var(--text-sm);font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:28px;padding:0;font-family:inherit;"
           onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
           ← Back to Our Work
@@ -1436,7 +1480,7 @@
         </div>
       </div>
 
-      <button onclick="showPage('home')" class="btn btn-dark">← Back to Our Work</button>
+      <button onclick="window.location.href='/'" class="btn btn-dark">← Back to Our Work</button>
     </div>
   </section><!-- /PROJECT2 -->
 
@@ -1468,7 +1512,7 @@
             it most.</p>
         </div>
         <div style="flex:1 1 280px;">
-          <img src="facility.jpeg" alt="E4G Facility"
+          <img src="/facility.jpeg" alt="Evidence for Good team or facility supporting public health work" loading="lazy"
             style="width:100%; border-radius:var(--rounded-xl); object-fit:cover;" />
         </div>
       </div>
@@ -1587,8 +1631,8 @@
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="Kunle.jpg" alt="Kunle Oreagba"
-            style="width:100%; height:220px; object-fit:cover; object-position:top;" />
+          <img src="/Kunle.jpg" alt="Kunle Oreagba" loading="lazy"
+          style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
             <h4 style="font-size:var(--text-md); margin-bottom:4px;">Kunle Oreagba</h4>
             <p style="font-size:var(--text-sm); color:var(--dark-green); font-weight:700; margin-bottom:8px;">Managing Partner</p>
@@ -1598,7 +1642,7 @@
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="Lawal Lukman.jpeg" alt="Dr. Lawal Lukman"
+          <img src="/Lawal Lukman.jpeg" alt="Dr. Lawal Lukman" loading="lazy"
             style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
             <h4 style="font-size:var(--text-md); margin-bottom:4px;">Dr. Lawal Lukman</h4>
@@ -1609,7 +1653,7 @@
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="Rodiat Loke.jpeg" alt="Rodiat Loke"
+          <img src="/Rodiat Loke.jpeg" alt="Rodiat Loke" loading="lazy"
             style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
             <h4 style="font-size:var(--text-md); margin-bottom:4px;">Rodiat Loke</h4>
@@ -1620,7 +1664,7 @@
 
         <div
           style="background:#fff; border-radius:var(--rounded-lg); overflow:hidden; box-shadow:var(--shadow); padding-bottom:20px; text-align:center;">
-          <img src="Yusuff.jpeg" alt="Yusuff Adesoji"
+          <img src="/Yusuff.jpeg" alt="Yusuff Adesoji" loading="lazy"
             style="width:100%; height:220px; object-fit:cover; object-position:top;" />
           <div style="padding:16px 16px 0;">
             <h4 style="font-size:var(--text-md); margin-bottom:4px;">Yusuff Adesoji</h4>
@@ -1647,7 +1691,7 @@
   <!-- ═══════════════════════════════════════════════════
      OUR APPROACH
 ════════════════════════════════════════════════════ -->
-  <section id="page-approach" class="page">
+  <section id="page-approach">
 
     <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
       <p class="tag" style="color:var(--orange); margin-bottom:12px;">How We Work</p>
@@ -1758,114 +1802,21 @@
 ════════════════════════════════════════════════════ -->
   <section id="page-blog" class="page">
 
-    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
-      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Insights</p>
-      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Blog</h1>
-      <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Perspectives, updates, and thinking from
-        our team.</p>
+      <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+    <p class="tag" style="color:var(--orange); margin-bottom:12px;">Insights</p>
+    <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Blog</h1>
+    <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Perspectives, updates, and thinking from
+      our team.</p>
+  </div>
+
+  <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
+
+    <div id="blog-posts-container"
+      style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
     </div>
 
-    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
-
-      <div id="blog-posts-container"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
-      </div>
-
-      <!-- Add post form (admin only) -->
-      <div style="border-top:1px solid var(--gray-300); padding-top:40px; text-align:right;">
-        <button onclick="toggleAdminPanel()" id="admin-toggle-btn"
-          style="background:none; border:none; color:var(--gray-300); font-size:var(--text-xs); cursor:pointer; font-family:inherit; opacity:0.4;">
-          &#9679;&#9679;&#9679;
-        </button>
-      </div>
-      <div id="admin-panel" style="display:none; padding-top:24px;">
-        <div id="admin-lock">
-          <p class="tag" style="margin-bottom:8px;">Admin Access</p>
-          <div style="display:flex; gap:12px; align-items:center; max-width:360px;">
-            <input id="admin-password" type="password" placeholder="Enter admin password"
-              style="flex:1; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 16px; font-size:var(--text-sm); font-family:inherit;" />
-            <button onclick="checkAdminPassword()"
-              style="background:var(--dark-green); color:#fff; border:none; border-radius:var(--rounded); padding:12px 20px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
-              Enter
-            </button>
-          </div>
-          <p id="admin-error" style="color:#c0392b; font-size:var(--text-xs); margin-top:8px; display:none;">Incorrect password.</p>
-        </div>
-        <div id="admin-form-wrapper" style="display:none;">
-          <p class="tag" style="margin-bottom:8px;">Admin</p>
-          <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Add a New Post</h2>
-          <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Build your post below — add text, headings, images and charts in any order.</p>
-
-          <div style="max-width:700px; display:flex; flex-direction:column; gap:20px;">
-
-            <!-- Title + Category -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
-                <input id="post-title" type="text" placeholder="Post title..."
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
-                <input id="post-category" type="text" placeholder="e.g. Digital Health"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-            </div>
-
-            <!-- Cover image + Date -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Cover Image <span style="font-weight:400; color:var(--gray-700);">(card thumbnail)</span></label>
-                <input id="post-image" type="file" accept="image/*"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; background:#fff; cursor:pointer;" />
-              </div>
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
-                <input id="post-date" type="text" placeholder="e.g. April 2026"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-            </div>
-
-            <!-- Summary -->
-            <div>
-              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary / Introduction <span style="font-weight:400; color:var(--gray-700);">— shown highlighted at top of post and on the card</span></label>
-              <textarea id="post-summary" rows="3" placeholder="Write a brief intro that readers see first..."
-                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
-            </div>
-
-            <!-- Block editor -->
-            <div>
-              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:10px;">Post Content <span style="font-weight:400; color:var(--gray-700);">— add blocks in any order</span></label>
-              <!-- Toolbar -->
-              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
-                <button type="button" onclick="addEditorBlock('text')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg> Paragraph
-                </button>
-                <button type="button" onclick="addEditorBlock('heading')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h4m0 0v12m0-6h8m0-6h4m-4 0v12m0-6H8"/></svg> Heading
-                </button>
-                <button type="button" onclick="addEditorBlock('image')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/></svg> Image
-                </button>
-                <button type="button" onclick="addEditorBlock('chart')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg> Chart
-                </button>
-              </div>
-              <!-- Blocks list -->
-              <div id="blocks-editor" style="display:flex; flex-direction:column; gap:10px;"></div>
-              <p id="blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
-            </div>
-
-            <!-- Publish -->
-            <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
-              <button type="button" onclick="publishBlogPost()" class="btn btn-orange">Publish Post</button>
-            </div>
-
-          </div>
-        </div><!-- /admin-form-wrapper -->
-      </div><!-- /admin-panel -->
-    </div>
-  </section><!-- /BLOG -->
+  </div>
+</section><!-- /BLOG -->
 
   <!-- Blog post modal -->
   <div id="blog-modal" onclick="closeBlogModal(event)"
@@ -1901,113 +1852,20 @@
   <section id="page-evidence" class="page">
 
     <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
-      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Research</p>
-      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Evidence</h1>
-      <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Our research findings, reports, and
-        publications — open and accessible.</p>
+    <p class="tag" style="color:var(--orange); margin-bottom:12px;">Research</p>
+    <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Evidence</h1>
+    <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Our research findings, reports, and
+      publications — open and accessible.</p>
+  </div>
+
+  <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
+
+    <div id="evidence-container"
+      style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
     </div>
 
-    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
-
-      <div id="evidence-container"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
-      </div>
-
-      <!-- Admin panel (hidden by default) -->
-      <div style="border-top:1px solid var(--gray-300); padding-top:40px; text-align:right;">
-        <button onclick="toggleEvAdminPanel()" id="ev-admin-toggle-btn"
-          style="background:none; border:none; color:var(--gray-300); font-size:var(--text-xs); cursor:pointer; font-family:inherit; opacity:0.4;">
-          &#9679;&#9679;&#9679;
-        </button>
-      </div>
-      <div id="ev-admin-panel" style="display:none; padding-top:24px;">
-        <div id="ev-admin-lock">
-          <p class="tag" style="margin-bottom:8px;">Admin Access</p>
-          <div style="display:flex; gap:12px; align-items:center; max-width:360px;">
-            <input id="ev-admin-password" type="password" placeholder="Enter admin password"
-              style="flex:1; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 16px; font-size:var(--text-sm); font-family:inherit;" />
-            <button onclick="checkEvAdminPassword()"
-              style="background:var(--dark-green); color:#fff; border:none; border-radius:var(--rounded); padding:12px 20px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
-              Enter
-            </button>
-          </div>
-          <p id="ev-admin-error" style="color:#c0392b; font-size:var(--text-xs); margin-top:8px; display:none;">Incorrect password.</p>
-        </div>
-        <div id="ev-admin-form-wrapper" style="display:none;">
-          <p class="tag" style="margin-bottom:8px;">Admin</p>
-          <h2 style="font-size:var(--text-xl); margin-bottom:8px;">Upload Research Findings</h2>
-          <p style="color:var(--gray-700); font-size:var(--text-sm); margin-bottom:28px;">Build your evidence report below — add text, headings, images and charts in any order.</p>
-
-          <div style="max-width:700px; display:flex; flex-direction:column; gap:20px;">
-
-            <!-- Title + Category -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Title</label>
-                <input id="ev-post-title" type="text" placeholder="Report title..."
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Category</label>
-                <input id="ev-post-category" type="text" placeholder="e.g. Maternal Health"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-            </div>
-
-            <!-- Cover image + Date -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Cover Image <span style="font-weight:400; color:var(--gray-700);">(card thumbnail)</span></label>
-                <input id="ev-post-image" type="file" accept="image/*"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; background:#fff; cursor:pointer;" />
-              </div>
-              <div>
-                <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Date</label>
-                <input id="ev-post-date" type="text" placeholder="e.g. April 2026"
-                  style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit;" />
-              </div>
-            </div>
-
-            <!-- Summary -->
-            <div>
-              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:6px;">Summary / Key Findings <span style="font-weight:400; color:var(--gray-700);">— shown highlighted at top of report and on the card</span></label>
-              <textarea id="ev-post-summary" rows="3" placeholder="Brief summary of key findings..."
-                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:12px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;"></textarea>
-            </div>
-
-            <!-- Block editor -->
-            <div>
-              <label style="display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:10px;">Report Content <span style="font-weight:400; color:var(--gray-700);">— add blocks in any order</span></label>
-              <!-- Toolbar -->
-              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
-                <button type="button" onclick="addEvEditorBlock('text')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg> Paragraph
-                </button>
-                <button type="button" onclick="addEvEditorBlock('heading')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h4m0 0v12m0-6h8m0-6h4m-4 0v12m0-6H8"/></svg> Heading
-                </button>
-                <button type="button" onclick="addEvEditorBlock('image')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/></svg> Image
-                </button>
-                <button type="button" onclick="addEvEditorBlock('chart')" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--rounded-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--midnight-green);">
-                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg> Chart
-                </button>
-              </div>
-              <!-- Blocks list -->
-              <div id="ev-blocks-editor" style="display:flex; flex-direction:column; gap:10px;"></div>
-              <p id="ev-blocks-hint" style="font-size:var(--text-xs); color:var(--gray-300); text-align:center; padding:20px; border:1.5px dashed var(--gray-300); border-radius:var(--rounded); margin-top:0;">Click a button above to add content</p>
-            </div>
-
-            <!-- Publish -->
-            <div style="padding-top:8px; border-top:1px solid var(--gray-300);">
-              <button type="button" onclick="publishEvidencePost()" class="btn btn-orange">Publish Report</button>
-            </div>
-
-          </div>
-        </div><!-- /ev-admin-form-wrapper -->
-      </div><!-- /ev-admin-panel -->
-    </div>
-  </section><!-- /EVIDENCE -->
+  </div>
+</section><!-- /EVIDENCE -->
 
   <!-- Evidence post modal -->
   <div id="evidence-modal" onclick="closeEvidenceModal(event)"
@@ -2053,23 +1911,23 @@
             style="font-size:var(--text-xs); font-weight:700; color:var(--midnight-green); margin-bottom:16px; text-transform:uppercase; letter-spacing:.06em;">
             Pages</p>
           <div style="display:flex; flex-direction:column; gap:8px;">
-            <button onclick="showPage('home')"
+            <button onclick="window.location.href='/'"
               style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
               onmouseover="this.style.color='var(--orange)'"
               onmouseout="this.style.color='var(--gray-700)'">Home</button>
-            <button onclick="showPage('about')"
+            <button onclick="window.location.href='/about/'"
               style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
               onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--gray-700)'">About
               Us</button>
-            <button onclick="showPage('approach')"
+            <button onclick="window.location.href='/approach/'"
               style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
               onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--gray-700)'">Our
               Approach</button>
-            <button onclick="showPage('blog')"
+            <button onclick="window.location.href='/blog/'"
               style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
               onmouseover="this.style.color='var(--orange)'"
               onmouseout="this.style.color='var(--gray-700)'">Blog</button>
-            <button onclick="showPage('evidence')"
+            <button onclick="window.location.href='/evidence/'"
               style="background:none;border:none;cursor:pointer;text-align:left;font-size:var(--text-sm);color:var(--gray-700);padding:0;"
               onmouseover="this.style.color='var(--orange)'"
               onmouseout="this.style.color='var(--gray-700)'">Evidence</button>
@@ -2137,314 +1995,6 @@
       m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
     }
 
-    function showCardDeleteButtons(containerId) {
-      var container = document.getElementById(containerId);
-      if (!container) return;
-      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'flex'; });
-    }
-
-    function hideCardDeleteButtons(containerId) {
-      var container = document.getElementById(containerId);
-      if (!container) return;
-      container.querySelectorAll('.card-delete-btn').forEach(function(btn) { btn.style.display = 'none'; });
-    }
-
-    function toggleAdminPanel() {
-      var panel = document.getElementById('admin-panel');
-      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-      document.getElementById('admin-lock').style.display = 'block';
-      document.getElementById('admin-form-wrapper').style.display = 'none';
-      document.getElementById('admin-password').value = '';
-      document.getElementById('admin-error').style.display = 'none';
-      blogAdminActive = false;
-      hideCardDeleteButtons('blog-posts-container');
-    }
-
-    function checkAdminPassword() {
-      var pw = document.getElementById('admin-password').value;
-      if (pw === 'e4gadmin') {
-        document.getElementById('admin-lock').style.display = 'none';
-        document.getElementById('admin-form-wrapper').style.display = 'block';
-        blogAdminActive = true;
-        showCardDeleteButtons('blog-posts-container');
-      } else {
-        document.getElementById('admin-error').style.display = 'block';
-      }
-    }
-
-    // ── Block editor ─────────────────────────────────
-    var editorBlocks = [];
-    var blockCounter = 0;
-    var chartInstances = {};
-    var blogAdminActive = false;
-
-    var blockIStyle = 'width:100%;border:none;padding:12px 14px;font-size:14px;font-family:inherit;outline:none;background:#fff;';
-    var blockFieldStyle = 'width:100%;border:1px solid var(--gray-300);border-radius:4px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;';
-
-    function addEditorBlock(type) {
-      var id = 'b' + (blockCounter++);
-      editorBlocks.push({ id: id, type: type });
-      document.getElementById('blocks-hint').style.display = 'none';
-
-      var wrap = document.createElement('div');
-      wrap.id = 'eb-' + id;
-
-      var headerColor = { text: '#f4f7fb', heading: '#eef2f8', image: '#f0faf4', chart: '#fff8f5' }[type];
-      var typeLabel = { text: '¶ Paragraph', heading: 'H Heading', image: '⬜ Image', chart: '▦ Chart' }[type];
-
-      var controls = '<div style="display:flex;gap:4px;">'
-        + '<button type="button" onclick="moveEditorBlock(\'' + id + '\',-1)" title="Move up" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↑</button>'
-        + '<button type="button" onclick="moveEditorBlock(\'' + id + '\',1)" title="Move down" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↓</button>'
-        + '<button type="button" onclick="removeEditorBlock(\'' + id + '\')" title="Remove" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:#c0392b;font-size:13px;font-weight:700;line-height:1;">✕</button>'
-        + '</div>';
-
-      var header = '<div style="background:' + headerColor + ';padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gray-300);">'
-        + '<span style="font-size:11px;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;">' + typeLabel + '</span>'
-        + controls + '</div>';
-
-      var body = '';
-      if (type === 'text') {
-        var tbBtn = 'background:none;border:1px solid var(--gray-300);border-radius:3px;cursor:pointer;padding:3px 7px;font-size:12px;font-family:inherit;color:var(--midnight-green);line-height:1.4;';
-        var toolbar = '<div style="background:#f8fafc;border-bottom:1px solid var(--gray-300);padding:6px 10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;">'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'bold\')" style="' + tbBtn + 'font-weight:700;" title="Bold">B</button>'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'italic\')" style="' + tbBtn + 'font-style:italic;" title="Italic">I</button>'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'insertUnorderedList\')" style="' + tbBtn + '" title="Bullet list">• List</button>'
-          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'13px\')" style="' + tbBtn + 'font-size:10px;" title="Small text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'15px\')" style="' + tbBtn + 'font-size:12px;" title="Normal text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'19px\')" style="' + tbBtn + 'font-size:15px;" title="Large text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'24px\')" style="' + tbBtn + 'font-size:18px;" title="Extra large text">A</button>'
-          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
-          + '<button type="button" onmousedown="event.preventDefault();insertBlockLink(\'' + id + '\')" style="' + tbBtn + 'color:var(--dark-green);" title="Insert hyperlink">🔗 Link</button>'
-          + '</div>';
-        body = toolbar + '<div id="eb-c-' + id + '" contenteditable="true" class="blog-edit-area" data-placeholder="Write your paragraph here..."></div>';
-      } else if (type === 'heading') {
-        body = '<input id="eb-c-' + id + '" type="text" placeholder="Heading text..." style="' + blockIStyle + 'font-weight:700;font-size:18px;display:block;"/>';
-      } else if (type === 'image') {
-        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:10px;">'
-          + '<input id="eb-f-' + id + '" type="file" accept="image/*" onchange="previewBlockImage(\'' + id + '\')" style="font-size:13px;color:var(--gray-700);"/>'
-          + '<img id="eb-p-' + id + '" style="display:none;max-width:100%;max-height:260px;object-fit:contain;border-radius:var(--rounded);"/>'
-          + '<input id="eb-cap-' + id + '" type="text" placeholder="Caption (optional)..." style="' + blockFieldStyle + '"/>'
-          + '</div>';
-      } else if (type === 'chart') {
-        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:12px;">'
-          + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
-          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Type</label>'
-          +   '<select id="eb-ct-' + id + '" style="' + blockFieldStyle + '">'
-          +   '<option value="bar">Bar Chart</option><option value="line">Line Chart</option><option value="pie">Pie Chart</option><option value="doughnut">Doughnut</option>'
-          +   '</select></div>'
-          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Title</label>'
-          +   '<input id="eb-ctit-' + id + '" type="text" placeholder="e.g. Monthly Outcomes" style="' + blockFieldStyle + '"/></div>'
-          + '</div>'
-          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Labels <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
-          + '<input id="eb-cl-' + id + '" type="text" placeholder="Jan, Feb, Mar, Apr" style="' + blockFieldStyle + '"/></div>'
-          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Values <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
-          + '<input id="eb-cv-' + id + '" type="text" placeholder="12, 25, 18, 30" style="' + blockFieldStyle + '"/></div>'
-          + '<button type="button" onclick="previewBlockChart(\'' + id + '\')" style="background:var(--dark-green);color:#fff;border:none;border-radius:var(--rounded-sm);padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;width:fit-content;">Preview Chart</button>'
-          + '<div id="eb-cw-' + id + '" style="display:none;background:var(--gray);border-radius:var(--rounded);padding:16px;"><canvas id="eb-cv2-' + id + '"></canvas></div>'
-          + '</div>';
-      }
-
-      wrap.style.cssText = 'border:1px solid var(--gray-300);border-radius:var(--rounded);overflow:hidden;background:#fff;';
-      wrap.innerHTML = header + body;
-      document.getElementById('blocks-editor').appendChild(wrap);
-    }
-
-    function removeEditorBlock(id) {
-      editorBlocks = editorBlocks.filter(function(b) { return b.id !== id; });
-      var el = document.getElementById('eb-' + id);
-      if (el) el.remove();
-      if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
-      if (editorBlocks.length === 0) document.getElementById('blocks-hint').style.display = 'block';
-    }
-
-    function moveEditorBlock(id, dir) {
-      var idx = editorBlocks.findIndex(function(b) { return b.id === id; });
-      var newIdx = idx + dir;
-      if (newIdx < 0 || newIdx >= editorBlocks.length) return;
-      var tmp = editorBlocks[idx]; editorBlocks[idx] = editorBlocks[newIdx]; editorBlocks[newIdx] = tmp;
-      var container = document.getElementById('blocks-editor');
-      var elA = document.getElementById('eb-' + id);
-      var elB = document.getElementById('eb-' + editorBlocks[idx].id);
-      if (dir === -1) container.insertBefore(elA, elB);
-      else container.insertBefore(elB, elA);
-    }
-
-    function insertBlockLink(id) {
-      var el = document.getElementById('eb-c-' + id);
-      if (!el) return;
-      var sel = window.getSelection();
-      if (!sel || !sel.rangeCount || sel.isCollapsed) {
-        alert('Select the text you want to turn into a link first, then click 🔗 Link.');
-        return;
-      }
-      var savedRange = sel.getRangeAt(0).cloneRange();
-      var url = prompt('Enter the URL (e.g. https://example.com):');
-      if (!url) return;
-      if (!url.match(/^https?:\/\//) && !url.startsWith('mailto:')) url = 'https://' + url;
-      el.focus();
-      sel.removeAllRanges();
-      sel.addRange(savedRange);
-      document.execCommand('createLink', false, url);
-      el.querySelectorAll('a').forEach(function(a) {
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-      });
-    }
-
-    function previewBlockImage(id) {
-      var fi = document.getElementById('eb-f-' + id);
-      var pr = document.getElementById('eb-p-' + id);
-      if (fi && fi.files && fi.files[0]) {
-        pr.src = URL.createObjectURL(fi.files[0]);
-        pr.style.display = 'block';
-      }
-    }
-
-    function setBlockFontSize(id, size) {
-      var el = document.getElementById('eb-c-' + id);
-      if (!el) return;
-      el.focus();
-      var sel = window.getSelection();
-      if (!sel || !sel.rangeCount || sel.isCollapsed) return;
-      var range = sel.getRangeAt(0);
-      try {
-        var frag = range.extractContents();
-        var span = document.createElement('span');
-        span.style.fontSize = size;
-        span.appendChild(frag);
-        range.insertNode(span);
-        range.selectNodeContents(span);
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } catch(e) {}
-    }
-
-    function previewBlockChart(id) {
-      var type  = document.getElementById('eb-ct-' + id).value;
-      var title = document.getElementById('eb-ctit-' + id).value;
-      var labelsRaw = document.getElementById('eb-cl-' + id).value;
-      var valuesRaw = document.getElementById('eb-cv-' + id).value;
-      var labels = labelsRaw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-      var values = valuesRaw.split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
-      if (!labels.length || !values.length) { alert('Please enter labels and values.'); return; }
-      var wrap = document.getElementById('eb-cw-' + id);
-      wrap.style.display = 'block';
-      var canvas = document.getElementById('eb-cv2-' + id);
-      if (chartInstances[id]) { chartInstances[id].destroy(); }
-      chartInstances[id] = buildChart(canvas, type, title, labels, values);
-    }
-
-    function buildChart(canvas, type, title, labels, values) {
-      var isPie = (type === 'pie' || type === 'doughnut');
-      var palette = ['#f06632','#003366','#00193a','#225c41','#004e74','#e69d00','#3d5a80'];
-      return new Chart(canvas, {
-        type: type,
-        data: {
-          labels: labels,
-          datasets: [{
-            label: title || 'Data',
-            data: values,
-            backgroundColor: isPie ? palette.slice(0, values.length) : 'rgba(240,102,50,0.75)',
-            borderColor: isPie ? palette.slice(0, values.length) : '#f06632',
-            borderWidth: isPie ? 0 : 2,
-            tension: 0.35,
-            fill: false
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            title: { display: !!title, text: title, font: { size: 14 } },
-            legend: { display: isPie }
-          },
-          scales: isPie ? {} : { y: { beginAtZero: true } }
-        }
-      });
-    }
-
-    function collectBlocks() {
-      return editorBlocks.map(function(b) {
-        var type = b.type;
-        if (type === 'text') {
-          var el = document.getElementById('eb-c-' + b.id);
-          return { type: 'text', content: el ? el.innerHTML : '' };
-        }
-        if (type === 'heading') {
-          var el = document.getElementById('eb-c-' + b.id);
-          return { type: 'heading', content: el ? el.value : '' };
-        }
-        if (type === 'image') {
-          var fi = document.getElementById('eb-f-' + b.id);
-          var cap = document.getElementById('eb-cap-' + b.id);
-          var src = (fi && fi.files && fi.files[0]) ? URL.createObjectURL(fi.files[0]) : '';
-          return { type: 'image', src: src, caption: cap ? cap.value : '' };
-        }
-        if (type === 'chart') {
-          var labels = (document.getElementById('eb-cl-' + b.id).value || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
-          var values = (document.getElementById('eb-cv-' + b.id).value || '').split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
-          return {
-            type: 'chart',
-            chartType: document.getElementById('eb-ct-' + b.id).value,
-            title: document.getElementById('eb-ctit-' + b.id).value,
-            labels: labels,
-            values: values
-          };
-        }
-        return null;
-      }).filter(Boolean);
-    }
-
-    function publishBlogPost() {
-      var title    = document.getElementById('post-title').value.trim();
-      var category = document.getElementById('post-category').value.trim();
-      var summary  = document.getElementById('post-summary').value.trim();
-      var date     = document.getElementById('post-date').value.trim();
-      var imgEl    = document.getElementById('post-image');
-      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-
-      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
-      var blocks   = collectBlocks();
-      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
-
-      var coverHtml = coverSrc
-        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
-        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
-
-      var card = document.createElement('div');
-      card.className = 'card';
-      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
-      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this post?\'))this.closest(\'.card\').remove();" style="display:' + (blogAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
-        + coverHtml
-        + '<div style="padding:24px;">'
-        + '<span class="tag">' + (category || 'General') + '</span>'
-        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
-        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
-        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
-        + '<span>' + (date || 'Just now') + '</span>'
-        + '<span style="color:var(--orange);font-weight:700;">Read more →</span>'
-        + '</div></div>';
-
-      card.onclick = function() { openBlogModal(postData); };
-      document.getElementById('blog-posts-container').prepend(card);
-
-      // Reset
-      document.getElementById('post-title').value = '';
-      document.getElementById('post-category').value = '';
-      document.getElementById('post-summary').value = '';
-      document.getElementById('post-date').value = '';
-      document.getElementById('post-image').value = '';
-      document.getElementById('blocks-editor').innerHTML = '';
-      document.getElementById('blocks-hint').style.display = 'block';
-      editorBlocks = [];
-      Object.keys(chartInstances).forEach(function(k){ chartInstances[k].destroy(); });
-      chartInstances = {};
-
-      document.getElementById('admin-form-wrapper').style.display = 'none';
-      document.getElementById('admin-lock').style.display = 'block';
-      document.getElementById('admin-panel').style.display = 'none';
-      blogAdminActive = false;
-    }
 
     function openBlogModal(postData) {
       document.getElementById('bm-title').textContent = postData.title;
@@ -2466,47 +2016,53 @@
     }
 
     function renderBlocksInModal(blocks, container) {
-      container.innerHTML = '';
-      blocks.forEach(function(block, idx) {
-        if (block.type === 'text') {
-          var p = document.createElement('div');
-          p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:190%;margin-bottom:24px;';
-          p.innerHTML = block.content;
-          container.appendChild(p);
-        } else if (block.type === 'heading') {
-          var h = document.createElement('h3');
-          h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;';
-          h.textContent = block.content;
-          container.appendChild(h);
-        } else if (block.type === 'image') {
-          var div = document.createElement('div');
-          div.style.cssText = 'margin-bottom:32px;text-align:center;';
-          if (block.src) {
-            var im = document.createElement('img');
-            im.src = block.src;
-            im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;';
-            div.appendChild(im);
-          }
-          if (block.caption) {
-            var cap = document.createElement('p');
-            cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:8px;font-style:italic;';
-            cap.textContent = block.caption;
-            div.appendChild(cap);
-          }
-          container.appendChild(div);
-        } else if (block.type === 'chart') {
-          var cWrap = document.createElement('div');
-          cWrap.style.cssText = 'background:var(--gray);border-radius:var(--rounded-lg);padding:24px;margin-bottom:32px;';
-          var canvas = document.createElement('canvas');
-          canvas.id = 'mc-' + idx + '-' + Date.now();
-          cWrap.appendChild(canvas);
-          container.appendChild(cWrap);
-          (function(c, b) {
-            setTimeout(function() { buildChart(c, b.chartType || 'bar', b.title, b.labels, b.values); }, 60);
-          })(canvas, block);
-        }
-      });
+  container.innerHTML = '';
+
+  blocks.forEach(function(block) {
+    if (block.type === 'text') {
+      var p = document.createElement('div');
+      p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:190%;margin-bottom:24px;';
+      p.innerHTML = block.content || '';
+      container.appendChild(p);
     }
+
+    else if (block.type === 'heading') {
+      var h = document.createElement('h3');
+      h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;';
+      h.textContent = block.content || '';
+      container.appendChild(h);
+    }
+
+    else if (block.type === 'image') {
+      var div = document.createElement('div');
+      div.style.cssText = 'margin-bottom:32px;text-align:center;';
+
+      if (block.src) {
+        var im = document.createElement('img');
+        im.src = block.src;
+        im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;';
+        div.appendChild(im);
+      }
+
+      if (block.caption) {
+        var cap = document.createElement('p');
+        cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:8px;font-style:italic;';
+        cap.textContent = block.caption;
+        div.appendChild(cap);
+      }
+
+      container.appendChild(div);
+    }
+
+    else if (block.type === 'chart') {
+      var note = document.createElement('div');
+      note.style.cssText = 'background:var(--gray);border-radius:var(--rounded-lg);padding:20px;margin-bottom:32px;color:var(--gray-700);font-size:var(--text-sm);';
+      note.textContent = 'Chart content available.';
+      container.appendChild(note);
+    }
+  });
+}
+
 
     function closeBlogModalBtn() {
       document.getElementById('blog-modal').style.display = 'none';
@@ -2517,221 +2073,7 @@
       if (e.target.id === 'blog-modal') closeBlogModalBtn();
     }
 
-    // ── Evidence block editor ─────────────────────────────────
-    var evEditorBlocks = [];
-    var evBlockCounter = 0;
-    var evChartInstances = {};
-    var evAdminActive = false;
-
-    function toggleEvAdminPanel() {
-      var panel = document.getElementById('ev-admin-panel');
-      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-      document.getElementById('ev-admin-lock').style.display = 'block';
-      document.getElementById('ev-admin-form-wrapper').style.display = 'none';
-      document.getElementById('ev-admin-password').value = '';
-      document.getElementById('ev-admin-error').style.display = 'none';
-      evAdminActive = false;
-      hideCardDeleteButtons('evidence-container');
-    }
-
-    function checkEvAdminPassword() {
-      var pw = document.getElementById('ev-admin-password').value;
-      if (pw === 'e4gadmin') {
-        document.getElementById('ev-admin-lock').style.display = 'none';
-        document.getElementById('ev-admin-form-wrapper').style.display = 'block';
-        evAdminActive = true;
-        showCardDeleteButtons('evidence-container');
-      } else {
-        document.getElementById('ev-admin-error').style.display = 'block';
-      }
-    }
-
-    function addEvEditorBlock(type) {
-      var id = 'evb' + (evBlockCounter++);
-      evEditorBlocks.push({ id: id, type: type });
-      document.getElementById('ev-blocks-hint').style.display = 'none';
-
-      var wrap = document.createElement('div');
-      wrap.id = 'eb-' + id;
-
-      var headerColor = { text: '#f4f7fb', heading: '#eef2f8', image: '#f0faf4', chart: '#fff8f5' }[type];
-      var typeLabel = { text: '¶ Paragraph', heading: 'H Heading', image: '⬜ Image', chart: '▦ Chart' }[type];
-
-      var controls = '<div style="display:flex;gap:4px;">'
-        + '<button type="button" onclick="moveEvEditorBlock(\'' + id + '\',-1)" title="Move up" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↑</button>'
-        + '<button type="button" onclick="moveEvEditorBlock(\'' + id + '\',1)" title="Move down" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:var(--gray-700);font-size:13px;line-height:1;">↓</button>'
-        + '<button type="button" onclick="removeEvEditorBlock(\'' + id + '\')" title="Remove" style="background:none;border:none;cursor:pointer;padding:4px 7px;color:#c0392b;font-size:13px;font-weight:700;line-height:1;">✕</button>'
-        + '</div>';
-
-      var header = '<div style="background:' + headerColor + ';padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gray-300);">'
-        + '<span style="font-size:11px;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;">' + typeLabel + '</span>'
-        + controls + '</div>';
-
-      var body = '';
-      if (type === 'text') {
-        var tbBtn = 'background:none;border:1px solid var(--gray-300);border-radius:3px;cursor:pointer;padding:3px 7px;font-size:12px;font-family:inherit;color:var(--midnight-green);line-height:1.4;';
-        var toolbar = '<div style="background:#f8fafc;border-bottom:1px solid var(--gray-300);padding:6px 10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;">'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'bold\')" style="' + tbBtn + 'font-weight:700;" title="Bold">B</button>'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'italic\')" style="' + tbBtn + 'font-style:italic;" title="Italic">I</button>'
-          + '<button type="button" onmousedown="event.preventDefault();document.execCommand(\'insertUnorderedList\')" style="' + tbBtn + '" title="Bullet list">• List</button>'
-          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'13px\')" style="' + tbBtn + 'font-size:10px;" title="Small text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'15px\')" style="' + tbBtn + 'font-size:12px;" title="Normal text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'19px\')" style="' + tbBtn + 'font-size:15px;" title="Large text">A</button>'
-          + '<button type="button" onmousedown="event.preventDefault();setBlockFontSize(\'' + id + '\',\'24px\')" style="' + tbBtn + 'font-size:18px;" title="Extra large text">A</button>'
-          + '<span style="width:1px;height:18px;background:var(--gray-300);display:inline-block;margin:0 3px;"></span>'
-          + '<button type="button" onmousedown="event.preventDefault();insertBlockLink(\'' + id + '\')" style="' + tbBtn + 'color:var(--dark-green);" title="Insert hyperlink">🔗 Link</button>'
-          + '</div>';
-        body = toolbar + '<div id="eb-c-' + id + '" contenteditable="true" class="blog-edit-area" data-placeholder="Write your paragraph here..."></div>';
-      } else if (type === 'heading') {
-        body = '<input id="eb-c-' + id + '" type="text" placeholder="Heading text..." style="' + blockIStyle + 'font-weight:700;font-size:18px;display:block;"/>';
-      } else if (type === 'image') {
-        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:10px;">'
-          + '<input id="eb-f-' + id + '" type="file" accept="image/*" onchange="previewBlockImage(\'' + id + '\')" style="font-size:13px;color:var(--gray-700);"/>'
-          + '<img id="eb-p-' + id + '" style="display:none;max-width:100%;max-height:260px;object-fit:contain;border-radius:var(--rounded);"/>'
-          + '<input id="eb-cap-' + id + '" type="text" placeholder="Caption (optional)..." style="' + blockFieldStyle + '"/>'
-          + '</div>';
-      } else if (type === 'chart') {
-        body = '<div style="padding:14px;display:flex;flex-direction:column;gap:12px;">'
-          + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
-          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Type</label>'
-          +   '<select id="eb-ct-' + id + '" style="' + blockFieldStyle + '">'
-          +   '<option value="bar">Bar Chart</option><option value="line">Line Chart</option><option value="pie">Pie Chart</option><option value="doughnut">Doughnut</option>'
-          +   '</select></div>'
-          +   '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Chart Title</label>'
-          +   '<input id="eb-ctit-' + id + '" type="text" placeholder="e.g. Monthly Outcomes" style="' + blockFieldStyle + '"/></div>'
-          + '</div>'
-          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Labels <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
-          + '<input id="eb-cl-' + id + '" type="text" placeholder="Jan, Feb, Mar, Apr" style="' + blockFieldStyle + '"/></div>'
-          + '<div><label style="display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Values <span style="font-weight:400;text-transform:none;">(comma-separated)</span></label>'
-          + '<input id="eb-cv-' + id + '" type="text" placeholder="12, 25, 18, 30" style="' + blockFieldStyle + '"/></div>'
-          + '<button type="button" onclick="previewEvBlockChart(\'' + id + '\')" style="background:var(--dark-green);color:#fff;border:none;border-radius:var(--rounded-sm);padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;width:fit-content;">Preview Chart</button>'
-          + '<div id="eb-cw-' + id + '" style="display:none;background:var(--gray);border-radius:var(--rounded);padding:16px;"><canvas id="eb-cv2-' + id + '"></canvas></div>'
-          + '</div>';
-      }
-
-      wrap.style.cssText = 'border:1px solid var(--gray-300);border-radius:var(--rounded);overflow:hidden;background:#fff;';
-      wrap.innerHTML = header + body;
-      document.getElementById('ev-blocks-editor').appendChild(wrap);
-    }
-
-    function removeEvEditorBlock(id) {
-      evEditorBlocks = evEditorBlocks.filter(function(b) { return b.id !== id; });
-      var el = document.getElementById('eb-' + id);
-      if (el) el.remove();
-      if (evChartInstances[id]) { evChartInstances[id].destroy(); delete evChartInstances[id]; }
-      if (evEditorBlocks.length === 0) document.getElementById('ev-blocks-hint').style.display = 'block';
-    }
-
-    function moveEvEditorBlock(id, dir) {
-      var idx = evEditorBlocks.findIndex(function(b) { return b.id === id; });
-      var newIdx = idx + dir;
-      if (newIdx < 0 || newIdx >= evEditorBlocks.length) return;
-      var tmp = evEditorBlocks[idx]; evEditorBlocks[idx] = evEditorBlocks[newIdx]; evEditorBlocks[newIdx] = tmp;
-      var container = document.getElementById('ev-blocks-editor');
-      var elA = document.getElementById('eb-' + id);
-      var elB = document.getElementById('eb-' + evEditorBlocks[idx].id);
-      if (dir === -1) container.insertBefore(elA, elB);
-      else container.insertBefore(elB, elA);
-    }
-
-    function previewEvBlockChart(id) {
-      var type  = document.getElementById('eb-ct-' + id).value;
-      var title = document.getElementById('eb-ctit-' + id).value;
-      var labelsRaw = document.getElementById('eb-cl-' + id).value;
-      var valuesRaw = document.getElementById('eb-cv-' + id).value;
-      var labels = labelsRaw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-      var values = valuesRaw.split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
-      if (!labels.length || !values.length) { alert('Please enter labels and values.'); return; }
-      var wrap = document.getElementById('eb-cw-' + id);
-      wrap.style.display = 'block';
-      var canvas = document.getElementById('eb-cv2-' + id);
-      if (evChartInstances[id]) { evChartInstances[id].destroy(); }
-      evChartInstances[id] = buildChart(canvas, type, title, labels, values);
-    }
-
-    function collectEvBlocks() {
-      return evEditorBlocks.map(function(b) {
-        var type = b.type;
-        if (type === 'text') {
-          var el = document.getElementById('eb-c-' + b.id);
-          return { type: 'text', content: el ? el.innerHTML : '' };
-        }
-        if (type === 'heading') {
-          var el = document.getElementById('eb-c-' + b.id);
-          return { type: 'heading', content: el ? el.value : '' };
-        }
-        if (type === 'image') {
-          var fi = document.getElementById('eb-f-' + b.id);
-          var cap = document.getElementById('eb-cap-' + b.id);
-          var src = (fi && fi.files && fi.files[0]) ? URL.createObjectURL(fi.files[0]) : '';
-          return { type: 'image', src: src, caption: cap ? cap.value : '' };
-        }
-        if (type === 'chart') {
-          var labels = (document.getElementById('eb-cl-' + b.id).value || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
-          var values = (document.getElementById('eb-cv-' + b.id).value || '').split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
-          return {
-            type: 'chart',
-            chartType: document.getElementById('eb-ct-' + b.id).value,
-            title: document.getElementById('eb-ctit-' + b.id).value,
-            labels: labels,
-            values: values
-          };
-        }
-        return null;
-      }).filter(Boolean);
-    }
-
-    function publishEvidencePost() {
-      var title    = document.getElementById('ev-post-title').value.trim();
-      var category = document.getElementById('ev-post-category').value.trim();
-      var summary  = document.getElementById('ev-post-summary').value.trim();
-      var date     = document.getElementById('ev-post-date').value.trim();
-      var imgEl    = document.getElementById('ev-post-image');
-      if (!title || !summary) { alert('Please fill in a title and summary.'); return; }
-
-      var coverSrc = (imgEl && imgEl.files && imgEl.files[0]) ? URL.createObjectURL(imgEl.files[0]) : '';
-      var blocks   = collectEvBlocks();
-      var postData = { title: title, category: category, summary: summary, date: date, coverSrc: coverSrc, blocks: blocks };
-
-      var coverHtml = coverSrc
-        ? '<img src="' + coverSrc + '" style="width:100%;height:200px;object-fit:cover;"/>'
-        : '<div style="width:100%;height:200px;background:var(--dark-green);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.3);font-size:11px;font-weight:700;letter-spacing:.1em;">NO COVER</span></div>';
-
-      var card = document.createElement('div');
-      card.className = 'card';
-      card.style.cssText = 'background:#fff;border-radius:var(--rounded-xl);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-300);cursor:pointer;position:relative;';
-      card.innerHTML = '<button class="card-delete-btn" onclick="event.stopPropagation();if(confirm(\'Delete this report?\'))this.closest(\'.card\').remove();" style="display:' + (evAdminActive ? 'flex' : 'none') + ';position:absolute;top:10px;right:10px;background:rgba(192,57,43,0.92);color:#fff;border:none;border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;z-index:10;line-height:1;">✕</button>'
-        + coverHtml
-        + '<div style="padding:24px;">'
-        + '<span class="tag">' + (category || 'Research') + '</span>'
-        + '<h3 style="font-size:var(--text-lg);margin:8px 0 10px;">' + title + '</h3>'
-        + '<p class="blog-card-summary" style="font-size:var(--text-sm);color:var(--gray-700);line-height:175%;margin-bottom:16px;">' + summary + '</p>'
-        + '<div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--gray-700);">'
-        + '<span>' + (date || 'Just now') + '</span>'
-        + '<span style="color:var(--orange);font-weight:700;">Read report →</span>'
-        + '</div></div>';
-
-      card.onclick = function() { openEvidenceModal(postData); };
-      document.getElementById('evidence-container').prepend(card);
-
-      // Reset
-      document.getElementById('ev-post-title').value = '';
-      document.getElementById('ev-post-category').value = '';
-      document.getElementById('ev-post-summary').value = '';
-      document.getElementById('ev-post-date').value = '';
-      document.getElementById('ev-post-image').value = '';
-      document.getElementById('ev-blocks-editor').innerHTML = '';
-      document.getElementById('ev-blocks-hint').style.display = 'block';
-      evEditorBlocks = [];
-      Object.keys(evChartInstances).forEach(function(k){ evChartInstances[k].destroy(); });
-      evChartInstances = {};
-
-      document.getElementById('ev-admin-form-wrapper').style.display = 'none';
-      document.getElementById('ev-admin-lock').style.display = 'block';
-      document.getElementById('ev-admin-panel').style.display = 'none';
-      evAdminActive = false;
-    }
+    // ── Evidence modal display ─────────────────────────────────
 
     function openEvidenceModal(postData) {
       document.getElementById('em-title').textContent = postData.title;
