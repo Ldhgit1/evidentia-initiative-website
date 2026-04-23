@@ -1,0 +1,15 @@
+# Credentials — never commit
+config.js
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+*.swp
+*.swo
+
+# Node (if ever used locally)
+node_modules/
+npm-debug.log*
