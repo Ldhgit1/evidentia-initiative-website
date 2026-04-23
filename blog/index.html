@@ -1,35 +1,67 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog | Evidence for Good</title>
+  <meta name="author" content="Evidence for Good" />
+  <meta name="theme-color" content="#00193a" />
+  <link rel="icon" href="/assets/images/E4G_logo.jpg.jpeg" />
+  <title>Blog | Evidence for Good</title>
 
-<meta name="description"
-  content="Read insights, updates, and perspectives from Evidence for Good on public health, evidence, and digital innovation in Africa." />
+  <meta name="description"
+    content="Read insights, updates, and perspectives from Evidence for Good on public health, evidence, and digital innovation in Africa." />
 
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://www.evidenceforgood.org/blog/" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.evidenceforgood.org/blog/" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Evidence for Good | Evidence-Based Public Health and Digital Innovation in Africa" />
-<meta property="og:description"
-  content="Evidence for Good partners with governments and communities across Africa to design, evaluate, and scale cost-effective solutions in maternal health, environmental health, and infectious disease control." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.evidenceforgood.org/blog/" />
-<meta property="og:image" content="https://www.evidenceforgood.org/image-baby.jpeg" />
-<meta property="og:image:alt" content="Evidence for Good homepage preview image" />
-<meta property="og:site_name" content="Evidence for Good" />
+  <!-- Open Graph -->
+  <meta property="og:title"
+    content="Blog | Evidence for Good — Public Health Insights" />
+  <meta property="og:description"
+    content="Read insights, updates, and perspectives from Evidence for Good on public health, evidence, and digital innovation in Africa." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.evidenceforgood.org/blog/" />
+  <meta property="og:image" content="https://www.evidenceforgood.org/assets/images/image-baby.jpeg" />
+  <meta property="og:image:alt" content="Evidence for Good blog — public health and research insights" />
+  <meta property="og:site_name" content="Evidence for Good" />
+  <meta property="og:locale" content="en_GB" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Evidence for Good | Evidence-Based Public Health and Digital Innovation in Africa" />
-<meta name="twitter:description"
-  content="Evidence for Good partners with governments and communities across Africa to design, evaluate, and scale cost-effective solutions in maternal health, environmental health, and infectious disease control." />
-<meta name="twitter:image" content="https://www.evidenceforgood.org/image-baby.jpeg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Blog | Evidence for Good — Public Health Insights" />
+  <meta name="twitter:description"
+    content="Read insights, updates, and perspectives from Evidence for Good on public health, evidence, and digital innovation in Africa." />
+  <meta name="twitter:image" content="https://www.evidenceforgood.org/assets/images/image-baby.jpeg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "name": "Evidence for Good Blog",
+      "url": "https://www.evidenceforgood.org/blog/",
+      "description": "Read insights, updates, and perspectives from Evidence for Good on public health, evidence, and digital innovation in Africa.",
+      "publisher": { "@type": "Organization", "name": "Evidence for Good", "url": "https://www.evidenceforgood.org/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.evidenceforgood.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.evidenceforgood.org/blog/" }
+      ]
+    }
+  ]
+}
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../config.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -42,569 +74,7 @@
     }
   </script>
 
-  <style>
-    :root {
-      --container: 1120px;
-      --height-header: 80px;
-      --text-xs: 12px;
-      --text-sm: 14px;
-      --text-base: 16px;
-      --text-md: 18px;
-      --text-lg: 20px;
-      --text-xl: 24px;
-      --text-2xl: 32px;
-      --text-3xl: 40px;
-      --text-4xl: 48px;
-      --suffix-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
-      --fontfamily-sans: "Dax", var(--suffix-family);
-      --padding-button: 15px 30px;
-      --rounded-xs: 2px;
-      --rounded-sm: 4px;
-      --rounded: 6px;
-      --rounded-md: 10px;
-      --rounded-lg: 16px;
-      --rounded-xl: 24px;
-      --rounded-full: 999999px;
-      --transparent: rgba(0, 0, 0, 0);
-      --white: #fff;
-      --black: #000;
-      --blue: #004e74;
-      --yellow: #e69d00;
-      --green: #225c41;
-      --dark-green: #003366;
-      --midnight-green: #00193a;
-      --orange: #f06632;
-      --gray: #f4f7fb;
-      --gray-300: #d6e0ef;
-      --gray-700: #3d5a80;
-      --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-      --duration: 0.3s;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      outline: 0;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      word-break: break-word;
-    }
-
-    ::selection {
-      color: #fff;
-      background-color: #00193a;
-      text-shadow: none;
-    }
-
-    body {
-      font-family: var(--fontfamily-sans);
-      color: var(--midnight-green);
-      line-height: 175%;
-      font-size: var(--text-base);
-      font-weight: 400;
-      background-color: var(--white);
-      -webkit-text-size-adjust: 100%;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: var(--padding-button);
-      border-radius: var(--rounded-full);
-      font-weight: 700;
-      font-size: var(--text-sm);
-      line-height: 1;
-      cursor: pointer;
-      transition: opacity var(--duration), background-color var(--duration), color var(--duration);
-      text-decoration: none;
-      border: none;
-      font-family: var(--fontfamily-sans);
-    }
-
-    .btn-orange {
-      background-color: var(--orange);
-      color: var(--white);
-    }
-
-    .btn-orange:hover {
-      opacity: 0.88;
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--white);
-      color: var(--midnight-green);
-    }
-
-    .btn-dark {
-      background-color: var(--midnight-green);
-      color: var(--white);
-    }
-
-    .btn-dark:hover {
-      opacity: 0.88;
-    }
-
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    .nav-link.active {
-      color: var(--orange);
-      font-weight: 700;
-    }
-
-    .nav-link {
-      transition: color var(--duration);
-    }
-
-    .nav-link:hover {
-      color: var(--orange);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-      line-height: 125%;
-      font-weight: 700;
-      color: var(--midnight-green);
-    }
-
-    .tag {
-      display: block;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--orange);
-    }
-
-    .card {
-      transition: box-shadow var(--duration), transform var(--duration);
-    }
-
-    .card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: 2px solid var(--orange);
-      border-color: var(--orange);
-    }
-
-
-    /* ── Hover interactions ─────────────────────────── */
-
-    /* Logo button */
-    nav button:first-child { transition: opacity 0.2s; }
-    nav button:first-child:hover { opacity: 0.85; }
-
-    /* Nav links — underline slide-in */
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -2px;
-      width: 0; height: 2px;
-      background: var(--orange);
-      transition: width 0.25s ease;
-    }
-    .nav-link:hover::after,
-    .nav-link.active::after { width: 100%; }
-
-    /* Buttons scale on hover */
-    .btn { transition: opacity var(--duration), transform 0.15s ease, background-color var(--duration), color var(--duration); }
-    .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-
-    /* Card lift — already has shadow; strengthen it */
-    .card { cursor: pointer; transition: box-shadow 0.25s ease, transform 0.25s ease; }
-    .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.13); transform: translateY(-3px); }
-
-    /* Value icon pulse */
-    .val-icon { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .val-icon:hover { transform: scale(1.12); box-shadow: 0 4px 18px rgba(240,102,50,0.4); }
-
-    /* Value cards */
-    .val-card { transition: box-shadow 0.25s ease, transform 0.25s ease; cursor: default; }
-    .val-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
-
-    /* Focus area cards — orange top border grows on hover */
-    .focus-card { transition: box-shadow 0.25s ease, transform 0.25s ease; }
-    .focus-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
-
-    /* Accordion service panels */
-    .svc-panel { transition: flex 0.45s cubic-bezier(.4,0,.2,1), filter 0.25s ease; }
-    .svc-panel:hover { filter: brightness(1.06); }
-
-    /* Work carousel arrows */
-    #work-prev, #work-next { transition: background var(--duration), transform 0.15s ease; }
-    #work-prev:hover, #work-next:hover { transform: translateY(-50%) scale(1.08); }
-
-    /* Footer nav buttons */
-    footer button { transition: color 0.2s ease; }
-
-    /* value icon circle */
-    .val-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--rounded-full);
-      background: var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: #fff;
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    /* ── Team animated widget ───────────────────────── */
-    .team-img-card {
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      overflow: hidden;
-      transform-origin: bottom center;
-      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
-      will-change: transform, opacity;
-    }
-
-    .team-img-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    @keyframes team-word-in {
-      from {
-        opacity: 0;
-        filter: blur(6px);
-        transform: translateY(4px);
-      }
-
-      to {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-      }
-    }
-
-    .team-word {
-      display: inline-block;
-      animation: team-word-in 0.25s ease both;
-    }
-
-    @media (max-width: 640px) {
-      #team-widget {
-        grid-template-columns: 1fr !important;
-      }
-
-      #team-img-stack {
-        height: 260px !important;
-      }
-    }
-
-    /* ─── Mobile Responsive ────────────────────────── */
-
-    /* Nav: shrink logo on small screens, hide wordmark on tiny */
-    @media (max-width: 480px) {
-      .nav-logo-svg {
-        width: 40px !important;
-        height: 40px !important;
-      }
-
-      .nav-wordmark {
-        font-size: 18px !important;
-      }
-    }
-
-    @media (max-width: 340px) {
-      .nav-wordmark {
-        display: none !important;
-      }
-    }
-
-    /* Hero: reduce height on mobile, reposition CTA buttons */
-    @media (max-width: 640px) {
-      #hero-carousel {
-        height: 520px !important;
-      }
-
-      #hero-buttons {
-        left: 16px !important;
-        right: 16px !important;
-        bottom: 56px !important;
-        justify-content: center !important;
-      }
-
-      /* Push slide content up so it clears the buttons at the bottom */
-      #hero-slides>div {
-        padding-bottom: 120px !important;
-      }
-    }
-
-    @media (max-width: 400px) {
-      #hero-carousel {
-        height: 520px !important;
-      }
-
-      #hero-buttons {
-        flex-direction: column !important;
-        align-items: center !important;
-      }
-
-      #hero-buttons .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      /* Stacked buttons are taller — give more clearance */
-      #hero-slides>div {
-        padding-bottom: 150px !important;
-      }
-    }
-
-    /* Services: mobile-first responsive grid */
-    .svc-row1,
-    .svc-row2 {
-      display: grid;
-      gap: 20px;
-    }
-
-    .svc-row1 {
-      margin-bottom: 20px;
-      grid-template-columns: 1fr;
-    }
-
-    .svc-row2 {
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 560px) {
-      .svc-row1 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .svc-row2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 900px) {
-      .svc-row1 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .svc-row2 {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: calc(66.66% + 10px);
-      }
-    }
-
-    /* Work carousel: reduce height on small screens */
-    @media (max-width: 640px) {
-      #work-track {
-        min-height: 420px !important;
-      }
-
-      .work-slide {
-        height: 420px !important;
-      }
-
-      #work-prev,
-      #work-next {
-        width: 38px !important;
-        height: 38px !important;
-      }
-    }
-
-    /* Approach principles: let flex items wrap on very small screens */
-    .principle-item {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      margin-bottom: 48px;
-    }
-
-    @media (max-width: 420px) {
-      .principle-item {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-
-    /* ── Blog contenteditable area ─────────────────── */
-    .blog-edit-area { min-height: 120px; padding: 12px 14px; font-size: 15px; font-family: var(--fontfamily-sans); outline: none; line-height: 175%; color: var(--midnight-green); }
-    .blog-edit-area ul, #bm-blocks ul { padding-left: 24px; margin-bottom: 12px; }
-    .blog-edit-area ul li, #bm-blocks ul li { list-style-type: disc; margin-bottom: 4px; }
-    .blog-edit-area ol, #bm-blocks ol { padding-left: 24px; margin-bottom: 12px; }
-    .blog-edit-area ol li, #bm-blocks ol li { list-style-type: decimal; margin-bottom: 4px; }
-    .blog-edit-area:empty::before { content: attr(data-placeholder); color: #aab8cc; pointer-events: none; }
-    .blog-edit-area a, #bm-blocks a { color: var(--dark-green); text-decoration: underline; text-underline-offset: 3px; }
-    .blog-edit-area a:hover, #bm-blocks a:hover { color: var(--orange); }
-    /* Blog card summary clamp */
-    .blog-card-summary { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-    /* Stat cards on project pages: ensure they wrap */
-    .stat-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .stat-card {
-      background: rgba(255, 255, 255, .1);
-      border-radius: var(--rounded-md);
-      padding: 14px 20px;
-      text-align: center;
-      min-width: 110px;
-    }
-
-    /* ── Global mobile fixes ────────────────────────── */
-
-    /* Reduce large section padding on tablets */
-    @media (max-width: 768px) {
-      [style*="padding:80px 24px"],
-      [style*="padding:72px 24px"],
-      [style*="padding:64px 24px"] {
-        padding-top: 52px !important;
-        padding-bottom: 52px !important;
-      }
-      /* Reduce large flex/grid gaps */
-      [style*="gap:64px"] {
-        gap: 32px !important;
-      }
-    }
-
-    /* Small phones: further reduce padding and gaps */
-    @media (max-width: 480px) {
-      [style*="padding:80px 24px"],
-      [style*="padding:72px 24px"],
-      [style*="padding:64px 24px"] {
-        padding-top: 36px !important;
-        padding-bottom: 36px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-      [style*="gap:64px"] {
-        gap: 24px !important;
-      }
-      /* Stack two-column form grids */
-      [style*="grid-template-columns:1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* Blog & Evidence cards: reduce min card width on phones */
-    @media (max-width: 480px) {
-      #blog-posts-container,
-      #evidence-container {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* Blog & Evidence modals: reduce inner padding on phones */
-    @media (max-width: 480px) {
-      #blog-modal-inner > div:last-child,
-      #evidence-modal-inner > div:last-child {
-        padding: 28px 20px 36px !important;
-      }
-      #blog-modal,
-      #evidence-modal {
-        padding: 16px 8px !important;
-      }
-    }
-
-    /* Accordion: improve mobile layout */
-    @media (max-width: 480px) {
-      #svc-accordion .svc-active-content {
-        padding: 20px 16px !important;
-      }
-      #svc-accordion .svc-active-content h3 {
-        font-size: var(--text-base) !important;
-      }
-      #svc-accordion .svc-active-content p {
-        font-size: var(--text-xs) !important;
-      }
-    }
-
-    /* Who We Are & About org: image + text flex stack cleanly */
-    @media (max-width: 640px) {
-      #page-home [style*="flex:1 1 280px"],
-      #page-about [style*="flex:1 1 280px"] {
-        flex: 1 1 100% !important;
-      }
-      #page-home [style*="flex:1 1 340px"],
-      #page-about [style*="flex:1 1 340px"],
-      #page-about [style*="flex:1 1 300px"] {
-        flex: 1 1 100% !important;
-      }
-    }
-
-    /* Team cards: single column on very small phones */
-    @media (max-width: 380px) {
-      #page-about [style*="grid-template-columns:repeat(auto-fill,minmax(220px"] {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* Project stat strips: wrap and shrink on mobile */
-    @media (max-width: 480px) {
-      .stat-card {
-        min-width: 80px;
-        padding: 10px 12px;
-        flex: 1 1 calc(50% - 8px);
-      }
-    }
-
-    /* Footer: stack columns on mobile */
-    @media (max-width: 640px) {
-      #page-home + footer [style*="display:flex"],
-      footer [style*="display:flex; gap:32px"],
-      footer [style*="display:flex; gap:40px"] {
-        flex-direction: column !important;
-        gap: 24px !important;
-      }
-    }
-
-    /* Headings: prevent overflow on very small screens */
-    @media (max-width: 400px) {
-      h1, h2, h3, h4 {
-        word-break: break-word;
-        overflow-wrap: break-word;
-      }
-      .page {
-        overflow-x: hidden;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/shared.css" />
 </head>
 
 <body>
@@ -614,8 +84,7 @@
     style="background:#fff; border-bottom:1px solid var(--gray-300); position:sticky; top:0; z-index:50; height:var(--height-header);">
     <div
       style="width:100%; padding:0 32px; height:100%; display:flex; align-items:center; justify-content:space-between;">
-      <a href="/"
-  style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+      <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
         <!-- Logo mark + wordmark -->
         <span style="display:flex; align-items:center; gap:12px;">
 
@@ -636,21 +105,21 @@
         </span>
       </a>
 
-<div class="hidden md:flex" style="gap:28px; align-items:center;">
-  <a href="/" id="nav-home" class="nav-link"
-    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
-  <a href="/about/" id="nav-about" class="nav-link"
-    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
-    Us</a>
-  <a href="/approach/" id="nav-approach" class="nav-link"
-    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
-    Approach</a>
-  <a href="/blog/" id="nav-blog" class="nav-link"
-    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
-  <a href="/evidence/" id="nav-evidence" class="nav-link"
-    style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
-  <a href="/contact/" class="btn btn-orange" style="margin-left:8px;text-decoration:none;">Get in touch</a>
-</div>
+      <div class="hidden md:flex" style="gap:28px; align-items:center;">
+        <a href="/" id="nav-home" class="nav-link"
+          style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
+        <a href="/about/" id="nav-about" class="nav-link"
+          style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+          Us</a>
+        <a href="/approach/" id="nav-approach" class="nav-link"
+          style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+          Approach</a>
+        <a href="/blog/" id="nav-blog" class="nav-link"
+          style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
+        <a href="/evidence/" id="nav-evidence" class="nav-link"
+          style="text-decoration:none;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
+        <a href="/contact/" class="btn btn-orange" style="margin-left:8px;text-decoration:none;">Get in touch</a>
+      </div>
 
       <button onclick="toggleMenu()" class="md:hidden"
         style="background:none;border:none;cursor:pointer;color:var(--midnight-green);">
@@ -660,72 +129,111 @@
       </button>
     </div>
 
-<div id="mobile-menu"
-  style="display:none; background:#fff; border-top:1px solid var(--gray-300); padding:16px 24px; flex-direction:column; gap:12px;">
-  <a href="/"
-    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
-  <a href="/about/"
-    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
-    Us</a>
-  <a href="/approach/"
-    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
-    Approach</a>
-  <a href="/blog/"
-    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
-  <a href="/evidence/"
-    style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
-  <a href="/contact/" class="btn btn-orange" style="width:fit-content;text-decoration:none;">Get in touch</a>
-</div>
+    <div id="mobile-menu"
+      style="display:none; background:#fff; border-top:1px solid var(--gray-300); padding:16px 24px; flex-direction:column; gap:12px;">
+      <a href="/"
+        style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Home</a>
+      <a href="/about/"
+        style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">About
+        Us</a>
+      <a href="/approach/"
+        style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Our
+        Approach</a>
+      <a href="/blog/"
+        style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Blog</a>
+      <a href="/evidence/"
+        style="text-decoration:none;text-align:left;font-size:var(--text-sm);font-weight:600;color:var(--midnight-green);">Evidence</a>
+      <a href="/contact/" class="btn btn-orange" style="width:fit-content;text-decoration:none;">Get in touch</a>
+    </div>
   </nav>
 
 
   <!-- ═══════════════════════════════════════════════════
      BLOG
 ════════════════════════════════════════════════════ -->
-  <section id="page-blog">
+  <section id="page-blog" class="page active">
 
-      <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
-    <p class="tag" style="color:var(--orange); margin-bottom:12px;">Insights</p>
-    <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Blog</h1>
-    <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Perspectives, updates, and thinking from
-      our team.</p>
-  </div>
-
-  <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
-
-    <div id="blog-posts-container"
-      style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
+    <div style="background:var(--midnight-green); color:#fff; padding:80px 24px; text-align:center;">
+      <p class="tag" style="color:var(--orange); margin-bottom:12px;">Insights</p>
+      <h1 style="font-size:var(--text-3xl); color:#fff; margin-bottom:16px;">Blog</h1>
+      <p style="color:rgba(255,255,255,.7); max-width:520px; margin:0 auto;">Perspectives, updates, and thinking from
+        our team.</p>
     </div>
 
-  </div>
-</section><!-- /BLOG -->
+    <div style="max-width:var(--container); margin:0 auto; padding:80px 24px;">
 
-  <!-- Blog post modal -->
-  <div id="blog-modal" onclick="closeBlogModal(event)"
-    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9000; overflow-y:auto; padding:40px 16px;">
-    <div id="blog-modal-inner" onclick="event.stopPropagation()"
-      style="background:#fff; border-radius:var(--rounded-xl); max-width:780px; margin:0 auto; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.25);">
-      <!-- Cover image -->
-      <img id="bm-img" src="" alt="" style="width:100%; max-height:380px; object-fit:cover; display:none;" />
-      <div style="padding:44px 48px 56px;">
-        <!-- Meta -->
-        <p id="bm-category" class="tag" style="margin-bottom:10px;"></p>
-        <h2 id="bm-title" style="font-size:var(--text-2xl); margin-bottom:8px; line-height:1.25;"></h2>
-        <p id="bm-date" style="font-size:var(--text-xs); color:var(--gray-700); margin-bottom:32px; letter-spacing:.04em;"></p>
-        <!-- Summary box -->
-        <div id="bm-summary-box"
-          style="display:none; background:var(--gray); border-left:4px solid var(--orange); padding:20px 24px; margin-bottom:40px; border-radius:0 var(--rounded-md) var(--rounded-md) 0;">
-          <p id="bm-summary" style="font-size:var(--text-md); font-style:italic; color:var(--midnight-green); line-height:180%; margin:0;"></p>
+      <div id="blog-posts-container"
+        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)); gap:28px; margin-bottom:80px;">
+      </div>
+
+    </div>
+  </section><!-- /BLOG -->
+
+  <!-- Blog post page -->
+  <section id="page-blog-post" class="page">
+    <div style="background:var(--midnight-green); padding:0;">
+      <img id="bm-img" src="" alt="" style="width:100%; max-height:420px; object-fit:cover; display:none;" />
+    </div>
+    <div style="max-width:1100px; margin:0 auto; padding:32px 24px 48px;">
+      <button onclick="showPage('blog')"
+        style="background:none; border:none; cursor:pointer; color:var(--gray-700); font-size:var(--text-sm); font-weight:600; display:flex; align-items:center; gap:6px; margin-bottom:32px; padding:0; font-family:inherit;"
+        onmouseover="this.style.color='var(--midnight-green)'" onmouseout="this.style.color='var(--gray-700)'">
+        ← Back to Blog
+      </button>
+      <div class="post-layout">
+        <!-- Sidebar -->
+        <div class="post-sidebar">
+          <div style="margin-bottom:20px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Category</p>
+            <p id="bm-category" class="tag" style="margin:0;"></p>
+          </div>
+          <div id="bm-sidebar-author-wrap" style="display:none; margin-bottom:20px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Author</p>
+            <p id="bm-sidebar-author" style="font-size:var(--text-sm); color:var(--midnight-green); margin:0;"></p>
+          </div>
+          <div id="bm-sidebar-date-wrap" style="display:none; margin-bottom:28px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 4px;">Date Published</p>
+            <p id="bm-sidebar-date" style="font-size:var(--text-sm); color:var(--midnight-green); margin:0;"></p>
+          </div>
+          <div id="bm-toc" style="display:none;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 10px;">Contents</p>
+            <ul id="bm-toc-list" style="list-style:none; padding:0; margin:0;"></ul>
+          </div>
         </div>
-        <!-- Post blocks rendered here -->
-        <div id="bm-blocks"></div>
-        <button onclick="closeBlogModalBtn()"
-          style="margin-top:40px; background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
-          ← Back to Blog
-        </button>
+        <!-- Main content -->
+        <div class="post-main">
+          <h1 id="bm-title" style="font-size:clamp(1.6rem,4vw,var(--text-2xl)); margin-bottom:24px; line-height:1.25;"></h1>
+          <div id="bm-summary-box" style="display:none; margin-bottom:32px;">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 8px;">Summary</p>
+            <p id="bm-summary" style="font-size:var(--text-base); color:var(--midnight-green); line-height:1.7; margin:0;"></p>
+          </div>
+          <div id="bm-blocks"></div>
+
+          <!-- Comments -->
+          <div style="margin-top:48px; padding-top:36px; border-top:1px solid var(--gray-300);">
+            <p style="font-size:var(--text-xs); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); margin:0 0 20px;">Comments</p>
+            <div id="bm-comments-list" style="display:flex; flex-direction:column; gap:16px; margin-bottom:28px;"></div>
+            <form onsubmit="submitBlogComment(event)" style="display:flex; flex-direction:column; gap:10px;">
+              <input id="bm-comment-name" type="text" placeholder="Your name"
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit;" required />
+              <textarea id="bm-comment-text" rows="3" placeholder="Write a comment..."
+                style="width:100%; border:1px solid var(--gray-300); border-radius:var(--rounded); padding:10px 14px; font-size:var(--text-sm); font-family:inherit; resize:vertical;" required></textarea>
+              <div>
+                <button type="submit" id="bm-comment-btn" class="btn btn-orange" style="padding:10px 24px;">Post Comment</button>
+              </div>
+            </form>
+          </div>
+
+          <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--gray-300);">
+            <button onclick="showPage('blog')"
+              style="background:none; border:2px solid var(--dark-green); color:var(--dark-green); border-radius:var(--rounded-sm); padding:12px 24px; font-size:var(--text-sm); font-weight:700; cursor:pointer; font-family:inherit;">
+              ← Back to Blog
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <!-- ═══════ FOOTER ═══════ -->
@@ -787,235 +295,8 @@
 
 
   <!-- ═══════ SCRIPTS ═══════ -->
-  <script>
-
-    function setSvcPanel(i) {
-      document.querySelectorAll('#svc-accordion .svc-panel').forEach(function(p, idx) {
-        var isActive = idx === i;
-        p.style.flex = isActive ? '3.5' : '1.5';
-        var ac = p.querySelector('.svc-active-content');
-        var it = p.querySelector('.svc-inactive-title');
-        if (ac) ac.style.display = isActive ? 'flex' : 'none';
-        if (it) it.style.display = isActive ? 'none' : 'flex';
-      });
-    }
-
-    function toggleMenu() {
-      const m = document.getElementById('mobile-menu');
-      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-
-    function openBlogModal(postData) {
-      document.getElementById('bm-title').textContent = postData.title;
-      document.getElementById('bm-category').textContent = postData.category || 'General';
-      document.getElementById('bm-date').textContent = postData.date || 'Just now';
-      var img = document.getElementById('bm-img');
-      img.src = postData.coverSrc || '';
-      img.style.display = postData.coverSrc ? 'block' : 'none';
-      var summaryBox = document.getElementById('bm-summary-box');
-      if (postData.summary) {
-        document.getElementById('bm-summary').textContent = postData.summary;
-        summaryBox.style.display = 'block';
-      } else {
-        summaryBox.style.display = 'none';
-      }
-      renderBlocksInModal(postData.blocks || [], document.getElementById('bm-blocks'));
-      document.getElementById('blog-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function renderBlocksInModal(blocks, container) {
-  container.innerHTML = '';
-
-  blocks.forEach(function(block) {
-    if (block.type === 'text') {
-      var p = document.createElement('div');
-      p.style.cssText = 'font-size:var(--text-base);color:var(--midnight-green);line-height:190%;margin-bottom:24px;';
-      p.innerHTML = block.content || '';
-      container.appendChild(p);
-    }
-
-    else if (block.type === 'heading') {
-      var h = document.createElement('h3');
-      h.style.cssText = 'font-size:var(--text-xl);color:var(--midnight-green);margin:36px 0 12px;line-height:1.3;';
-      h.textContent = block.content || '';
-      container.appendChild(h);
-    }
-
-    else if (block.type === 'image') {
-      var div = document.createElement('div');
-      div.style.cssText = 'margin-bottom:32px;text-align:center;';
-
-      if (block.src) {
-        var im = document.createElement('img');
-        im.src = block.src;
-        im.style.cssText = 'max-width:100%;border-radius:var(--rounded-lg);max-height:500px;object-fit:contain;';
-        div.appendChild(im);
-      }
-
-      if (block.caption) {
-        var cap = document.createElement('p');
-        cap.style.cssText = 'font-size:12px;color:var(--gray-700);margin-top:8px;font-style:italic;';
-        cap.textContent = block.caption;
-        div.appendChild(cap);
-      }
-
-      container.appendChild(div);
-    }
-
-    else if (block.type === 'chart') {
-      var note = document.createElement('div');
-      note.style.cssText = 'background:var(--gray);border-radius:var(--rounded-lg);padding:20px;margin-bottom:32px;color:var(--gray-700);font-size:var(--text-sm);';
-      note.textContent = 'Chart content available.';
-      container.appendChild(note);
-    }
-  });
-}
-
-
-    function closeBlogModalBtn() {
-      document.getElementById('blog-modal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeBlogModal(e) {
-      if (e.target.id === 'blog-modal') closeBlogModalBtn();
-    }
-
-    // ── Evidence modal display ─────────────────────────────────
-
-    function openEvidenceModal(postData) {
-      document.getElementById('em-title').textContent = postData.title;
-      document.getElementById('em-category').textContent = postData.category || 'Research';
-      document.getElementById('em-date').textContent = postData.date || 'Just now';
-      var img = document.getElementById('em-img');
-      img.src = postData.coverSrc || '';
-      img.style.display = postData.coverSrc ? 'block' : 'none';
-      var summaryBox = document.getElementById('em-summary-box');
-      if (postData.summary) {
-        document.getElementById('em-summary').textContent = postData.summary;
-        summaryBox.style.display = 'block';
-      } else {
-        summaryBox.style.display = 'none';
-      }
-      renderBlocksInModal(postData.blocks || [], document.getElementById('em-blocks'));
-      document.getElementById('evidence-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeEvidenceModalBtn() {
-      document.getElementById('evidence-modal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeEvidenceModal(e) {
-      if (e.target.id === 'evidence-modal') closeEvidenceModalBtn();
-    }
-
-
-    // ── Hero carousel ────────────────────────────────
-    let heroCurrent = 0;
-    const heroSlides = document.getElementById('hero-slides');
-
-    // Slide durations: slide 0 = 5s, slide 1 = 15s
-    const heroDurations = [5000, 15000];
-    let heroTimer;
-
-    function heroScheduleNext() {
-      clearTimeout(heroTimer);
-      heroTimer = setTimeout(function () {
-        heroGo(heroCurrent === 0 ? 1 : 0);
-      }, heroDurations[heroCurrent]);
-    }
-
-    function heroGo(index) {
-      heroCurrent = index;
-      heroSlides.style.transform = 'translateX(-' + (index * 50) + '%)';
-      document.getElementById('hero-dot-0').style.opacity = index === 0 ? '1' : '0.4';
-      document.getElementById('hero-dot-1').style.opacity = index === 1 ? '1' : '0.4';
-      heroScheduleNext();
-    }
-
-    // Kick off from slide 0
-    heroScheduleNext();
-
-    // Touch/swipe support
-    (function () {
-      const el = document.getElementById('hero-carousel');
-      let startX = 0;
-      el.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-      el.addEventListener('touchend', function (e) {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) {
-          heroGo(diff > 0 ? 1 : 0);
-        }
-      }, { passive: true });
-    })();
-
-    // ── Work carousel ────────────────────────────────
-    let workCurrent = 0;
-    const workTotal = 2;
-    let workTimer;
-
-    function workAnimate(index) {
-      const slides = document.querySelectorAll('.work-slide');
-      slides.forEach((s, i) => {
-        const els = s.querySelectorAll('.slide-content > *');
-        const bg = s.querySelector('.slide-bg');
-        if (i === index) {
-          els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
-          if (bg) bg.style.transform = 'scale(1.04)';
-        } else {
-          els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; });
-          if (bg) bg.style.transform = 'scale(1)';
-        }
-      });
-
-      // dots
-      document.querySelectorAll('.work-dot').forEach((d, i) => {
-        d.style.width = i === index ? '28px' : '14px';
-        d.style.background = i === index ? 'var(--orange)' : 'rgba(255,255,255,.35)';
-      });
-
-      // counter
-      const counter = document.getElementById('work-counter');
-      if (counter) counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(workTotal).padStart(2, '0');
-    }
-
-    function workGoTo(index) {
-      workCurrent = index;
-      const track = document.getElementById('work-track');
-      if (track) track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      workAnimate(index);
-      resetWorkTimer();
-    }
-
-    function workSlide(dir) {
-      workGoTo((workCurrent + dir + workTotal) % workTotal);
-    }
-
-    function resetWorkTimer() {
-      clearInterval(workTimer);
-      workTimer = setInterval(() => workSlide(1), 5000);
-    }
-
-    // touch / swipe support
-    (function () {
-      let startX = 0;
-      const track = document.getElementById('work-track');
-      if (!track) return;
-      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) workSlide(diff > 0 ? 1 : -1);
-      });
-    })();
-
-    // init
-    workAnimate(0);
-    resetWorkTimer();
-  </script>
+  <script src="/assets/shared.js"></script>
+  <script src="/assets/blog.js"></script>
 </body>
 
 </html>
