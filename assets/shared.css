@@ -403,7 +403,7 @@
 
     .post-toc-link:hover {
       color: var(--midnight-green);
-      border-left-color: var(--orange);
+      border-left-color: var(--midnight-green);
     }
 
     /* Blog card summary clamp */
